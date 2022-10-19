@@ -412,6 +412,42 @@
           }
         }
       }
+    },
+    "/healthcheck": {
+      "get": {
+        "summary": "\bHealth Check",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                },
+                "examples": {
+                  "성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-healthcheck",
+        "description": "Health Check용"
+      }
     }
   },
   "components": {
