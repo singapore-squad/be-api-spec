@@ -1,0 +1,233 @@
+{
+  "openapi": "3.1.0",
+  "x-stoplight": {
+    "id": "qt2bcxlu8vy2u"
+  },
+  "info": {
+    "title": "vision-mvp-v1",
+    "version": "1.0",
+    "summary": "Vision SNS MVP api v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7000"
+    }
+  ],
+  "paths": {
+    "/v1/tags": {
+      "get": {
+        "summary": "태그 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Tag"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-tags",
+        "description": "태그 조회",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer token"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "tagType",
+            "description": "VISION: 비전, ARTICLE: 일상글"
+          }
+        ]
+      },
+      "post": {
+        "summary": "태그 등록",
+        "operationId": "post-v1-tags",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "tagId": {
+                      "type": "integer",
+                      "description": "등록된 tag의 id값"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "tagId"
+                  ]
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "description": "태그 등록",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer token"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tagName": {
+                    "type": "string",
+                    "description": "태그명"
+                  },
+                  "tagType": {
+                    "type": "string",
+                    "description": "VISION(비전용), ARTICLE(일상글용)"
+                  }
+                },
+                "required": [
+                  "tagName",
+                  "tagType"
+                ]
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "title": "User",
+        "type": "object",
+        "description": "",
+        "examples": [
+          {
+            "id": 142,
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": "alice.smith@gmail.com",
+            "dateOfBirth": "1997-10-31",
+            "emailVerified": true,
+            "signUpDate": "2019-08-24"
+          }
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the given user."
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "example": "1997-10-31"
+          },
+          "emailVerified": {
+            "type": "boolean",
+            "description": "Set to true if the user's email has been verified."
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date",
+            "description": "The date that the user was created."
+          }
+        },
+        "required": [
+          "id",
+          "firstName",
+          "lastName",
+          "email",
+          "emailVerified"
+        ]
+      },
+      "ResponseCode": {
+        "title": "ResponseCode",
+        "x-stoplight": {
+          "id": "594lp3cglk3lh"
+        },
+        "type": "integer",
+        "description": "응답 코드\n\n0 (성공),\n9999 (알수없는 에러)"
+      },
+      "ResponseMessage": {
+        "title": "ResponseMessage",
+        "x-stoplight": {
+          "id": "vmsrg3uyrskuc"
+        },
+        "type": "string",
+        "description": "응답 코드에 대한 설명 (회원에게 노출용 아님)\n\ncode(0) = 성공, \ncode(9999) = 알 수 없는 에러,\n..."
+      },
+      "Tag": {
+        "title": "Tag",
+        "x-stoplight": {
+          "id": "gp3odcej1yr4k"
+        },
+        "type": "object",
+        "properties": {
+          "tagId": {
+            "type": "integer"
+          },
+          "tagName": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {}
+  }
+}
