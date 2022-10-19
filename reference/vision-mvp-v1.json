@@ -79,7 +79,7 @@
                 "이메일 로그인 요청": {
                   "value": {
                     "email": "tester01@email.com",
-                    "password": "test1234"
+                    "passwd": "test1234"
                   }
                 }
               }
@@ -274,14 +274,14 @@
                     "message": {
                       "$ref": "#/components/schemas/ResponseMessage"
                     },
-                    "visionId": {
+                    "vision": {
                       "$ref": "#/components/schemas/Vision"
                     }
                   },
                   "required": [
                     "code",
                     "message",
-                    "visionId"
+                    "vision"
                   ]
                 },
                 "examples": {
