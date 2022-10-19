@@ -16,7 +16,7 @@
   "paths": {
     "/v1/auth/signin": {
       "post": {
-        "summary": "",
+        "summary": "로그인",
         "operationId": "post-v1-auth-signin",
         "responses": {
           "200": {
