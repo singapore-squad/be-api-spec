@@ -10,7 +10,16 @@
   },
   "servers": [
     {
-      "url": "http://localhost:7000"
+      "url": "https://stoplight.io/mocks/singapore-squad/be-api-spec/100729079",
+      "description": "MockServer"
+    },
+    {
+      "url": "http://localhost:7000",
+      "description": "local"
+    },
+    {
+      "url": "",
+      "description": "Dev"
     }
   ],
   "paths": {
@@ -303,7 +312,7 @@
                             "tagName": "가족"
                           }
                         ],
-                        "image": "https://content.skyscnr.com/m/41acfff761f8ea1a/original/GettyImages-519763361.jpg?resize=1800px:1800px&quality=100",
+                        "imgUrl": "https://content.skyscnr.com/m/41acfff761f8ea1a/original/GettyImages-519763361.jpg?resize=1800px:1800px&quality=100",
                         "createAt": "2022-10-19 14:43:25"
                       }
                     }
@@ -557,7 +566,7 @@
                 "tagName": "가족"
               }
             ],
-            "image": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80",
+            "imgUrl": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80",
             "createAt": "2022-10-19 14:43:25"
           }
         ],
