@@ -14,6 +14,80 @@
     }
   ],
   "paths": {
+    "/v1/auth/signin": {
+      "post": {
+        "summary": "",
+        "operationId": "post-v1-auth-signin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "accessToken": {
+                      "type": "string",
+                      "description": "발급된 access token"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "accessToken"
+                  ]
+                },
+                "examples": {
+                  "이메일 로그인 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "로그인 후 토큰을 발급합니다.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "passwd": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "email",
+                  "passwd"
+                ]
+              },
+              "examples": {
+                "이메일 로그인 요청": {
+                  "value": {
+                    "email": "tester01@email.com",
+                    "password": "test1234"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tags": {
       "get": {
         "summary": "태그 조회",
@@ -39,6 +113,36 @@
                       }
                     }
                   }
+                },
+                "examples": {
+                  "태그 리스트 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "tags": [
+                        {
+                          "tagId": 1,
+                          "tagName": "가지고싶은것"
+                        },
+                        {
+                          "tagId": 2,
+                          "tagName": "되고싶은것"
+                        },
+                        {
+                          "tagId": 3,
+                          "tagName": "가고싶은곳"
+                        },
+                        {
+                          "tagId": 4,
+                          "tagName": "하고싶은것"
+                        },
+                        {
+                          "tagId": 5,
+                          "tagName": "일상"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -48,12 +152,7 @@
         "description": "태그 조회",
         "parameters": [
           {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Authorization",
-            "description": "Bearer token"
+            "$ref": "#/components/parameters/Authorization"
           },
           {
             "schema": {
@@ -92,6 +191,15 @@
                     "message",
                     "tagId"
                   ]
+                },
+                "examples": {
+                  "비전 태그 등록 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "tagId": 90
+                    }
+                  }
                 }
               },
               "application/xml": {
@@ -133,10 +241,175 @@
                   "tagName",
                   "tagType"
                 ]
+              },
+              "examples": {
+                "비전 태그 등록": {
+                  "value": {
+                    "tagName": "string",
+                    "tagType": "string"
+                  }
+                }
               }
             }
           },
           "description": ""
+        }
+      }
+    },
+    "/v1/vision": {
+      "get": {
+        "summary": "비전 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "visionId": {
+                      "$ref": "#/components/schemas/Vision"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "visionId"
+                  ]
+                },
+                "examples": {
+                  "비전 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "vision": {
+                        "visionId": 77,
+                        "title": "해외에서 두달 살기",
+                        "contents": "하와이, 아이와 함께",
+                        "tags": [
+                          {
+                            "tagId": 1,
+                            "tagName": "하고싶은것"
+                          },
+                          {
+                            "tagId": 10,
+                            "tagName": "가족"
+                          }
+                        ],
+                        "image": "https://content.skyscnr.com/m/41acfff761f8ea1a/original/GettyImages-519763361.jpg?resize=1800px:1800px&quality=100",
+                        "createAt": "2022-10-19 14:43:25"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-vision",
+        "description": "비전 상세 페이지",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          },
+          {
+            "$ref": "#/components/parameters/visionId"
+          }
+        ]
+      },
+      "post": {
+        "summary": "비전 등록",
+        "operationId": "post-v1-vision",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "visionId": {
+                      "type": "integer",
+                      "description": "등록된 비전의 id"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "visionId"
+                  ]
+                },
+                "examples": {
+                  "비전 등록 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "visionId": 101
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "비전 등록",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "contents": {
+                    "type": "string"
+                  },
+                  "tagIds": {
+                    "type": [
+                      "array",
+                      "integer"
+                    ],
+                    "items": {}
+                  },
+                  "imgUrl": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "비전 등록": {
+                  "value": {
+                    "title": "해외에서 두달 살기",
+                    "contents": "하와이, 아이와 함께",
+                    "tagIds": [
+                      1,
+                      10
+                    ],
+                    "imgUrl": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -226,8 +499,119 @@
             "type": "string"
           }
         }
+      },
+      "Vision": {
+        "title": "Vision",
+        "x-stoplight": {
+          "id": "rpvuv71tertxt"
+        },
+        "type": "object",
+        "examples": [
+          {
+            "visionId": 77,
+            "title": "해외에서 두달 살기",
+            "contents": "하와이, 아이와 함께",
+            "tags": [
+              {
+                "tagId": 1,
+                "tagName": "하고싶은것"
+              },
+              {
+                "tagId": 10,
+                "tagName": "가족"
+              }
+            ],
+            "image": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80",
+            "createAt": "2022-10-19 14:43:25"
+          }
+        ],
+        "properties": {
+          "visionId": {
+            "$ref": "#/components/schemas/VisionId"
+          },
+          "title": {
+            "type": "string",
+            "description": "비전 제목"
+          },
+          "contents": {
+            "type": "string",
+            "description": "비전 상세 설명"
+          },
+          "tags": {
+            "description": "등록된 태그들",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            }
+          },
+          "imgUrl": {
+            "type": "string",
+            "description": "이미지 URL"
+          },
+          "createTime": {
+            "$ref": "#/components/schemas/Time"
+          }
+        },
+        "required": [
+          "visionId",
+          "imgUrl",
+          "createTime"
+        ]
+      },
+      "VisionId": {
+        "title": "VisionId",
+        "x-stoplight": {
+          "id": "ymo0953q1pdgm"
+        },
+        "type": "integer",
+        "description": "비전의 id값",
+        "examples": [
+          77
+        ]
+      },
+      "Time": {
+        "title": "Time",
+        "x-stoplight": {
+          "id": "9ovpilriqw3o2"
+        },
+        "type": "string",
+        "description": "시간 (YYYY-mm-dd HH:mm:ss)",
+        "examples": [
+          "2022-12-31 13:00:00"
+        ]
+      },
+      "Date": {
+        "title": "Date",
+        "x-stoplight": {
+          "id": "ojprffqrezdvs"
+        },
+        "type": "string",
+        "description": "날짜 (YYYY-mm-dd)",
+        "examples": [
+          "2022-12-31"
+        ]
       }
     },
-    "securitySchemes": {}
+    "securitySchemes": {},
+    "parameters": {
+      "Authorization": {
+        "name": "Authorization",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "Bearer accessToken"
+      },
+      "visionId": {
+        "name": "visionId",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        },
+        "description": "비전의 id값"
+      }
+    }
   }
 }
