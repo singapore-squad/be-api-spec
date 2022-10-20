@@ -57,7 +57,7 @@
                     "value": {
                       "code": 0,
                       "message": "성공",
-                      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                      "data": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
                     }
                   }
                 }
@@ -129,7 +129,7 @@
                     "value": {
                       "code": 0,
                       "message": "성공",
-                      "tags": [
+                      "data": [
                         {
                           "tagId": 1,
                           "tagName": "가지고싶은것"
@@ -207,7 +207,7 @@
                     "value": {
                       "code": 0,
                       "message": "성공",
-                      "tagId": 90
+                      "data": 90
                     }
                   }
                 }
@@ -293,6 +293,50 @@
                       "items": {
                         "$ref": "#/components/schemas/Vision"
                       }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": 0,
+                      "message": "string",
+                      "data": [
+                        {
+                          "visionId": 77,
+                          "title": "해외에서 두달 살기",
+                          "contents": "하와이, 아이와 함께",
+                          "tags": [
+                            {
+                              "tagId": 1,
+                              "tagName": "하고싶은것"
+                            },
+                            {
+                              "tagId": 10,
+                              "tagName": "가족"
+                            }
+                          ],
+                          "imgUrl": "https://content.skyscnr.com/m/41acfff761f8ea1a/original/GettyImages-519763361.jpg?resize=1800px:1800px&quality=100",
+                          "createAt": "2022-10-19 14:43:25"
+                        },
+                        {
+                          "visionId": 77,
+                          "title": "해외에서 백달 살기",
+                          "contents": "안드로메다, 월E와 함께",
+                          "tags": [
+                            {
+                              "tagId": 1,
+                              "tagName": "갖고 싶은것"
+                            },
+                            {
+                              "tagId": 10,
+                              "tagName": "인류애"
+                            }
+                          ],
+                          "imgUrl": "https://content.skyscnr.com/m/41acfff761f8ea1a/original/GettyImages-519763361.jpg?resize=1800px:1800px&quality=100",
+                          "createAt": "2022-10-19 14:43:25"
+                        }
+                      ]
                     }
                   }
                 }
@@ -424,7 +468,7 @@
                     "value": {
                       "code": 0,
                       "message": "성공",
-                      "vision": {
+                      "data": {
                         "visionId": 77,
                         "title": "해외에서 두달 살기",
                         "contents": "하와이, 아이와 함께",
