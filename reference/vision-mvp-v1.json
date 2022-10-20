@@ -393,7 +393,7 @@
     },
     "/v1/visions/{visionId}": {
       "get": {
-        "summary": "비전 단건 조회!",
+        "summary": "비전 단건 조회",
         "tags": [],
         "responses": {
           "200": {
