@@ -57,7 +57,7 @@
                     "value": {
                       "code": 0,
                       "message": "성공",
-                      "data": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                      "data": "MQ=="
                     }
                   }
                 }
@@ -163,14 +163,6 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "tagType",
-            "description": "VISION: 비전, ARTICLE: 일상글"
           }
         ]
       },
@@ -285,10 +277,7 @@
                       "$ref": "#/components/schemas/ResponseMessage"
                     },
                     "data": {
-                      "type": [
-                        "string",
-                        "array"
-                      ],
+                      "type": "array",
                       "description": "비전 리스트",
                       "items": {
                         "$ref": "#/components/schemas/Vision"
@@ -379,7 +368,7 @@
                     "value": {
                       "code": 0,
                       "message": "성공",
-                      "visionId": 101
+                      "data": 101
                     }
                   }
                 }
@@ -660,7 +649,6 @@
             "createAt": "2022-10-19 14:43:25"
           }
         ],
-        "description": "비전 상세",
         "properties": {
           "visionId": {
             "$ref": "#/components/schemas/VisionId"
