@@ -616,6 +616,7 @@
             "createAt": "2022-10-19 14:43:25"
           }
         ],
+        "description": "비전 상세",
         "properties": {
           "visionId": {
             "$ref": "#/components/schemas/VisionId"
