@@ -233,22 +233,16 @@
                   "tagName": {
                     "type": "string",
                     "description": "태그명"
-                  },
-                  "tagType": {
-                    "type": "string",
-                    "description": "VISION(비전용), ARTICLE(일상글용)"
                   }
                 },
                 "required": [
-                  "tagName",
-                  "tagType"
+                  "tagName"
                 ]
               },
               "examples": {
                 "비전 태그 등록": {
                   "value": {
-                    "tagName": "string",
-                    "tagType": "string"
+                    "tagName": "string"
                   }
                 }
               }
@@ -545,6 +539,57 @@
         },
         "operationId": "get-healthcheck",
         "description": "Health Check용"
+      }
+    },
+    "/v1/tags/{tagId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "tagId",
+          "in": "path",
+          "required": true,
+          "description": "삭제할 tag id값"
+        }
+      ],
+      "delete": {
+        "summary": "",
+        "operationId": "delete-v1-tags-tagId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                },
+                "examples": {
+                  "삭제 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "태그 삭제",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
       }
     }
   },
