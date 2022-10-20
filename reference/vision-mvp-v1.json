@@ -122,7 +122,12 @@
                         "$ref": "#/components/schemas/Tag"
                       }
                     }
-                  }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 },
                 "examples": {
                   "태그 리스트 조회 성공": {
@@ -216,12 +221,7 @@
         "description": "태그 등록",
         "parameters": [
           {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Authorization",
-            "description": "Bearer token"
+            "$ref": "#/components/parameters/Authorization"
           }
         ],
         "requestBody": {
@@ -283,10 +283,15 @@
                         "$ref": "#/components/schemas/Vision"
                       }
                     }
-                  }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 },
                 "examples": {
-                  "example-1": {
+                  "비전 목록 조회 성공": {
                     "value": {
                       "code": 0,
                       "message": "string",
@@ -333,7 +338,12 @@
             }
           }
         },
-        "operationId": "get-v1-visions"
+        "operationId": "get-v1-visions",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
       },
       "post": {
         "summary": "비전 등록",
@@ -354,7 +364,7 @@
                     },
                     "data": {
                       "type": "integer",
-                      "description": "등록된 비전의 id"
+                      "description": "등록된 vision의 id값"
                     }
                   },
                   "required": [
@@ -407,7 +417,7 @@
                 }
               },
               "examples": {
-                "비전 등록": {
+                "비전 등록 ": {
                   "value": {
                     "title": "해외에서 두달 살기",
                     "contents": "하와이, 아이와 함께",
@@ -615,6 +625,7 @@
           "id": "gp3odcej1yr4k"
         },
         "type": "object",
+        "description": "태그 리스트",
         "properties": {
           "tagId": {
             "type": "integer"
