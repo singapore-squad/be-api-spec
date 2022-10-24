@@ -18,7 +18,7 @@
       "description": "local"
     },
     {
-      "url": "",
+      "url": "https://life-api-dev-ddfgcoc74q-du.a.run.app",
       "description": "Dev"
     }
   ],
@@ -777,11 +777,12 @@
       "Authorization": {
         "name": "Authorization",
         "in": "header",
-        "required": true,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "Bearer MQ=="
         },
-        "description": "Bearer accessToken"
+        "description": "Bearer accessToken",
+        "required": true
       },
       "visionId": {
         "name": "visionId",
