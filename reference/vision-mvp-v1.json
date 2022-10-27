@@ -23,6 +23,42 @@
     }
   ],
   "paths": {
+    "/healthcheck": {
+      "get": {
+        "summary": "\bHealth Check",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                },
+                "examples": {
+                  "성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-healthcheck",
+        "description": "Health Check용"
+      }
+    },
     "/v1/auth/signin": {
       "post": {
         "summary": "로그인",
@@ -252,6 +288,57 @@
         }
       }
     },
+    "/v1/tags/{tagId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "tagId",
+          "in": "path",
+          "required": true,
+          "description": "삭제할 tag id값"
+        }
+      ],
+      "delete": {
+        "summary": "",
+        "operationId": "delete-v1-tags-tagId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                },
+                "examples": {
+                  "삭제 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "태그 삭제",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      }
+    },
     "/v1/visions": {
       "get": {
         "summary": "비전 목록 조회",
@@ -291,38 +378,60 @@
                       "message": "string",
                       "data": [
                         {
-                          "visionId": 77,
-                          "title": "해외에서 두달 살기",
-                          "contents": "하와이, 아이와 함께",
-                          "tags": [
+                          "title": "7일 무지출 챌린지 1일차!",
+                          "contents": "내가 생각해도 맛있어보이는 점심도시락",
+                          "visionId": 1,
+                          "isPrivate": false,
+                          "wtags": [
                             {
-                              "tagId": 1,
-                              "tagName": "하고싶은것"
+                              "wtagType": 2,
+                              "wtagName": "점심시간"
                             },
                             {
-                              "tagId": 10,
-                              "tagName": "가족"
+                              "wtagType": 3,
+                              "wtagName": "14층 라운지"
                             }
                           ],
-                          "imgUrl": "https://content.skyscnr.com/m/41acfff761f8ea1a/original/GettyImages-519763361.jpg?resize=1800px:1800px&quality=100",
-                          "createAt": "2022-10-19 14:43:25"
+                          "media": [
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                            },
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                            },
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+                            }
+                          ]
                         },
                         {
-                          "visionId": 77,
-                          "title": "해외에서 백달 살기",
-                          "contents": "안드로메다, 월E와 함께",
-                          "tags": [
+                          "title": "7일 무지출 챌린지 2일차!",
+                          "contents": "오늘도 맛있는!",
+                          "visionId": 2,
+                          "isPrivate": false,
+                          "wtags": [
                             {
-                              "tagId": 1,
-                              "tagName": "갖고 싶은것"
+                              "wtagType": 2,
+                              "wtagName": "점심시간"
                             },
                             {
-                              "tagId": 10,
-                              "tagName": "인류애"
+                              "wtagType": 3,
+                              "wtagName": "16층 라운지"
                             }
                           ],
-                          "imgUrl": "https://content.skyscnr.com/m/41acfff761f8ea1a/original/GettyImages-519763361.jpg?resize=1800px:1800px&quality=100",
-                          "createAt": "2022-10-19 14:43:25"
+                          "media": [
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                            },
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -505,9 +614,20 @@
         }
       ]
     },
-    "/healthcheck": {
+    "/v1/visions/{visionId}/posts": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "visionId",
+          "in": "path",
+          "required": true,
+          "description": "비전 ID값"
+        }
+      ],
       "get": {
-        "summary": "\bHealth Check",
+        "summary": "특정 비전의 액션보드(Post) 목록 조회",
         "tags": [],
         "responses": {
           "200": {
@@ -522,14 +642,79 @@
                     },
                     "message": {
                       "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "description": "액션보드 리스트",
+                      "items": {
+                        "$ref": "#/components/schemas/Post"
+                      }
                     }
                   }
                 },
                 "examples": {
-                  "성공": {
+                  "\b액션보드 리스트 조회 성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공"
+                      "message": "string",
+                      "data": [
+                        {
+                          "title": "7일 무지출 챌린지 1일차!",
+                          "contents": "내가 생각해도 맛있어보이는 점심도시락",
+                          "visionId": 1,
+                          "isPrivate": false,
+                          "wtags": [
+                            {
+                              "wtagType": 2,
+                              "wtagName": "점심시간"
+                            },
+                            {
+                              "wtagType": 3,
+                              "wtagName": "14층 라운지"
+                            }
+                          ],
+                          "media": [
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                            },
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                            },
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "7일 무지출 챌린지 2일차!",
+                          "contents": "오늘도 맛있는!",
+                          "visionId": 2,
+                          "isPrivate": false,
+                          "wtags": [
+                            {
+                              "wtagType": 2,
+                              "wtagName": "점심시간"
+                            },
+                            {
+                              "wtagType": 3,
+                              "wtagName": "16층 라운지"
+                            }
+                          ],
+                          "media": [
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                            },
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                            }
+                          ]
+                        }
+                      ]
                     }
                   }
                 }
@@ -537,25 +722,18 @@
             }
           }
         },
-        "operationId": "get-healthcheck",
-        "description": "Health Check용"
+        "operationId": "get-v1-visions-visiondId-posts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
       }
     },
-    "/v1/tags/{tagId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "integer"
-          },
-          "name": "tagId",
-          "in": "path",
-          "required": true,
-          "description": "삭제할 tag id값"
-        }
-      ],
-      "delete": {
-        "summary": "",
-        "operationId": "delete-v1-tags-tagId",
+    "/v1/posts": {
+      "get": {
+        "summary": "액션보드(Post) 전체 목록 조회",
+        "tags": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -569,14 +747,79 @@
                     },
                     "message": {
                       "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "description": "액션보드 리스트",
+                      "items": {
+                        "$ref": "#/components/schemas/Post"
+                      }
                     }
                   }
                 },
                 "examples": {
-                  "삭제 성공": {
+                  "액션보드 조회 성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공"
+                      "message": "string",
+                      "data": [
+                        {
+                          "title": "7일 무지출 챌린지 1일차!",
+                          "contents": "내가 생각해도 맛있어보이는 점심도시락",
+                          "visionId": 1,
+                          "isPrivate": false,
+                          "wtags": [
+                            {
+                              "wtagType": 2,
+                              "wtagName": "점심시간"
+                            },
+                            {
+                              "wtagType": 3,
+                              "wtagName": "14층 라운지"
+                            }
+                          ],
+                          "media": [
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                            },
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                            },
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "7일 무지출 챌린지 2일차!",
+                          "contents": "오늘도 맛있는!",
+                          "visionId": 2,
+                          "isPrivate": false,
+                          "wtags": [
+                            {
+                              "wtagType": 2,
+                              "wtagName": "점심시간"
+                            },
+                            {
+                              "wtagType": 3,
+                              "wtagName": "16층 라운지"
+                            }
+                          ],
+                          "media": [
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                            },
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                            }
+                          ]
+                        }
+                      ]
                     }
                   }
                 }
@@ -584,7 +827,219 @@
             }
           }
         },
-        "description": "태그 삭제",
+        "operationId": "get-v1-posts",
+        "description": "- 어떤 유저의 액션보드 전체 목록을 조회합니다\n- 특정 비전의 액션보드 목록은 GET /v1/visions/{visionId}/posts 를 참조하세요",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      },
+      "post": {
+        "summary": "액션보드(Post)등록",
+        "operationId": "post-v1-posts",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "integer",
+                      "description": "등록된 액션보드(post)의 id값"
+                    }
+                  }
+                },
+                "examples": {
+                  "액션보드 등록 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": 101
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "contents": {
+                    "type": "string"
+                  },
+                  "visionId": {
+                    "type": "integer"
+                  },
+                  "isPrivatae": {
+                    "type": "boolean"
+                  },
+                  "wtags": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WTag"
+                    }
+                  },
+                  "media": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Media"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "\b포스트 등록": {
+                  "value": {
+                    "title": "7일 무지출 챌린지 1일차!",
+                    "contents": "내가 생각해도 맛있어보이는 점심도시락",
+                    "visionId": 1,
+                    "wtags": [
+                      {
+                        "wtagType": 2,
+                        "wtagName": "점심시간"
+                      },
+                      {
+                        "wtagType": 3,
+                        "wtagName": "14층 라운지"
+                      }
+                    ],
+                    "media": [
+                      {
+                        "contentType": 0,
+                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                      },
+                      {
+                        "contentType": 0,
+                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                      },
+                      {
+                        "contentType": 0,
+                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+                      }
+                    ],
+                    "isPrivate": false
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "액션보드 등록": {
+                  "value": "{\n  \"title\": \"해외에서 두달 살기\",\n  \"contents\": \"하와이, 아이와 함께\",\n  \"tagIds\": [\n    1,\n    10\n  ],\n  \"imgUrl\": \"https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80\"\n}"
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/v1/posts/{postId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "postId",
+          "in": "path",
+          "required": true,
+          "description": "액션보드 id값"
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Post"
+                    }
+                  }
+                },
+                "examples": {
+                  "액션보드 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "string",
+                      "data": {
+                        "title": "7일 무지출 챌린지 1일차!",
+                        "contents": "내가 생각해도 맛있어보이는 점심도시락",
+                        "visionId": 1,
+                        "isPrivate": false,
+                        "wtags": [
+                          {
+                            "wtagType": 2,
+                            "wtagName": "점심시간"
+                          },
+                          {
+                            "wtagType": 3,
+                            "wtagName": "14층 라운지"
+                          }
+                        ],
+                        "media": [
+                          {
+                            "contentType": 0,
+                            "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                          },
+                          {
+                            "contentType": 0,
+                            "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                          },
+                          {
+                            "contentType": 0,
+                            "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-posts-postId",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
@@ -647,7 +1102,8 @@
           {
             "$ref": "#/components/parameters/Authorization"
           }
-        ]
+        ],
+        "description": "multipart/form-data 형식으로 파일을 받아서 스토리지에 저장하고 임시 URL을 반환합니다"
       }
     },
     "/v1/files/urls": {
@@ -714,7 +1170,8 @@
           {
             "$ref": "#/components/parameters/Authorization"
           }
-        ]
+        ],
+        "description": "json body 형식으로 URL을 받아서 스토리지에 저장하고 임시 URL을 반환합니다"
       },
       "parameters": []
     }
@@ -806,6 +1263,41 @@
           }
         }
       },
+      "WTag": {
+        "title": "WTag",
+        "x-stoplight": {
+          "id": "gp3odcej1yr4k"
+        },
+        "type": "object",
+        "description": "W태그 리스트",
+        "properties": {
+          "wtagType": {
+            "type": "integer"
+          },
+          "wtagName": {
+            "type": "string"
+          },
+          "isPrivate": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Media": {
+        "title": "Media",
+        "x-stoplight": {
+          "id": "gp3odcej1yr4k"
+        },
+        "type": "object",
+        "description": "태그 리스트",
+        "properties": {
+          "contentType": {
+            "type": "integer"
+          },
+          "contentUrl": {
+            "type": "string"
+          }
+        }
+      },
       "Vision": {
         "title": "Vision",
         "x-stoplight": {
@@ -831,6 +1323,7 @@
             "createAt": "2022-10-19 14:43:25"
           }
         ],
+        "description": "비전",
         "properties": {
           "visionId": {
             "$ref": "#/components/schemas/VisionId"
@@ -854,14 +1347,92 @@
             "type": "string",
             "description": "이미지 URL"
           },
-          "createTime": {
+          "createAt": {
             "$ref": "#/components/schemas/Time"
           }
         },
         "required": [
           "visionId",
           "imgUrl",
-          "createTime"
+          "createAt"
+        ]
+      },
+      "Post": {
+        "title": "Post",
+        "x-stoplight": {
+          "id": "rpvuv71tertxt"
+        },
+        "type": "object",
+        "examples": [
+          {
+            "title": "7일 무지출 챌린지 1일차!",
+            "contents": "내가 생각해도 맛있어보이는 점심도시락",
+            "visionId": 1,
+            "isPrivate": false,
+            "wtags": [
+              {
+                "wtagType": 2,
+                "wtagName": "점심시간"
+              },
+              {
+                "wtagType": 3,
+                "wtagName": "14층 라운지"
+              }
+            ],
+            "media": [
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+              },
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+              },
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+              }
+            ]
+          }
+        ],
+        "description": "액션보드",
+        "properties": {
+          "postId": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string",
+            "description": "비전 제목"
+          },
+          "contents": {
+            "type": "string",
+            "description": "비전 상세 설명"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "isPrivate": {
+            "type": "boolean"
+          },
+          "wtags": {
+            "description": "등록된 태그들",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WTag"
+            }
+          },
+          "media": {
+            "type": "array",
+            "description": "이미지 URL",
+            "items": {
+              "$ref": "#/components/schemas/Media"
+            }
+          }
+        },
+        "required": [
+          "postId",
+          "createAt",
+          "media"
         ]
       },
       "VisionId": {
