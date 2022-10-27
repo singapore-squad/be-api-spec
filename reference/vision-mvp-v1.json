@@ -23,7 +23,7 @@
     }
   ],
   "paths": {
-    "/healthcheck": {
+    "/v1/healthcheck": {
       "get": {
         "summary": "\bHealth Check",
         "tags": [],
@@ -57,7 +57,8 @@
         },
         "operationId": "get-healthcheck",
         "description": "Health Check용"
-      }
+      },
+      "parameters": []
     },
     "/v1/auth/signin": {
       "post": {
