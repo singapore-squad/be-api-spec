@@ -138,19 +138,23 @@
                 "type": "object",
                 "properties": {
                   "email": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "provider가 EMAIL인 경우 사용"
                   },
                   "passwd": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "provider가 EMAIL인 경우 사용"
                   },
                   "providerName": {
                     "type": "string",
                     "description": "KAKAO, APPLE, EMAIL"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "social login 시, provider로부터 전달받은 code값"
                   }
                 },
                 "required": [
-                  "email",
-                  "passwd",
                   "providerName"
                 ]
               },
