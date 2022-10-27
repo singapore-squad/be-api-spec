@@ -38,61 +38,6 @@
                     "code": {
                       "$ref": "#/components/schemas/ResponseCode"
                     },
-                    "message": {
-                      "$ref": "#/components/schemas/ResponseMessage"
-                    },
-                    "data": {
-                      "type": "string",
-                      "description": "발급된 access token"
-                    }
-                  },
-                  "required": [
-                    "code",
-                    "message",
-                    "data"
-                  ]
-                },
-                "examples": {
-                  "이메일 로그인 성공": {
-                    "value": {
-                      "code": 0,
-                      "message": "[DEV] 성공",
-                      "data": {
-                        "email": "tester01@email.com",
-                        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBlbWFpbC5jb20iLCJpYXQiOjE2NjY4NDQ0MDMsImV4cCI6MTY2Njg4NzYwMCwicHJvdmlkZXIiOiJFTUFJTCJ9.igO3288acEbs0_s1ObVhsGcKTx6ROtkB8l-h7EYY1nTUN7TAAqPfS5Cq5OEtux3mNApt6vbEBup6X5pwWJxzpg",
-                        "accessTokenExpiresAt": "2022-10-27T16:20:00.945+00:00",
-                        "refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBlbWFpbC5jb20iLCJpYXQiOjE2NjY4NDQ0NDYsImV4cCI6MTY2ODE0MDQ0MCwicHJvdmlkZXIiOiJFTUFJTCJ9.kk3nJR5NEfYloG8OQPLVtJohjE69Hzt7VotthzKUvZABXaigdhIXknrhXpuzDwAiLSMa9WS90un8nOFK7IrhAA",
-                        "refreshTokenExpiresAt": "2022-11-11T04:20:40.999+00:00"
-                      }
-                    }
-                  },
-                  "카카오 로그인 성공": {
-                    "value": {
-                      "code": 0,
-                      "message": "[DEV] 성공",
-                      "data": {
-                        "email": "tester01@kakao.com",
-                        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBrYWthby5jb20iLCJpYXQiOjE2NjY4NjAxNzgsImV4cCI6MTY2NjkwMzM3OCwicHJvdmlkZXIiOiJFTUFJTCJ9.sao-wXpoMorSt0PmrQeFnDEuXIDcX2qzhG8ZYS8WzKd7QZPWns9OL56lB1fhRskwd55SUupU3xSyKl5xu8E52A",
-                        "accessTokenExpiresAt": "2022-10-27T20:42:58.788+00:00",
-                        "refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBrYWthby5jb20iLCJpYXQiOjE2NjY4NjAxNzgsImV4cCI6MTY2ODE1NjE3OCwicHJvdmlkZXIiOiJFTUFJTCJ9.Hu17xw0zOZfBueFXX0XXMVh2hnBAqFZStqW4s4NgrwnYz5STR9AKvD-VED3XSkpuxf-nrCYjzO9RbQdpgAEsOw",
-                        "refreshTokenExpiresAt": "2022-11-11T08:42:58.789+00:00"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "$ref": "#/components/schemas/ResponseCode"
-                    },
                     "error": {
                       "type": "string"
                     },
@@ -107,11 +52,11 @@
                   ]
                 },
                 "examples": {
-                  "provider 없이 요청": {
+                  "로그인 성공": {
                     "value": {
                       "code": 400,
                       "error": "Bad Request",
-                      "message": "provider provider is required"
+                      "message": "provider is required"
                     }
                   }
                 }
