@@ -78,8 +78,31 @@
                       "$ref": "#/components/schemas/ResponseMessage"
                     },
                     "data": {
-                      "type": "string",
-                      "description": "발급된 access token"
+                      "type": "object",
+                      "required": [
+                        "email",
+                        "accessToken",
+                        "accessTokenExpiresAt",
+                        "refreshToken",
+                        "refreshTokenExpiresAt"
+                      ],
+                      "properties": {
+                        "email": {
+                          "type": "string"
+                        },
+                        "accessToken": {
+                          "type": "string"
+                        },
+                        "accessTokenExpiresAt": {
+                          "type": "string"
+                        },
+                        "refreshToken": {
+                          "type": "string"
+                        },
+                        "refreshTokenExpiresAt": {
+                          "type": "string"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -89,11 +112,17 @@
                   ]
                 },
                 "examples": {
-                  "이메일 로그인 성공": {
+                  "로그인 성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공",
-                      "data": "MQ=="
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "email": "tester01@kakao.com",
+                        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBrYWthby5jb20iLCJpYXQiOjE2NjY4NjA0MTIsImV4cCI6MTY2NjkwMzYxMiwicHJvdmlkZXIiOiJFTUFJTCJ9.Li9FI9MxdQPrpQ8eLXltresONls9wg4eEKwQqdLZ1YJrblalVjG18gTGIRwoEf6OGCwDkK1hJO4enOkaQKasxw",
+                        "accessTokenExpiresAt": "2022-10-27T20:46:52.265+00:00",
+                        "refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBrYWthby5jb20iLCJpYXQiOjE2NjY4NjA0MTIsImV4cCI6MTY2ODE1NjQxMiwicHJvdmlkZXIiOiJFTUFJTCJ9.uWEBhGnglizWvSAwP0BRU2AR1HmvxPC5guPHOb9_1EawKIbVdJfiDJG4SQfM-QT8IHlnb0_4pSpyjyESk3BbPg",
+                        "refreshTokenExpiresAt": "2022-11-11T08:46:52.266+00:00"
+                      }
                     }
                   }
                 }
@@ -113,18 +142,30 @@
                   },
                   "passwd": {
                     "type": "string"
+                  },
+                  "providerName": {
+                    "type": "string",
+                    "description": "KAKAO, APPLE, EMAIL"
                   }
                 },
                 "required": [
                   "email",
-                  "passwd"
+                  "passwd",
+                  "providerName"
                 ]
               },
               "examples": {
                 "이메일 로그인 요청": {
                   "value": {
                     "email": "tester01@email.com",
-                    "passwd": "test1234"
+                    "passwd": "test1234",
+                    "providerName": "EMAIL"
+                  }
+                },
+                "카카오 로그인 요청": {
+                  "value": {
+                    "code": "ODFrV2ZnSWVZWU1NSkFwUEwwdGhuLUxNdEdCZzFGZ19fdlYzaG5Bb1lmNXU4SFdOQTVNeTFlNnRXWEVyQnpPdVdJVjFtUW9yRE5JQUFBR0VHSkswd1E=",
+                    "providerName": "KAKAO"
                   }
                 }
               }
