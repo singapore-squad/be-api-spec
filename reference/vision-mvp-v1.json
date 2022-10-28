@@ -347,7 +347,7 @@
         }
       ],
       "delete": {
-        "summary": "",
+        "summary": "태그 삭제",
         "operationId": "delete-v1-tags-tagId",
         "responses": {
           "200": {
@@ -1022,7 +1022,7 @@
         }
       ],
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "액션보드(Post) 한건 조회",
         "tags": [],
         "responses": {
           "200": {
@@ -1095,7 +1095,7 @@
     },
     "/v1/files": {
       "post": {
-        "summary": "",
+        "summary": "파일 업로드 (form-data)",
         "operationId": "post-v1-files",
         "responses": {
           "200": {
@@ -1154,7 +1154,7 @@
     },
     "/v1/files/urls": {
       "post": {
-        "summary": "",
+        "summary": "파일 업로드 (URL형식)",
         "operationId": "post-v1-files",
         "responses": {
           "200": {
