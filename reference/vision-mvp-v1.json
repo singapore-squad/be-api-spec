@@ -10,12 +10,12 @@
   },
   "servers": [
     {
-      "url": "https://stoplight.io/mocks/singapore-squad/be-api-spec/100729079",
-      "description": "MockServer"
-    },
-    {
       "url": "http://localhost:8080",
       "description": "local"
+    },
+    {
+      "url": "https://stoplight.io/mocks/singapore-squad/be-api-spec/100729079",
+      "description": "MockServer"
     },
     {
       "url": "https://life-api-dev-ddfgcoc74q-du.a.run.app",
@@ -1220,6 +1220,86 @@
         "description": "json body 형식으로 URL을 받아서 스토리지에 저장하고 임시 URL을 반환합니다"
       },
       "parameters": []
+    },
+    "/v1/auth/tokens": {
+      "post": {
+        "summary": "토큰 갱신",
+        "operationId": "post-v1-auth-tokens",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "accessToken",
+                        "accessTokenExpiresAt"
+                      ],
+                      "properties": {
+                        "accessToken": {
+                          "type": "string",
+                          "description": "새로 발급된 토큰값"
+                        },
+                        "accessTokenExpiresAt": {
+                          "type": "string",
+                          "description": "새로 발급된 토큰의 만료시간"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "토큰 갱신 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBrYWthby5jb20iLCJpYXQiOjE2NjY4NjA0MTIsImV4cCI6MTY2NjkwMzYxMiwicHJvdmlkZXIiOiJFTUFJTCJ9.Li9FI9MxdQPrpQ8eLXltresONls9wg4eEKwQqdLZ1YJrblalVjG18gTGIRwoEf6OGCwDkK1hJO4enOkaQKasxw",
+                        "accessTokenExpiresAt": "2022-10-27T20:46:52.265+00:00"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "토큰 갱신",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "refreshToken": {
+                    "type": "string",
+                    "description": "만료시간이 지나지 않은 refreshToken 값"
+                  }
+                },
+                "required": [
+                  "refreshToken"
+                ]
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
