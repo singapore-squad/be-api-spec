@@ -347,7 +347,7 @@
         }
       ],
       "delete": {
-        "summary": "",
+        "summary": "태그 삭제",
         "operationId": "delete-v1-tags-tagId",
         "responses": {
           "200": {
@@ -916,7 +916,7 @@
         }
       ],
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "액션보드(Post) 한건 조회",
         "tags": [],
         "responses": {
           "200": {
@@ -989,7 +989,7 @@
     },
     "/v1/files": {
       "post": {
-        "summary": "",
+        "summary": "파일 업로드 (form-data)",
         "operationId": "post-v1-files",
         "responses": {
           "200": {
@@ -1048,7 +1048,7 @@
     },
     "/v1/files/urls": {
       "post": {
-        "summary": "",
+        "summary": "파일 업로드 (URL형식)",
         "operationId": "post-v1-files",
         "responses": {
           "200": {
@@ -1194,12 +1194,62 @@
           }
         }
       }
+    },
+    "/v1/members/me": {
+      "get": {
+        "summary": "회원 본인정보 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Member"
+                    }
+                  }
+                },
+                "examples": {
+                  "회원 정보조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "memberId": 1,
+                        "email": "tester01@email.com",
+                        "nickname": "테스터01",
+                        "imgUrl": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-members-me",
+        "description": "회원 본인 정보 조회",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      }
     }
   },
   "components": {
     "schemas": {
-      "User": {
-        "title": "User",
+      "Member": {
+        "title": "Member",
         "type": "object",
         "description": "",
         "examples": [
@@ -1214,41 +1264,29 @@
           }
         ],
         "properties": {
-          "id": {
+          "memberId": {
             "type": "integer",
-            "description": "Unique identifier for the given user."
-          },
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
+            "description": "회원 id"
           },
           "email": {
             "type": "string",
-            "format": "email"
+            "description": "이메일"
           },
-          "dateOfBirth": {
+          "nickname": {
             "type": "string",
-            "format": "date",
-            "example": "1997-10-31"
+            "description": "닉네임"
           },
-          "emailVerified": {
-            "type": "boolean",
-            "description": "Set to true if the user's email has been verified."
-          },
-          "createDate": {
+          "imgUrl": {
             "type": "string",
-            "format": "date",
-            "description": "The date that the user was created."
+            "format": "email",
+            "description": "프로필 이미지 url"
           }
         },
         "required": [
-          "id",
-          "firstName",
-          "lastName",
+          "memberId",
           "email",
-          "emailVerified"
+          "nickname",
+          "imgUrl"
         ]
       },
       "ResponseCode": {
