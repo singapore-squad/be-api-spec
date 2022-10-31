@@ -421,7 +421,7 @@
                   "비전 목록 조회 성공": {
                     "value": {
                       "code": 0,
-                      "message": "string",
+                      "message": "성공",
                       "data": [
                         {
                           "visionId": 77,
