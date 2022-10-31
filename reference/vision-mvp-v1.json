@@ -424,60 +424,21 @@
                       "message": "string",
                       "data": [
                         {
-                          "title": "7일 무지출 챌린지 1일차!",
-                          "contents": "내가 생각해도 맛있어보이는 점심도시락",
-                          "visionId": 1,
-                          "isPrivate": false,
-                          "wtags": [
+                          "visionId": 77,
+                          "title": "해외에서 두달 살기",
+                          "contents": "하와이, 아이와 함께",
+                          "tags": [
                             {
-                              "wtagType": 2,
-                              "wtagName": "점심시간"
+                              "tagId": 1,
+                              "tagName": "하고싶은것"
                             },
                             {
-                              "wtagType": 3,
-                              "wtagName": "14층 라운지"
+                              "tagId": 10,
+                              "tagName": "가족"
                             }
                           ],
-                          "media": [
-                            {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
-                            },
-                            {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
-                            },
-                            {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
-                            }
-                          ]
-                        },
-                        {
-                          "title": "7일 무지출 챌린지 2일차!",
-                          "contents": "오늘도 맛있는!",
-                          "visionId": 2,
-                          "isPrivate": false,
-                          "wtags": [
-                            {
-                              "wtagType": 2,
-                              "wtagName": "점심시간"
-                            },
-                            {
-                              "wtagType": 3,
-                              "wtagName": "16층 라운지"
-                            }
-                          ],
-                          "media": [
-                            {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
-                            },
-                            {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
-                            }
-                          ]
+                          "imgUrl": "https://content.skyscnr.com/m/41acfff761f8ea1a/original/GettyImages-519763361.jpg?resize=1800px:1800px&quality=100",
+                          "createAt": "2022-10-19 14:43:25"
                         }
                       ]
                     }
