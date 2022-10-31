@@ -658,7 +658,36 @@
           "required": true,
           "description": "비전의 id값"
         }
-      ]
+      ],
+      "delete": {
+        "summary": "",
+        "operationId": "delete-v1-visions-visionId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      }
     },
     "/v1/posts": {
       "get": {
@@ -980,6 +1009,46 @@
           }
         },
         "operationId": "get-v1-posts-postId",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "description": "액션보드 상세 조회"
+      },
+      "delete": {
+        "summary": "",
+        "operationId": "delete-v1-posts-postId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "code": 0,
+                      "message": "string",
+                      "data": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "액션보드 삭제",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
