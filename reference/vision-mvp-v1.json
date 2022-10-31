@@ -118,11 +118,11 @@
                       "code": 0,
                       "message": "[DEV] 성공",
                       "data": {
-                        "email": "tester01@kakao.com",
-                        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBrYWthby5jb20iLCJpYXQiOjE2NjY4NjA0MTIsImV4cCI6MTY2NjkwMzYxMiwicHJvdmlkZXIiOiJFTUFJTCJ9.Li9FI9MxdQPrpQ8eLXltresONls9wg4eEKwQqdLZ1YJrblalVjG18gTGIRwoEf6OGCwDkK1hJO4enOkaQKasxw",
-                        "accessTokenExpiresAt": "2022-10-27T20:46:52.265+00:00",
-                        "refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBrYWthby5jb20iLCJpYXQiOjE2NjY4NjA0MTIsImV4cCI6MTY2ODE1NjQxMiwicHJvdmlkZXIiOiJFTUFJTCJ9.uWEBhGnglizWvSAwP0BRU2AR1HmvxPC5guPHOb9_1EawKIbVdJfiDJG4SQfM-QT8IHlnb0_4pSpyjyESk3BbPg",
-                        "refreshTokenExpiresAt": "2022-11-11T08:46:52.266+00:00"
+                        "email": "tester01@email.com",
+                        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBlbWFpbC5jb20iLCJpYXQiOjE2NjY5NDQzNTcsImV4cCI6MTY2Njk4NzU1NywicHJvdmlkZXIiOiJFTUFJTCJ9.jo6XctNpjcmNVoum3U1QRMHAyusjHndVNmdlODZYT-zUZRGsIx4s_exu82hiY194ZeKExxOqaHqc8ZWhlseGDw",
+                        "accessTokenExpiresAt": "2022-10-28T20:05:57.531Z",
+                        "refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBlbWFpbC5jb20iLCJpYXQiOjE2NjY5NDQzNTcsImV4cCI6MTY2ODI0MDM1NywicHJvdmlkZXIiOiJFTUFJTCJ9.wmzfg2aqpeBsBUpPoupbQtW2Swm-_rp4RYn3nTRL2B19jLO0mCJTyIr3GIRbGZQQ_jsZie8xggUyYNaTDm2FmA",
+                        "refreshTokenExpiresAt": "2022-11-12T08:05:57.552Z"
                       }
                     }
                   }
@@ -660,122 +660,6 @@
         }
       ]
     },
-    "/v1/visions/{visionId}/posts": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "visionId",
-          "in": "path",
-          "required": true,
-          "description": "비전 ID값"
-        }
-      ],
-      "get": {
-        "summary": "특정 비전의 액션보드(Post) 목록 조회",
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "$ref": "#/components/schemas/ResponseCode"
-                    },
-                    "message": {
-                      "$ref": "#/components/schemas/ResponseMessage"
-                    },
-                    "data": {
-                      "type": "array",
-                      "description": "액션보드 리스트",
-                      "items": {
-                        "$ref": "#/components/schemas/Post"
-                      }
-                    }
-                  }
-                },
-                "examples": {
-                  "\b액션보드 리스트 조회 성공": {
-                    "value": {
-                      "code": 0,
-                      "message": "string",
-                      "data": [
-                        {
-                          "title": "7일 무지출 챌린지 1일차!",
-                          "contents": "내가 생각해도 맛있어보이는 점심도시락",
-                          "visionId": 1,
-                          "isPrivate": false,
-                          "wtags": [
-                            {
-                              "wtagType": 2,
-                              "wtagName": "점심시간"
-                            },
-                            {
-                              "wtagType": 3,
-                              "wtagName": "14층 라운지"
-                            }
-                          ],
-                          "media": [
-                            {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
-                            },
-                            {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
-                            },
-                            {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
-                            }
-                          ]
-                        },
-                        {
-                          "title": "7일 무지출 챌린지 2일차!",
-                          "contents": "오늘도 맛있는!",
-                          "visionId": 2,
-                          "isPrivate": false,
-                          "wtags": [
-                            {
-                              "wtagType": 2,
-                              "wtagName": "점심시간"
-                            },
-                            {
-                              "wtagType": 3,
-                              "wtagName": "16층 라운지"
-                            }
-                          ],
-                          "media": [
-                            {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
-                            },
-                            {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-v1-visions-visiondId-posts",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Authorization"
-          }
-        ]
-      }
-    },
     "/v1/posts": {
       "get": {
         "summary": "액션보드(Post) 전체 목록 조회",
@@ -874,10 +758,18 @@
           }
         },
         "operationId": "get-v1-posts",
-        "description": "- 어떤 유저의 액션보드 전체 목록을 조회합니다\n- 특정 비전의 액션보드 목록은 GET /v1/visions/{visionId}/posts 를 참조하세요",
+        "description": "- \b자신의 액션보드 목록을 페이징합니다.\n- visionId Query Param이 없으면 해당 유저의 전체 액션보드를 페이징합니다.",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "visionId",
+            "description": "1"
           }
         ]
       },
@@ -943,7 +835,7 @@
                   "wtags": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/WTag"
+                      "$ref": "#/components/schemas/AddWtagReq"
                     }
                   },
                   "media": {
@@ -960,14 +852,17 @@
                     "title": "7일 무지출 챌린지 1일차!",
                     "contents": "내가 생각해도 맛있어보이는 점심도시락",
                     "visionId": 1,
+                    "isPrivate": false,
                     "wtags": [
                       {
                         "wtagType": 2,
-                        "wtagName": "점심시간"
+                        "wtagName": "점심시간",
+                        "isPrivate": false
                       },
                       {
                         "wtagType": 3,
-                        "wtagName": "14층 라운지"
+                        "wtagName": "14층 라운지",
+                        "isPrivate": false
                       }
                     ],
                     "media": [
@@ -983,8 +878,7 @@
                         "contentType": 0,
                         "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
                       }
-                    ],
-                    "isPrivate": false
+                    ]
                   }
                 }
               }
@@ -1389,14 +1283,41 @@
           }
         }
       },
-      "WTag": {
-        "title": "WTag",
+      "AddWtagReq": {
+        "title": "AddWTagReq",
         "x-stoplight": {
           "id": "gp3odcej1yr4k"
         },
         "type": "object",
-        "description": "W태그 리스트",
+        "description": "W태그 생성 요청",
         "properties": {
+          "wtagType": {
+            "type": "integer"
+          },
+          "wtagName": {
+            "type": "string"
+          },
+          "isPrivate": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "wtagType",
+          "wtagName",
+          "isPrivate"
+        ]
+      },
+      "WtagDto": {
+        "title": "WtagDto",
+        "x-stoplight": {
+          "id": "gp3odcej1yr4k"
+        },
+        "type": "object",
+        "description": "W태그 Dto",
+        "properties": {
+          "wtagId": {
+            "type": "integer"
+          },
           "wtagType": {
             "type": "integer"
           },
@@ -1602,7 +1523,7 @@
         "in": "header",
         "schema": {
           "type": "string",
-          "example": "Bearer MQ=="
+          "example": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBlbWFpbC5jb20iLCJpYXQiOjE2NjY5NDU5NjgsImV4cCI6MTY3OTkwNTk2OCwicHJvdmlkZXIiOiJFTUFJTCJ9.moh7aWMPFtSjagBTvm79iT_yiqi_BjJORtN4lulAuXL6rQoEBhNSBLj67oNxBy47gnnHssK8ZqJDoKy3vQ46FA"
         },
         "description": "Bearer accessToken",
         "required": true
