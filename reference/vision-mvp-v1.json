@@ -538,11 +538,10 @@
                     "type": "string"
                   },
                   "tagIds": {
-                    "type": [
-                      "array",
-                      "integer"
-                    ],
-                    "items": {}
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
                   },
                   "imgUrl": {
                     "type": "string"
@@ -672,6 +671,81 @@
           }
         ],
         "description": "개발중입니다 아직"
+      },
+      "patch": {
+        "summary": "비전 수정 (개발중)",
+        "operationId": "patch-v1-visions-visionId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "비전 수정입니다.\n기본적으로 Body 필드에 포함된 항목만 수정합니다.\n모든 항목을 포함해서 PUT처럼 사용하셔도 됩니다.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "contents": {
+                    "type": "string"
+                  },
+                  "tagIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "imgUrl": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "비전 수정": {
+                  "value": {
+                    "title": "해외에서 두달 살기 수정된 제목",
+                    "contents": "하와이, 아이와 함께 수정된 내용",
+                    "tagIds": [
+                      1
+                    ],
+                    "imgUrl": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+                  }
+                },
+                "\b제목과 내용만 수정할 경우": {
+                  "value": {
+                    "title": "해외에서 두달 살기 수정된 제목",
+                    "contents": "하와이, 아이와 함께 수정된 내용"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
       }
     },
     "/v1/posts": {
@@ -1042,6 +1116,141 @@
             "$ref": "#/components/parameters/Authorization"
           }
         ]
+      },
+      "patch": {
+        "summary": "액션보드(Post) \b수정 (개발중)",
+        "operationId": "patch-v1-posts-postId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "contents": {
+                    "type": "string"
+                  },
+                  "visionId": {
+                    "type": "integer"
+                  },
+                  "isPrivatae": {
+                    "type": "boolean"
+                  },
+                  "wtags": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/AddWtagReq"
+                    }
+                  },
+                  "media": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Media"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "\b액션보드 수정": {
+                  "value": {
+                    "title": "7일 무지출 챌린지 1일차! 수정 제목",
+                    "contents": "내가 생각해도 맛있어보이는 점심도시락 수정 내용",
+                    "visionId": 1,
+                    "isPrivate": false,
+                    "wtags": [
+                      {
+                        "wtagType": 2,
+                        "wtagName": "점심시간 이후",
+                        "isPrivate": false
+                      },
+                      {
+                        "wtagType": 3,
+                        "wtagName": "16층 라운지",
+                        "isPrivate": false
+                      }
+                    ],
+                    "media": [
+                      {
+                        "contentType": 0,
+                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                      },
+                      {
+                        "contentType": 0,
+                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                      },
+                      {
+                        "contentType": 0,
+                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/cat.jpeg"
+                      }
+                    ]
+                  }
+                },
+                "이미지만 변경할 경우": {
+                  "value": {
+                    "media": [
+                      {
+                        "contentType": 0,
+                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                      },
+                      {
+                        "contentType": 0,
+                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                      },
+                      {
+                        "contentType": 0,
+                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/cat.jpeg"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "액션보드 등록": {
+                  "value": "{\n  \"title\": \"해외에서 두달 살기\",\n  \"contents\": \"하와이, 아이와 함께\",\n  \"tagIds\": [\n    1,\n    10\n  ],\n  \"imgUrl\": \"https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80\"\n}"
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "액션보드 수정입니다.\n기본적으로 Body 필드에 포함된 항목만 수정합니다.\n모든 항목을 포함해서 PUT처럼 사용하셔도 됩니다."
       }
     },
     "/v1/files": {
