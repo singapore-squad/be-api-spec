@@ -644,7 +644,7 @@
         }
       ],
       "delete": {
-        "summary": "비전 단건 삭제 (아직 Dev 미반영)",
+        "summary": "비전 단건 삭제 (개발 중)",
         "operationId": "delete-v1-visions-visionId",
         "responses": {
           "200": {
@@ -670,7 +670,8 @@
           {
             "$ref": "#/components/parameters/Authorization"
           }
-        ]
+        ],
+        "description": "개발중입니다 아직"
       }
     },
     "/v1/posts": {
