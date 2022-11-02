@@ -1299,6 +1299,66 @@
             "$ref": "#/components/parameters/Authorization"
           }
         ]
+      },
+      "patch": {
+        "summary": "회원 정보 변경",
+        "operationId": "patch-v1-members-me",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "닉네임 변경 완료": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "회원 정보 변경",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nickname": {
+                    "type": "string",
+                    "description": "변경할 닉네임"
+                  }
+                },
+                "required": [
+                  "nickname"
+                ]
+              }
+            }
+          }
+        }
       }
     }
   },
