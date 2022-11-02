@@ -644,7 +644,7 @@
         }
       ],
       "delete": {
-        "summary": "",
+        "summary": "비전 단건 삭제 (아직 Dev 미반영)",
         "operationId": "delete-v1-visions-visionId",
         "responses": {
           "200": {
@@ -929,7 +929,7 @@
         }
       ],
       "get": {
-        "summary": "액션보드(Post) 한건 조회",
+        "summary": "액션보드(Post) 단건 조회",
         "tags": [],
         "responses": {
           "200": {
@@ -1004,7 +1004,7 @@
         "description": "액션보드 상세 조회"
       },
       "delete": {
-        "summary": "",
+        "summary": "액션보드(Post) 단건 삭제",
         "operationId": "delete-v1-posts-postId",
         "responses": {
           "200": {
