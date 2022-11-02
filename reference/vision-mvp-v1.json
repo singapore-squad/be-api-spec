@@ -1317,6 +1317,9 @@
                     },
                     "message": {
                       "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Member"
                     }
                   },
                   "required": [
@@ -1328,7 +1331,13 @@
                   "닉네임 변경 완료": {
                     "value": {
                       "code": 0,
-                      "message": "성공"
+                      "message": "성공",
+                      "data": {
+                        "memberId": 1,
+                        "email": "tester01@email.com",
+                        "nickname": "테스터",
+                        "imgUrl": ""
+                      }
                     }
                   }
                 }
