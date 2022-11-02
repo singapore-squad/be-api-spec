@@ -152,7 +152,11 @@
                   },
                   "code": {
                     "type": "string",
-                    "description": "social login 시, provider로부터 전달받은 code값"
+                    "description": "(provider가 KAKAO 인 경우) KAKAO로부터 전달받은 code값"
+                  },
+                  "idToken": {
+                    "type": "string",
+                    "description": "(provider가 APPLE 인 경우) APPLE로부터 전달받은 id_token값"
                   }
                 },
                 "required": [
@@ -171,6 +175,12 @@
                   "value": {
                     "code": "ODFrV2ZnSWVZWU1NSkFwUEwwdGhuLUxNdEdCZzFGZ19fdlYzaG5Bb1lmNXU4SFdOQTVNeTFlNnRXWEVyQnpPdVdJVjFtUW9yRE5JQUFBR0VHSkswd1E=",
                     "providerName": "KAKAO"
+                  }
+                },
+                "애플 로그인 요청": {
+                  "value": {
+                    "providerName": "APPLE",
+                    "idToken": "eyJraWQiOiJZdXlYb1kiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwiYXVkIjoiY29tLnNpbmdhcG9yZS5ldGEud2ViIiwiZXhwIjoxNjY3NDU2MDQ3LCJpYXQiOjE2NjczNjk2NDcsInN1YiI6IjAwMTg3OS5mMTU3YjM1ZjYxODM0N2M5OTJiMDcwYThlMzEyMzY5OS4wNTA3IiwiY19oYXNoIjoiMzFEbDZPRnQzMWtpQWJvc244cVM0dyIsImVtYWlsIjoiaml5YTE0NDVAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOiJ0cnVlIiwiYXV0aF90aW1lIjoxNjY3MzY5NjQ3LCJub25jZV9zdXBwb3J0ZWQiOnRydWV9.E715lkRXy2aNuok6bCiFsEFc_hKaARY4tMmUhZaHauielUW4rC5NI1zKEfbHeqw0wCPCDXukgdKE5jY0PtJAYxHvSjHtIXLJfk0KhajBCSks6CbuWkmi42B69ztu5zTPRfvahxr8RSzuY46DOcIzRwUKPfP-h6-KAWCg0Tp3Le5KnhxJ2D7ETZ_uKCwYKMuOIBfiWtsdhW2dwMhyEGi-vnUtOwe_Vz-Eg4WD8EbPg-kypcaxc1Xh0QoUTuDI2evbbmM8gSPycW2z0SRvDzwRXMQ45f_XC1IFlDYls4yeyTFekULcY33OqV45j5sImDxnlelQefTyMc-3Zr4QVA5G3A"
                   }
                 }
               }
