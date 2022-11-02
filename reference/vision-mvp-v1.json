@@ -1355,6 +1355,13 @@
                 "required": [
                   "nickname"
                 ]
+              },
+              "examples": {
+                "닉네임 변경 요청": {
+                  "value": {
+                    "nickname": "변경할 닉네임"
+                  }
+                }
               }
             }
           }
