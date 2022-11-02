@@ -644,7 +644,7 @@
         }
       ],
       "delete": {
-        "summary": "비전 단건 삭제 (개발 중!~)",
+        "summary": "비전 단건 삭제 (개발 중)",
         "operationId": "delete-v1-visions-visionId",
         "responses": {
           "200": {
