@@ -685,7 +685,7 @@
                       "type": "array",
                       "description": "액션보드 리스트",
                       "items": {
-                        "$ref": "#/components/schemas/Post"
+                        "$ref": "#/components/schemas/PostListDto"
                       }
                     }
                   }
@@ -936,7 +936,7 @@
                       "$ref": "#/components/schemas/ResponseMessage"
                     },
                     "data": {
-                      "$ref": "#/components/schemas/Post"
+                      "$ref": "#/components/schemas/PostDto"
                     }
                   }
                 },
@@ -950,6 +950,7 @@
                         "contents": "내가 생각해도 맛있어보이는 점심도시락",
                         "postId": 1,
                         "visionId": 1,
+                        "visionTitle": "7일 무지출 챌린지",
                         "isPrivate": false,
                         "createAt": "2022-10-24T02:32:18Z",
                         "wtags": [
@@ -1487,8 +1488,8 @@
           "createAt"
         ]
       },
-      "Post": {
-        "title": "Post",
+      "PostListDto": {
+        "title": "PostListDto",
         "x-stoplight": {
           "id": "rpvuv71tertxt"
         },
@@ -1531,6 +1532,93 @@
         "properties": {
           "postId": {
             "type": "integer"
+          },
+          "title": {
+            "type": "string",
+            "description": "비전 제목"
+          },
+          "contents": {
+            "type": "string",
+            "description": "비전 상세 설명"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "isPrivate": {
+            "type": "boolean"
+          },
+          "wtags": {
+            "description": "등록된 태그들",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WtagDto"
+            }
+          },
+          "media": {
+            "type": "array",
+            "description": "이미지 URL",
+            "items": {
+              "$ref": "#/components/schemas/Media"
+            }
+          }
+        },
+        "required": [
+          "postId",
+          "createAt",
+          "media"
+        ]
+      },
+      "PostDto": {
+        "title": "PostListDto",
+        "x-stoplight": {
+          "id": "rpvuv71tertxt"
+        },
+        "type": "object",
+        "examples": [
+          {
+            "title": "7일 무지출 챌린지 1일차!",
+            "contents": "내가 생각해도 맛있어보이는 점심도시락",
+            "postId": 1,
+            "visionId": 1,
+            "visionTitle": "7일 무지출 챌린지",
+            "isPrivate": false,
+            "createAt": "2022-10-24T02:32:18Z",
+            "wtags": [
+              {
+                "wtagType": 2,
+                "wtagName": "점심시간"
+              },
+              {
+                "wtagType": 3,
+                "wtagName": "14층 라운지"
+              }
+            ],
+            "media": [
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+              },
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+              },
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+              }
+            ]
+          }
+        ],
+        "description": "액션보드",
+        "properties": {
+          "postId": {
+            "type": "integer"
+          },
+          "visionId": {
+            "type": "integer"
+          },
+          "visionTitle": {
+            "type": "string"
           },
           "title": {
             "type": "string",
