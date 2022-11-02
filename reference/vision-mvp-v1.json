@@ -1533,7 +1533,7 @@
             "description": "등록된 태그들",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/WTag"
+              "$ref": "#/components/schemas/WtagDto"
             }
           },
           "media": {
