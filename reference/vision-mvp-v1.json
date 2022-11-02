@@ -686,8 +686,10 @@
                         {
                           "title": "7일 무지출 챌린지 1일차!",
                           "contents": "내가 생각해도 맛있어보이는 점심도시락",
+                          "postId": 1,
                           "visionId": 1,
                           "isPrivate": false,
+                          "createAt": "2022-10-24T02:32:18Z",
                           "wtags": [
                             {
                               "wtagType": 2,
@@ -714,18 +716,16 @@
                           ]
                         },
                         {
-                          "title": "7일 무지출 챌린지 2일차!",
-                          "contents": "오늘도 맛있는!",
-                          "visionId": 2,
+                          "title": "100일 무지출 챌린지 1일차!",
+                          "contents": "그냥 점심도시락",
+                          "postId": 2,
+                          "visionId": 1,
                           "isPrivate": false,
+                          "createAt": "2022-10-24T02:32:18Z",
                           "wtags": [
                             {
                               "wtagType": 2,
                               "wtagName": "점심시간"
-                            },
-                            {
-                              "wtagType": 3,
-                              "wtagName": "16층 라운지"
                             }
                           ],
                           "media": [
@@ -935,8 +935,10 @@
                       "data": {
                         "title": "7일 무지출 챌린지 1일차!",
                         "contents": "내가 생각해도 맛있어보이는 점심도시락",
+                        "postId": 1,
                         "visionId": 1,
                         "isPrivate": false,
+                        "createAt": "2022-10-24T02:32:18Z",
                         "wtags": [
                           {
                             "wtagType": 2,
@@ -1424,6 +1426,7 @@
             "visionId": 77,
             "title": "해외에서 두달 살기",
             "contents": "하와이, 아이와 함께",
+            "createAt": "2022-10-24T02:32:18Z",
             "tags": [
               {
                 "tagId": 1,
@@ -1434,8 +1437,7 @@
                 "tagName": "가족"
               }
             ],
-            "imgUrl": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80",
-            "createAt": "2022-10-19 14:43:25"
+            "imgUrl": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
           }
         ],
         "description": "비전",
@@ -1482,8 +1484,10 @@
           {
             "title": "7일 무지출 챌린지 1일차!",
             "contents": "내가 생각해도 맛있어보이는 점심도시락",
+            "postId": 1,
             "visionId": 1,
             "isPrivate": false,
+            "createAt": "2022-10-24T02:32:18Z",
             "wtags": [
               {
                 "wtagType": 2,
