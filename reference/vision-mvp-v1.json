@@ -189,9 +189,9 @@
         }
       }
     },
-    "/v1/tags": {
+    "/v1/auth/signout": {
       "get": {
-        "summary": "태그 조회",
+        "summary": "로그아웃",
         "tags": [],
         "responses": {
           "200": {
@@ -206,48 +206,18 @@
                     },
                     "message": {
                       "$ref": "#/components/schemas/ResponseMessage"
-                    },
-                    "data": {
-                      "type": "array",
-                      "description": "태그 리스트",
-                      "items": {
-                        "$ref": "#/components/schemas/Tag"
-                      }
                     }
                   },
                   "required": [
                     "code",
-                    "message",
-                    "data"
+                    "message"
                   ]
                 },
                 "examples": {
-                  "태그 리스트 조회 성공": {
+                  "로그아웃 성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공",
-                      "data": [
-                        {
-                          "tagId": 1,
-                          "tagName": "가지고싶은것"
-                        },
-                        {
-                          "tagId": 2,
-                          "tagName": "되고싶은것"
-                        },
-                        {
-                          "tagId": 3,
-                          "tagName": "가고싶은곳"
-                        },
-                        {
-                          "tagId": 4,
-                          "tagName": "하고싶은것"
-                        },
-                        {
-                          "tagId": 5,
-                          "tagName": "일상"
-                        }
-                      ]
+                      "message": "성공"
                     }
                   }
                 }
@@ -255,110 +225,19 @@
             }
           }
         },
-        "operationId": "get-v1-tags",
-        "description": "태그 조회",
+        "operationId": "get-v1-auth-signout",
+        "description": "",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
           }
         ]
-      },
-      "post": {
-        "summary": "태그 등록",
-        "operationId": "post-v1-tags",
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "$ref": "#/components/schemas/ResponseCode"
-                    },
-                    "message": {
-                      "$ref": "#/components/schemas/ResponseMessage"
-                    },
-                    "data": {
-                      "type": "integer",
-                      "description": "등록된 tag의 id값"
-                    }
-                  },
-                  "required": [
-                    "code",
-                    "message",
-                    "data"
-                  ]
-                },
-                "examples": {
-                  "비전 태그 등록 성공": {
-                    "value": {
-                      "code": 0,
-                      "message": "성공",
-                      "data": 90
-                    }
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              }
-            }
-          }
-        },
-        "description": "태그 등록",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Authorization"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "tagName": {
-                    "type": "string",
-                    "description": "태그명"
-                  }
-                },
-                "required": [
-                  "tagName"
-                ]
-              },
-              "examples": {
-                "비전 태그 등록": {
-                  "value": {
-                    "tagName": "string"
-                  }
-                }
-              }
-            }
-          },
-          "description": ""
-        }
       }
     },
-    "/v1/tags/{tagId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "integer"
-          },
-          "name": "tagId",
-          "in": "path",
-          "required": true,
-          "description": "삭제할 tag id값"
-        }
-      ],
-      "delete": {
-        "summary": "태그 삭제",
-        "operationId": "delete-v1-tags-tagId",
+    "/v1/auth/tokens": {
+      "post": {
+        "summary": "토큰 갱신",
+        "operationId": "post-v1-auth-tokens",
         "responses": {
           "200": {
             "description": "OK",
@@ -372,14 +251,40 @@
                     },
                     "message": {
                       "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "accessToken",
+                        "accessTokenExpiresAt"
+                      ],
+                      "properties": {
+                        "accessToken": {
+                          "type": "string",
+                          "description": "새로 발급된 토큰값"
+                        },
+                        "accessTokenExpiresAt": {
+                          "type": "string",
+                          "description": "새로 발급된 토큰의 만료시간"
+                        }
+                      }
                     }
-                  }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 },
                 "examples": {
-                  "삭제 성공": {
+                  "토큰 갱신 성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공"
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBrYWthby5jb20iLCJpYXQiOjE2NjY4NjA0MTIsImV4cCI6MTY2NjkwMzYxMiwicHJvdmlkZXIiOiJFTUFJTCJ9.Li9FI9MxdQPrpQ8eLXltresONls9wg4eEKwQqdLZ1YJrblalVjG18gTGIRwoEf6OGCwDkK1hJO4enOkaQKasxw",
+                        "accessTokenExpiresAt": "2022-10-27T20:46:52.265+00:00"
+                      }
                     }
                   }
                 }
@@ -387,12 +292,152 @@
             }
           }
         },
-        "description": "태그 삭제",
+        "description": "토큰 갱신",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "refreshToken": {
+                    "type": "string",
+                    "description": "만료시간이 지나지 않은 refreshToken 값"
+                  }
+                },
+                "required": [
+                  "refreshToken"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/members/me": {
+      "get": {
+        "summary": "회원 본인정보 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Member"
+                    }
+                  }
+                },
+                "examples": {
+                  "회원 정보조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "memberId": 1,
+                        "email": "tester01@email.com",
+                        "nickname": "테스터01",
+                        "imgUrl": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-members-me",
+        "description": "회원 본인 정보 조회",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
           }
         ]
+      },
+      "patch": {
+        "summary": "회원 정보 변경",
+        "operationId": "patch-v1-members-me",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Member"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "닉네임 변경 완료": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": {
+                        "memberId": 1,
+                        "email": "tester01@email.com",
+                        "nickname": "테스터",
+                        "imgUrl": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "회원 정보 변경",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nickname": {
+                    "type": "string",
+                    "description": "변경할 닉네임"
+                  }
+                },
+                "required": [
+                  "nickname"
+                ]
+              },
+              "examples": {
+                "닉네임 변경 요청": {
+                  "value": {
+                    "nickname": "변경할 닉네임"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/v1/visions": {
@@ -746,6 +791,212 @@
           },
           "description": ""
         }
+      }
+    },
+    "/v1/tags": {
+      "get": {
+        "summary": "태그 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "description": "태그 리스트",
+                      "items": {
+                        "$ref": "#/components/schemas/Tag"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "태그 리스트 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": [
+                        {
+                          "tagId": 1,
+                          "tagName": "가지고싶은것"
+                        },
+                        {
+                          "tagId": 2,
+                          "tagName": "되고싶은것"
+                        },
+                        {
+                          "tagId": 3,
+                          "tagName": "가고싶은곳"
+                        },
+                        {
+                          "tagId": 4,
+                          "tagName": "하고싶은것"
+                        },
+                        {
+                          "tagId": 5,
+                          "tagName": "일상"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-tags",
+        "description": "태그 조회",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      },
+      "post": {
+        "summary": "태그 등록",
+        "operationId": "post-v1-tags",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "integer",
+                      "description": "등록된 tag의 id값"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "비전 태그 등록 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": 90
+                    }
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "description": "태그 등록",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tagName": {
+                    "type": "string",
+                    "description": "태그명"
+                  }
+                },
+                "required": [
+                  "tagName"
+                ]
+              },
+              "examples": {
+                "비전 태그 등록": {
+                  "value": {
+                    "tagName": "string"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/v1/tags/{tagId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "tagId",
+          "in": "path",
+          "required": true,
+          "description": "삭제할 tag id값"
+        }
+      ],
+      "delete": {
+        "summary": "태그 삭제",
+        "operationId": "delete-v1-tags-tagId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                },
+                "examples": {
+                  "삭제 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "태그 삭제",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
       }
     },
     "/v1/posts": {
@@ -1380,212 +1631,6 @@
         "description": "json body 형식으로 URL을 받아서 스토리지에 저장하고 임시 URL을 반환합니다"
       },
       "parameters": []
-    },
-    "/v1/auth/tokens": {
-      "post": {
-        "summary": "토큰 갱신",
-        "operationId": "post-v1-auth-tokens",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "$ref": "#/components/schemas/ResponseCode"
-                    },
-                    "message": {
-                      "$ref": "#/components/schemas/ResponseMessage"
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "accessToken",
-                        "accessTokenExpiresAt"
-                      ],
-                      "properties": {
-                        "accessToken": {
-                          "type": "string",
-                          "description": "새로 발급된 토큰값"
-                        },
-                        "accessTokenExpiresAt": {
-                          "type": "string",
-                          "description": "새로 발급된 토큰의 만료시간"
-                        }
-                      }
-                    }
-                  },
-                  "required": [
-                    "code",
-                    "message",
-                    "data"
-                  ]
-                },
-                "examples": {
-                  "토큰 갱신 성공": {
-                    "value": {
-                      "code": 0,
-                      "message": "[DEV] 성공",
-                      "data": {
-                        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBrYWthby5jb20iLCJpYXQiOjE2NjY4NjA0MTIsImV4cCI6MTY2NjkwMzYxMiwicHJvdmlkZXIiOiJFTUFJTCJ9.Li9FI9MxdQPrpQ8eLXltresONls9wg4eEKwQqdLZ1YJrblalVjG18gTGIRwoEf6OGCwDkK1hJO4enOkaQKasxw",
-                        "accessTokenExpiresAt": "2022-10-27T20:46:52.265+00:00"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "description": "토큰 갱신",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "refreshToken": {
-                    "type": "string",
-                    "description": "만료시간이 지나지 않은 refreshToken 값"
-                  }
-                },
-                "required": [
-                  "refreshToken"
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/members/me": {
-      "get": {
-        "summary": "회원 본인정보 조회",
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "data": {
-                      "$ref": "#/components/schemas/Member"
-                    }
-                  }
-                },
-                "examples": {
-                  "회원 정보조회 성공": {
-                    "value": {
-                      "code": 0,
-                      "message": "[DEV] 성공",
-                      "data": {
-                        "memberId": 1,
-                        "email": "tester01@email.com",
-                        "nickname": "테스터01",
-                        "imgUrl": ""
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-v1-members-me",
-        "description": "회원 본인 정보 조회",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Authorization"
-          }
-        ]
-      },
-      "patch": {
-        "summary": "회원 정보 변경",
-        "operationId": "patch-v1-members-me",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "$ref": "#/components/schemas/ResponseCode"
-                    },
-                    "message": {
-                      "$ref": "#/components/schemas/ResponseMessage"
-                    },
-                    "data": {
-                      "$ref": "#/components/schemas/Member"
-                    }
-                  },
-                  "required": [
-                    "code",
-                    "message"
-                  ]
-                },
-                "examples": {
-                  "닉네임 변경 완료": {
-                    "value": {
-                      "code": 0,
-                      "message": "성공",
-                      "data": {
-                        "memberId": 1,
-                        "email": "tester01@email.com",
-                        "nickname": "테스터",
-                        "imgUrl": ""
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "description": "회원 정보 변경",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Authorization"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "nickname": {
-                    "type": "string",
-                    "description": "변경할 닉네임"
-                  }
-                },
-                "required": [
-                  "nickname"
-                ]
-              },
-              "examples": {
-                "닉네임 변경 요청": {
-                  "value": {
-                    "nickname": "변경할 닉네임"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
