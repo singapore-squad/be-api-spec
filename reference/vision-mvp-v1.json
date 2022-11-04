@@ -1236,27 +1236,27 @@
                     "isPrivate": false,
                     "wtags": [
                       {
-                        "wtagType": 2,
+                        "wtagType": "WHEN",
                         "wtagName": "점심시간",
                         "isPrivate": false
                       },
                       {
-                        "wtagType": 3,
+                        "wtagType": "WHERE",
                         "wtagName": "14층 라운지",
                         "isPrivate": false
                       }
                     ],
                     "media": [
                       {
-                        "contentType": 0,
+                        "contentType": "IMAGE",
                         "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
                       },
                       {
-                        "contentType": 0,
+                        "contentType": "IMAGE",
                         "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
                       },
                       {
-                        "contentType": 0,
+                        "contentType": "IMAGE",
                         "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
                       }
                     ]
@@ -1476,34 +1476,33 @@
               "examples": {
                 "\b액션보드 수정": {
                   "value": {
-                    "title": "7일 무지출 챌린지 1일차! 수정 제목",
-                    "contents": "내가 생각해도 맛있어보이는 점심도시락 수정 내용",
-                    "visionId": 1,
+                    "title": "7일 무지출 챌린지 1일차! 수정",
+                    "contents": "내가 생각해도 맛있어보이는 점심도시락 수정",
                     "isPrivate": false,
                     "wtags": [
                       {
-                        "wtagType": 2,
-                        "wtagName": "점심시간 이후",
+                        "wtagType": "WHEN",
+                        "wtagName": "점심시간",
                         "isPrivate": false
                       },
                       {
-                        "wtagType": 3,
-                        "wtagName": "16층 라운지",
+                        "wtagType": "WHERE",
+                        "wtagName": "14층 라운지",
                         "isPrivate": false
                       }
                     ],
                     "media": [
                       {
-                        "contentType": 0,
+                        "contentType": "IMAGE",
                         "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
                       },
                       {
-                        "contentType": 0,
+                        "contentType": "IMAGE",
                         "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
                       },
                       {
-                        "contentType": 0,
-                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/cat.jpeg"
+                        "contentType": "IMAGE",
+                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
                       }
                     ]
                   }
@@ -1512,16 +1511,16 @@
                   "value": {
                     "media": [
                       {
-                        "contentType": 0,
+                        "contentType": "IMAGE",
                         "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
                       },
                       {
-                        "contentType": 0,
+                        "contentType": "IMAGE",
                         "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
                       },
                       {
-                        "contentType": 0,
-                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/cat.jpeg"
+                        "contentType": "IMAGE",
+                        "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
                       }
                     ]
                   }
@@ -1546,7 +1545,7 @@
           },
           "description": ""
         },
-        "description": "액션보드 수정입니다.\n기본적으로 Body 필드에 포함된 항목만 수정합니다.\n모든 항목을 포함해서 PUT처럼 사용하셔도 됩니다."
+        "description": "액션보드 수정입니다.\n기본적으로 Body 필드에 포함된 항목만 수정합니다.\n모든 항목을 포함해서 PUT처럼 사용하셔도 됩니다.\n\nvisionId는 수정할 수 없습니다."
       }
     },
     "/v1/files": {
