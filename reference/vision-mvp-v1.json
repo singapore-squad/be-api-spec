@@ -1129,35 +1129,25 @@
           },
           {
             "schema": {
-              "type": "string"
+              "type": "integer"
             },
             "in": "query",
             "name": "visionId",
             "description": "1"
           },
           {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "pageNum",
-            "description": "페이지 번호"
+            "$ref": "#/components/parameters/pageNum"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
           },
           {
             "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "pageSize",
-            "description": "페이지 사이즈"
-          },
-          {
-            "schema": {
-              "type": "string"
+              "type": "integer"
             },
             "in": "query",
             "name": "orderBy",
-            "description": "지금은 쓰이지 않음 (최신 포스트 순 고정)"
+            "description": "지금은 쓰이지 않음 (액션보드 업데이트 순)"
           }
         ]
       },
@@ -1704,6 +1694,15 @@
                       "items": {
                         "$ref": "#/components/schemas/Vision"
                       }
+                    },
+                    "pageNum": {
+                      "$ref": "#/components/schemas/PageNum"
+                    },
+                    "pageSize": {
+                      "$ref": "#/components/schemas/PageSize"
+                    },
+                    "totalCount": {
+                      "$ref": "#/components/schemas/TotalCount"
                     }
                   },
                   "required": [
@@ -1750,6 +1749,15 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
+          },
+          {
+            "$ref": "#/components/parameters/pageNum"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
           }
         ]
       },
@@ -2214,6 +2222,30 @@
         "examples": [
           "2022-12-31"
         ]
+      },
+      "PageNum": {
+        "title": "PageNum",
+        "x-stoplight": {
+          "id": "i64gykxhy9z1d"
+        },
+        "type": "integer",
+        "description": "현재 페이지 번호"
+      },
+      "PageSize": {
+        "title": "PageSize",
+        "x-stoplight": {
+          "id": "6566uvbjwudbn"
+        },
+        "type": "integer",
+        "description": "페이지 사이즈"
+      },
+      "TotalCount": {
+        "title": "TotalCount",
+        "x-stoplight": {
+          "id": "kesrme3nlime1"
+        },
+        "type": "integer",
+        "description": "전체 데이터 건수"
       }
     },
     "securitySchemes": {},
@@ -2236,6 +2268,33 @@
           "type": "integer"
         },
         "description": "비전의 id값"
+      },
+      "pageNum": {
+        "name": "pageNum",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        },
+        "description": "페이지 번호 (default값은 1)"
+      },
+      "pageSize": {
+        "name": "pageSize",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        },
+        "description": "페이지 사이즈 (default 값은 10)"
+      },
+      "orderBy": {
+        "name": "orderBy",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "지금은 쓰이지 않음 "
       }
     }
   }
