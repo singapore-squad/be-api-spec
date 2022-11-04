@@ -1631,6 +1631,143 @@
         "description": "json body 형식으로 URL을 받아서 스토리지에 저장하고 임시 URL을 반환합니다"
       },
       "parameters": []
+    },
+    "/v1/follows": {
+      "get": {
+        "summary": "팔로우 목록 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Vision"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "\b팔로우한 비전 목록 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": [
+                        {
+                          "visionId": 77,
+                          "title": "해외에서 두달 살기",
+                          "contents": "하와이, 아이와 함께",
+                          "createAt": "2022-10-24T02:32:18Z",
+                          "tags": [
+                            {
+                              "tagId": 1,
+                              "tagName": "하고싶은것"
+                            },
+                            {
+                              "tagId": 10,
+                              "tagName": "가족"
+                            }
+                          ],
+                          "imgUrl": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "": {
+            "description": ""
+          }
+        },
+        "operationId": "get-v1-follow",
+        "description": "- 팔로우한 비전 목록을 조회합니다.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      },
+      "post": {
+        "summary": "팔로우 신청",
+        "operationId": "post-v1-follow",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                },
+                "examples": {
+                  "비전 팔로우 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "- 비전을 팔로우합니다.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "visionId": {
+                    "type": "integer",
+                    "description": "팔로우할 비전 ID"
+                  }
+                },
+                "required": [
+                  "visionId"
+                ]
+              },
+              "examples": {
+                "비전 팔로우 신청": {
+                  "value": {
+                    "visionId": 77
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
     }
   },
   "components": {
