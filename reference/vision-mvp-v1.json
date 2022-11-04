@@ -733,6 +733,9 @@
                     },
                     "message": {
                       "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Vision"
                     }
                   }
                 }
@@ -758,7 +761,7 @@
                   "contents": {
                     "type": "string"
                   },
-                  "tagIds": {
+                  "thmeIds": {
                     "type": "array",
                     "items": {
                       "type": "integer"
@@ -1423,6 +1426,9 @@
                     },
                     "message": {
                       "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/PostDto"
                     }
                   }
                 }
@@ -2014,10 +2020,10 @@
             "description": "비전 상세 설명"
           },
           "themes": {
-            "description": "등록된 태그들",
+            "description": "등록된 테마 리스트",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Tag"
+              "$ref": "#/components/schemas/ThemeDto"
             }
           },
           "imgUrl": {
@@ -2181,7 +2187,7 @@
             "type": "boolean"
           },
           "wtags": {
-            "description": "등록된 태그들",
+            "description": "등록된 태그 리스트",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/WtagDto"
@@ -2189,7 +2195,7 @@
           },
           "media": {
             "type": "array",
-            "description": "이미지 URL",
+            "description": "등록된 미디어 리스트",
             "items": {
               "$ref": "#/components/schemas/Media"
             }
