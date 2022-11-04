@@ -793,9 +793,9 @@
         }
       }
     },
-    "/v1/tags": {
+    "/v1/themes": {
       "get": {
-        "summary": "태그 조회",
+        "summary": "테마 리스트 조회",
         "tags": [],
         "responses": {
           "200": {
@@ -815,7 +815,7 @@
                       "type": "array",
                       "description": "태그 리스트",
                       "items": {
-                        "$ref": "#/components/schemas/Tag"
+                        "$ref": "#/components/schemas/ThemeDto"
                       }
                     }
                   },
@@ -826,30 +826,46 @@
                   ]
                 },
                 "examples": {
-                  "태그 리스트 조회 성공": {
+                  "\b테마 리스트 조회 성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공",
+                      "message": "[DEV] 성공",
                       "data": [
                         {
-                          "tagId": 1,
-                          "tagName": "가지고싶은것"
+                          "themeId": 1,
+                          "themeName": "신념",
+                          "themeDescription": "삶의 중심이 되는 가치관이나 태도",
+                          "themeQuestion": "이것만은 꼭 지키며 살겠다는 중요한 가치는 무엇인가요?"
                         },
                         {
-                          "tagId": 2,
-                          "tagName": "되고싶은것"
+                          "themeId": 2,
+                          "themeName": "리추얼",
+                          "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                          "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?"
                         },
                         {
-                          "tagId": 3,
-                          "tagName": "가고싶은곳"
+                          "themeId": 3,
+                          "themeName": "챌린지",
+                          "themeDescription": "가까운 미래에 달성해야 할 목표 만들기",
+                          "themeQuestion": "삶을 더 나은 방향으로 변화시키기 위해 무엇을 하고 싶나요?"
                         },
                         {
-                          "tagId": 4,
-                          "tagName": "하고싶은것"
+                          "themeId": 4,
+                          "themeName": "롤모델",
+                          "themeDescription": "각별히 좋아하거나 존경하는 인물 본받기",
+                          "themeQuestion": "최근 당신에게 가장 긍정적인 영향을 준 사람은 누구인가요?"
                         },
                         {
-                          "tagId": 5,
-                          "tagName": "일상"
+                          "themeId": 5,
+                          "themeName": "유대관계",
+                          "themeDescription": "친애하는 존재와의 건강한 관계 쌓기",
+                          "themeQuestion": "미래의 우리를 위해 지금 어떤 시간을 만들어가고 싶나요?"
+                        },
+                        {
+                          "themeId": 6,
+                          "themeName": "버킷 리스트",
+                          "themeDescription": "언젠가 꼭 시도해보고 싶은 삶의 로망 실현하기",
+                          "themeQuestion": "지금 당신의 삶이 1년 밖에 남지 않았다면 무엇을 하고 싶나요?"
                         }
                       ]
                     }
@@ -860,7 +876,7 @@
           }
         },
         "operationId": "get-v1-tags",
-        "description": "태그 조회",
+        "description": "테마 리스트 조회",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
@@ -868,7 +884,7 @@
         ]
       },
       "post": {
-        "summary": "태그 등록",
+        "summary": "테마 등록",
         "operationId": "post-v1-tags",
         "responses": {
           "201": {
@@ -914,7 +930,7 @@
             }
           }
         },
-        "description": "태그 등록",
+        "description": "테마 등록",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
@@ -926,19 +942,27 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "tagName": {
+                  "themeName": {
                     "type": "string",
                     "description": "태그명"
+                  },
+                  "themeDescription": {
+                    "type": "string"
+                  },
+                  "themeQuestion": {
+                    "type": "string"
                   }
                 },
                 "required": [
-                  "tagName"
+                  "themeName"
                 ]
               },
               "examples": {
-                "비전 태그 등록": {
+                "비전 \b테마 등록": {
                   "value": {
-                    "tagName": "string"
+                    "themeName": "신념",
+                    "themeDescription": "삶의 중심이 되는 가치관이나 태도",
+                    "themeQuestion": "이것만은 꼭 지키며 살겠다는 중요한 가치는 무엇인가요?"
                   }
                 }
               }
@@ -946,22 +970,23 @@
           },
           "description": ""
         }
-      }
+      },
+      "parameters": []
     },
-    "/v1/tags/{tagId}": {
+    "/v1/\bthemes/{themeId}": {
       "parameters": [
         {
           "schema": {
-            "type": "integer"
+            "type": "string"
           },
-          "name": "tagId",
+          "name": "themeId",
           "in": "path",
           "required": true,
-          "description": "삭제할 tag id값"
+          "description": "테마 아이디"
         }
       ],
       "delete": {
-        "summary": "태그 삭제",
+        "summary": "테마 삭제",
         "operationId": "delete-v1-tags-tagId",
         "responses": {
           "200": {
@@ -991,7 +1016,7 @@
             }
           }
         },
-        "description": "태그 삭제",
+        "description": "\b테마 삭제",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
@@ -1109,6 +1134,30 @@
             "in": "query",
             "name": "visionId",
             "description": "1"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "pageNum",
+            "description": "페이지 번호"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "pageSize",
+            "description": "페이지 사이즈"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "orderBy",
+            "description": "지금은 쓰이지 않음 (최신 포스트 순 고정)"
           }
         ]
       },
@@ -1829,13 +1878,13 @@
         "type": "string",
         "description": "응답 코드에 대한 설명 (회원에게 노출용 아님)\n\ncode(0) = 성공, \ncode(9999) = 알 수 없는 에러,\n..."
       },
-      "Tag": {
-        "title": "Tag",
+      "ThemeDto": {
+        "title": "ThemeDto",
         "x-stoplight": {
           "id": "gp3odcej1yr4k"
         },
         "type": "object",
-        "description": "태그 리스트",
+        "description": "테마 리스트 아이템",
         "properties": {
           "tagId": {
             "type": "integer"
@@ -1945,7 +1994,7 @@
             "type": "string",
             "description": "비전 상세 설명"
           },
-          "tags": {
+          "themes": {
             "description": "등록된 태그들",
             "type": "array",
             "items": {
