@@ -1707,7 +1707,8 @@
                   },
                   "required": [
                     "code",
-                    "message"
+                    "message",
+                    "data"
                   ]
                 },
                 "examples": {
@@ -1777,14 +1778,24 @@
                     },
                     "message": {
                       "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "integer",
+                      "description": "신청된 follow id"
                     }
-                  }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
                 },
                 "examples": {
                   "비전 팔로우 성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공"
+                      "message": "성공",
+                      "data": 100
                     }
                   }
                 }
