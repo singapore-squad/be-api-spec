@@ -1134,6 +1134,30 @@
             "in": "query",
             "name": "visionId",
             "description": "1"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "pageNum",
+            "description": "페이지 번호"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "pageSize",
+            "description": "페이지 사이즈"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "orderBy",
+            "description": "지금은 쓰이지 않음 (최신 포스트 순 고정)"
           }
         ]
       },
