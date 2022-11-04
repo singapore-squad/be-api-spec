@@ -1857,7 +1857,7 @@
             "type": "string",
             "description": "비전 상세 설명"
           },
-          "tags": {
+          "themes": {
             "description": "등록된 태그들",
             "type": "array",
             "items": {
