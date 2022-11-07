@@ -1676,9 +1676,9 @@
       },
       "parameters": []
     },
-    "/v1/follows": {
+    "/v1/following/visions": {
       "get": {
-        "summary": "팔로우 목록 조회",
+        "summary": "팔로잉하는 드림보드 목록 조회",
         "tags": [],
         "responses": {
           "200": {
@@ -1750,8 +1750,8 @@
             "description": ""
           }
         },
-        "operationId": "get-v1-follow",
-        "description": "- 팔로우한 비전 목록을 조회합니다.\n",
+        "operationId": "get-v1-follow-visions",
+        "description": "- 팔로잉한 드림보드 목록을 조회합니다.\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
@@ -1767,9 +1767,120 @@
           }
         ]
       },
+      "parameters": []
+    },
+    "/v1/following/visions/{visionId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "visionId",
+          "in": "path",
+          "required": true,
+          "description": "드림보드 id"
+        }
+      ],
       "post": {
-        "summary": "팔로우 신청",
-        "operationId": "post-v1-follow",
+        "summary": "드림보드 팔로잉",
+        "operationId": "post-v1-follow-visions-visionId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "\b드림보드 팔로우 등록 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "- 드림보드를 팔로잉합니다.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "드림보드 팔로잉 취소",
+        "operationId": "delete-v1-follow-visions-visionId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                },
+                "examples": {
+                  "드림보드 팔로우 취소 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "- 드림보드 팔로잉을 취소합니다",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      }
+    },
+    "/v1/like/visions/{visionId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "visionId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "드림보드 좋아요 등록",
+        "operationId": "post-v1-like-visions-visionId",
         "responses": {
           "200": {
             "description": "OK",
@@ -1786,7 +1897,7 @@
                     },
                     "data": {
                       "type": "integer",
-                      "description": "신청된 follow id"
+                      "description": "등록된 좋아요id"
                     }
                   },
                   "required": [
@@ -1796,11 +1907,11 @@
                   ]
                 },
                 "examples": {
-                  "비전 팔로우 성공": {
+                  "\b좋아요 등록 성공": {
                     "value": {
                       "code": 0,
                       "message": "성공",
-                      "data": 100
+                      "data": 1
                     }
                   }
                 }
@@ -1808,39 +1919,152 @@
             }
           }
         },
-        "description": "- 비전을 팔로우합니다.",
+        "description": "- 드림보드 좋아요를 등록합니다.",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
           }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "visionId": {
-                    "type": "integer",
-                    "description": "팔로우할 비전 ID"
-                  }
+        ]
+      },
+      "delete": {
+        "summary": "드림보드 좋아요 취소",
+        "operationId": "delete-v1-like-visions-visionId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
                 },
-                "required": [
-                  "visionId"
-                ]
-              },
-              "examples": {
-                "비전 팔로우 신청": {
-                  "value": {
-                    "visionId": 77
+                "examples": {
+                  "좋아요 취소 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
                   }
                 }
               }
             }
           }
+        },
+        "description": "- 드림보드 좋아요를 취소합니다.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      }
+    },
+    "/v1/like/posts/{postId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "postId",
+          "in": "path",
+          "required": true
         }
+      ],
+      "post": {
+        "summary": "액션보드 좋아요 등록",
+        "operationId": "post-v1-like-posts-postId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "좋아요 등록 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "- 액션보드 좋아요를 등록합니다",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
       },
-      "parameters": []
+      "delete": {
+        "summary": "액션보드 좋아요 취소",
+        "operationId": "delete-v1-like-posts-postId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                },
+                "examples": {
+                  "좋아요 취소 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "- 액션보드 좋아요를 취소합니다",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      }
     }
   },
   "components": {
