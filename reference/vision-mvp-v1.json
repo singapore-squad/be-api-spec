@@ -688,7 +688,7 @@
         }
       ],
       "delete": {
-        "summary": "비전 단건 삭제 (개발 중)",
+        "summary": "비전 단건 삭제",
         "operationId": "delete-v1-visions-visionId",
         "responses": {
           "200": {
@@ -715,7 +715,7 @@
             "$ref": "#/components/parameters/Authorization"
           }
         ],
-        "description": "개발중입니다 아직"
+        "description": "비전 단건 삭제"
       },
       "patch": {
         "summary": "비전 수정 (개발중)",
@@ -2196,6 +2196,9 @@
         "type": "object",
         "description": "태그 리스트",
         "properties": {
+          "mediaId": {
+            "type": "integer"
+          },
           "contentType": {
             "type": "integer"
           },
