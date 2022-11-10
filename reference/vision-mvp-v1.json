@@ -426,10 +426,7 @@
                   "imgUrl": {
                     "type": "string"
                   }
-                },
-                "required": [
-                  "nickname"
-                ]
+                }
               },
               "examples": {
                 "닉네임 변경 요청": {
