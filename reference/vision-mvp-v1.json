@@ -990,7 +990,7 @@
         "description": "드림보드 단건 삭제"
       },
       "patch": {
-        "summary": "드림보드 수정 (개발중)",
+        "summary": "드림보드 수정",
         "operationId": "patch-v1-visions-visionId",
         "responses": {
           "200": {
@@ -1049,10 +1049,10 @@
                   "value": {
                     "title": "해외에서 두달 살기 수정된 제목",
                     "contents": "하와이, 아이와 함께 수정된 내용",
-                    "tagIds": [
+                    "themeIds": [
                       1
                     ],
-                    "imgUrl": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+                    "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/tmp/1/accl08s2609007a03698c9d11d12d94a"
                   }
                 },
                 "\b제목과 내용만 수정할 경우": {
