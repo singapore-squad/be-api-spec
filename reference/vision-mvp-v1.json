@@ -1061,6 +1061,57 @@
         }
       }
     },
+    "/v1/visions/{visionId}/view": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "visionId",
+          "in": "path",
+          "required": true,
+          "description": "비전의 id값"
+        }
+      ],
+      "post": {
+        "summary": "드림보드 조회수 증가",
+        "operationId": "post-v1-visions-visionId-view",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                },
+                "examples": {
+                  "드림보드 조회수 증가 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "description": ""
+      }
+    },
     "/v1/themes": {
       "get": {
         "summary": "테마 리스트 조회",
@@ -1907,6 +1958,57 @@
           "description": ""
         },
         "description": "액션보드 수정입니다.\n기본적으로 Body 필드에 포함된 항목만 수정합니다.\n모든 항목을 포함해서 PUT처럼 사용하셔도 됩니다.\n\nvisionId는 수정할 수 없습니다."
+      }
+    },
+    "/v1/posts/{postId}/view": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "postId",
+          "in": "path",
+          "required": true,
+          "description": "액션보드 id값"
+        }
+      ],
+      "post": {
+        "summary": "액션보드 조회수 증가",
+        "operationId": "post-v1-visions-visionId-view",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                },
+                "examples": {
+                  "액션보드 조회수 증가 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "description": ""
       }
     },
     "/v1/files": {
