@@ -1843,6 +1843,65 @@
                       "$ref": "#/components/schemas/PostDto"
                     }
                   }
+                },
+                "examples": {
+                  "액션보드 수정 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "postId": 1,
+                        "title": "7일 무지출 챌린지 1일차! 수정",
+                        "contents": "내가 생각해도 맛있어보이는 점심도시락 수정",
+                        "visionId": 1,
+                        "visionTitle": "문구점 사장님 되기",
+                        "memberId": 1,
+                        "nickname": "유저01",
+                        "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                        "viewCount": 0,
+                        "userViewCount": 0,
+                        "likeCount": 0,
+                        "commentCount": 0,
+                        "createAt": "2022-11-03T08:41:56Z",
+                        "lastUpdateAt": "2022-11-10T07:00:37Z",
+                        "wtags": [
+                          {
+                            "wtagId": 608,
+                            "wtagName": "14층 라운지",
+                            "wtagType": "WHERE",
+                            "private": false
+                          },
+                          {
+                            "wtagId": 609,
+                            "wtagName": "점심시간",
+                            "wtagType": "WHEN",
+                            "private": false
+                          }
+                        ],
+                        "media": [
+                          {
+                            "mediaId": 527,
+                            "contentType": "IMAGE",
+                            "contentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl10q0037357453317508f7ff146d6",
+                            "createAt": "2022-11-10T07:00:39Z"
+                          },
+                          {
+                            "mediaId": 528,
+                            "contentType": "IMAGE",
+                            "contentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl10q0038935c3fca54c694cb3e025",
+                            "createAt": "2022-11-10T07:00:39Z"
+                          },
+                          {
+                            "mediaId": 529,
+                            "contentType": "IMAGE",
+                            "contentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl10q0039166a5e25db28d12714dc5",
+                            "createAt": "2022-11-10T07:00:39Z"
+                          }
+                        ],
+                        "private": false
+                      }
+                    }
+                  }
                 }
               }
             }
