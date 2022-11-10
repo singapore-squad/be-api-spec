@@ -1049,22 +1049,40 @@
                       "type": "array",
                       "description": "액션보드 리스트",
                       "items": {
-                        "$ref": "#/components/schemas/PostListDto"
+                        "$ref": "#/components/schemas/PostDto"
                       }
+                    },
+                    "pageNum": {
+                      "$ref": "#/components/schemas/PageNum"
+                    },
+                    "pageSize": {
+                      "$ref": "#/components/schemas/PageSize"
+                    },
+                    "totalCount": {
+                      "$ref": "#/components/schemas/TotalCount"
                     }
-                  }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data",
+                    "pageNum",
+                    "pageSize",
+                    "totalCount"
+                  ]
                 },
                 "examples": {
                   "액션보드 조회 성공": {
                     "value": {
                       "code": 0,
-                      "message": "string",
+                      "message": "성공",
                       "data": [
                         {
                           "title": "7일 무지출 챌린지 1일차!",
                           "contents": "내가 생각해도 맛있어보이는 점심도시락",
                           "postId": 1,
                           "visionId": 1,
+                          "visionTitle": "7일 무지출 챌린지",
                           "isPrivate": false,
                           "createAt": "2022-10-24T02:32:18Z",
                           "wtags": [
@@ -1091,32 +1109,11 @@
                               "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
                             }
                           ]
-                        },
-                        {
-                          "title": "100일 무지출 챌린지 1일차!",
-                          "contents": "그냥 점심도시락",
-                          "postId": 2,
-                          "visionId": 1,
-                          "isPrivate": false,
-                          "createAt": "2022-10-24T02:32:18Z",
-                          "wtags": [
-                            {
-                              "wtagType": 2,
-                              "wtagName": "점심시간"
-                            }
-                          ],
-                          "media": [
-                            {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
-                            },
-                            {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
-                            }
-                          ]
                         }
-                      ]
+                      ],
+                      "pageNum": 1,
+                      "pageSize": 10,
+                      "totalCount": 1
                     }
                   }
                 }
@@ -2325,6 +2322,123 @@
           }
         ]
       }
+    },
+    "/v1/search/posts": {
+      "get": {
+        "summary": "액션보드 검색",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PostDto"
+                      }
+                    },
+                    "pageNum": {
+                      "$ref": "#/components/schemas/PageNum"
+                    },
+                    "pageSize": {
+                      "$ref": "#/components/schemas/PageSize"
+                    },
+                    "totalCount": {
+                      "$ref": "#/components/schemas/TotalCount"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data",
+                    "pageNum",
+                    "pageSize",
+                    "totalCount"
+                  ]
+                },
+                "examples": {
+                  "검색 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": [
+                        {
+                          "title": "7일 무지출 챌린지 1일차!",
+                          "contents": "내가 생각해도 맛있어보이는 점심도시락",
+                          "postId": 1,
+                          "visionId": 1,
+                          "visionTitle": "7일 무지출 챌린지",
+                          "isPrivate": false,
+                          "createAt": "2022-10-24T02:32:18Z",
+                          "wtags": [
+                            {
+                              "wtagType": 2,
+                              "wtagName": "점심시간"
+                            },
+                            {
+                              "wtagType": 3,
+                              "wtagName": "14층 라운지"
+                            }
+                          ],
+                          "media": [
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                            },
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                            },
+                            {
+                              "contentType": 0,
+                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-search-posts",
+        "description": "* 아래의 노출 우선순위로 액션보드를 검색합니다.\n\n* 노출 우선순위 :\n* 1순위) 드림보드와 액션보드 모두 키워드 포함\n* 2순위) 드림보드에 키워드 포함\n* 3순위) 액션보드에 키워드 포함",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          },
+          {
+            "$ref": "#/components/parameters/pageNum"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "q",
+            "description": "검색어",
+            "required": true
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -2650,27 +2764,31 @@
         "description": "액션보드",
         "properties": {
           "postId": {
-            "type": "integer"
+            "type": "integer",
+            "description": "액션보드 id"
           },
           "visionId": {
-            "type": "integer"
+            "type": "integer",
+            "description": "드림보드 id"
           },
           "visionTitle": {
-            "type": "string"
+            "type": "string",
+            "description": "드림보드 제목"
           },
           "title": {
             "type": "string",
-            "description": "비전 제목"
+            "description": "액션보드 제목"
           },
           "contents": {
             "type": "string",
-            "description": "비전 상세 설명"
+            "description": "액션보드 상세 설명"
           },
           "createAt": {
             "$ref": "#/components/schemas/Time"
           },
           "isPrivate": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "공개여부"
           },
           "wtags": {
             "description": "등록된 태그 리스트",
