@@ -442,7 +442,7 @@
     },
     "/v1/visions": {
       "get": {
-        "summary": "비전 목록 조회",
+        "summary": "드림보드 목록 조회",
         "tags": [],
         "responses": {
           "200": {
@@ -524,7 +524,7 @@
         ]
       },
       "post": {
-        "summary": "비전 등록",
+        "summary": "드림보드 등록",
         "operationId": "post-v1-vision",
         "responses": {
           "201": {
@@ -564,7 +564,7 @@
             }
           }
         },
-        "description": "비전 등록",
+        "description": "드림보드 등록",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
@@ -613,7 +613,7 @@
     },
     "/v1/visions/{visionId}": {
       "get": {
-        "summary": "비전 단건 조회",
+        "summary": "드림보드 단건 조회",
         "tags": [],
         "responses": {
           "200": {
@@ -669,7 +669,7 @@
           }
         },
         "operationId": "get-v1-vision",
-        "description": "비전 상세 페이지",
+        "description": "드림보드 상세 페이지",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
@@ -688,7 +688,7 @@
         }
       ],
       "delete": {
-        "summary": "비전 단건 삭제",
+        "summary": "드림보드 단건 삭제",
         "operationId": "delete-v1-visions-visionId",
         "responses": {
           "200": {
@@ -715,10 +715,10 @@
             "$ref": "#/components/parameters/Authorization"
           }
         ],
-        "description": "비전 단건 삭제"
+        "description": "드림보드 단건 삭제"
       },
       "patch": {
-        "summary": "비전 수정 (개발중)",
+        "summary": "드림보드 수정 (개발중)",
         "operationId": "patch-v1-visions-visionId",
         "responses": {
           "200": {
@@ -743,7 +743,7 @@
             }
           }
         },
-        "description": "비전 수정입니다.\n기본적으로 Body 필드에 포함된 항목만 수정합니다.\n모든 항목을 포함해서 PUT처럼 사용하셔도 됩니다.\n",
+        "description": "드림보드 수정입니다.\n기본적으로 Body 필드에 포함된 항목만 수정합니다.\n모든 항목을 포함해서 PUT처럼 사용하셔도 됩니다.\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
@@ -2062,6 +2062,93 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      }
+    },
+    "/v1/recommend/visions": {
+      "get": {
+        "summary": "추천 드림보드 목록 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Vision"
+                      }
+                    },
+                    "pageNum": {
+                      "$ref": "#/components/schemas/PageNum"
+                    },
+                    "pageSize": {
+                      "$ref": "#/components/schemas/PageSize"
+                    },
+                    "totalCount": {
+                      "$ref": "#/components/schemas/TotalCount"
+                    }
+                  }
+                },
+                "examples": {
+                  "목록 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": [
+                        {
+                          "visionId": 77,
+                          "title": "해외에서 두달 살기",
+                          "contents": "하와이, 아이와 함께",
+                          "createAt": "2022-10-24T02:32:18Z",
+                          "tags": [
+                            {
+                              "tagId": 1,
+                              "tagName": "하고싶은것"
+                            },
+                            {
+                              "tagId": 10,
+                              "tagName": "가족"
+                            }
+                          ],
+                          "imgUrl": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+                        }
+                      ],
+                      "pageNum": 1,
+                      "pageSize": 10,
+                      "totalCount": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-recommend-visions",
+        "description": "- 추천 드림보드 목록을 조회합니다.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          },
+          {
+            "$ref": "#/components/parameters/pageNum"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
           }
         ]
       }
