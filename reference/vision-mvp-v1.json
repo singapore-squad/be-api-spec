@@ -983,7 +983,7 @@
         "description": "드림보드 단건 삭제"
       },
       "patch": {
-        "summary": "드림보드 수정",
+        "summary": "드림보드 수정 (개발중)",
         "operationId": "patch-v1-visions-visionId",
         "responses": {
           "200": {
@@ -1000,7 +1000,7 @@
                       "$ref": "#/components/schemas/ResponseMessage"
                     },
                     "data": {
-                      "$ref": "#/components/schemas/Vision"
+                      "$ref": "#/components/schemas/VisionDto"
                     }
                   }
                 }
