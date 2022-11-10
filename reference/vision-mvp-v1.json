@@ -2373,13 +2373,15 @@
                       "message": "성공",
                       "data": [
                         {
+                          "postId": 1,
                           "title": "7일 무지출 챌린지 1일차!",
                           "contents": "내가 생각해도 맛있어보이는 점심도시락",
-                          "postId": 1,
                           "visionId": 1,
                           "visionTitle": "7일 무지출 챌린지",
+                          "memberId": 1,
                           "isPrivate": false,
                           "createAt": "2022-10-24T02:32:18Z",
+                          "lastUpdateAt": "2022-10-30T09:22:28Z",
                           "wtags": [
                             {
                               "wtagType": 2,
@@ -2643,101 +2645,23 @@
           "createAt"
         ]
       },
-      "PostListDto": {
-        "title": "PostListDto",
-        "x-stoplight": {
-          "id": "rpvuv71tertxt"
-        },
-        "type": "object",
-        "examples": [
-          {
-            "title": "7일 무지출 챌린지 1일차!",
-            "contents": "내가 생각해도 맛있어보이는 점심도시락",
-            "postId": 1,
-            "visionId": 1,
-            "isPrivate": false,
-            "createAt": "2022-10-24T02:32:18Z",
-            "wtags": [
-              {
-                "wtagType": 2,
-                "wtagName": "점심시간"
-              },
-              {
-                "wtagType": 3,
-                "wtagName": "14층 라운지"
-              }
-            ],
-            "media": [
-              {
-                "contentType": 0,
-                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
-              },
-              {
-                "contentType": 0,
-                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
-              },
-              {
-                "contentType": 0,
-                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
-              }
-            ]
-          }
-        ],
-        "description": "액션보드",
-        "properties": {
-          "postId": {
-            "type": "integer"
-          },
-          "title": {
-            "type": "string",
-            "description": "비전 제목"
-          },
-          "contents": {
-            "type": "string",
-            "description": "비전 상세 설명"
-          },
-          "createAt": {
-            "$ref": "#/components/schemas/Time"
-          },
-          "isPrivate": {
-            "type": "boolean"
-          },
-          "wtags": {
-            "description": "등록된 태그들",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/WtagDto"
-            }
-          },
-          "media": {
-            "type": "array",
-            "description": "이미지 URL",
-            "items": {
-              "$ref": "#/components/schemas/Media"
-            }
-          }
-        },
-        "required": [
-          "postId",
-          "createAt",
-          "media"
-        ]
-      },
       "PostDto": {
-        "title": "PostListDto",
+        "title": "PostDto",
         "x-stoplight": {
           "id": "rpvuv71tertxt"
         },
         "type": "object",
         "examples": [
           {
+            "postId": 1,
             "title": "7일 무지출 챌린지 1일차!",
             "contents": "내가 생각해도 맛있어보이는 점심도시락",
-            "postId": 1,
             "visionId": 1,
             "visionTitle": "7일 무지출 챌린지",
+            "memberId": 1,
             "isPrivate": false,
             "createAt": "2022-10-24T02:32:18Z",
+            "lastUpdateAt": "2022-10-30T09:22:28Z",
             "wtags": [
               {
                 "wtagType": 2,
@@ -2770,14 +2694,6 @@
             "type": "integer",
             "description": "액션보드 id"
           },
-          "visionId": {
-            "type": "integer",
-            "description": "드림보드 id"
-          },
-          "visionTitle": {
-            "type": "string",
-            "description": "드림보드 제목"
-          },
           "title": {
             "type": "string",
             "description": "액션보드 제목"
@@ -2786,12 +2702,27 @@
             "type": "string",
             "description": "액션보드 상세 설명"
           },
-          "createAt": {
-            "$ref": "#/components/schemas/Time"
+          "visionId": {
+            "type": "integer",
+            "description": "드림보드 id"
+          },
+          "visionTitle": {
+            "type": "string",
+            "description": "드림보드 제목"
+          },
+          "memberId": {
+            "type": "integer",
+            "description": "액션보드 등록자 id"
           },
           "isPrivate": {
             "type": "boolean",
             "description": "공개여부"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "lastUpdateAt": {
+            "$ref": "#/components/schemas/Time"
           },
           "wtags": {
             "description": "등록된 태그 리스트",
@@ -2810,7 +2741,9 @@
         },
         "required": [
           "postId",
+          "memberId",
           "createAt",
+          "lastUpdateAt",
           "media"
         ]
       },
