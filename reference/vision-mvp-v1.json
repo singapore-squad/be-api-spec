@@ -1049,6 +1049,7 @@
                   "value": {
                     "title": "해외에서 두달 살기 수정된 제목",
                     "contents": "하와이, 아이와 함께 수정된 내용",
+                    "isPrivate": true,
                     "themeIds": [
                       1
                     ],
