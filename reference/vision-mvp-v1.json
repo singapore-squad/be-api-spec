@@ -1823,7 +1823,7 @@
         ]
       },
       "patch": {
-        "summary": "액션보드(Post) \b수정 (개발중)",
+        "summary": "액션보드(Post) \b수정",
         "operationId": "patch-v1-posts-postId",
         "responses": {
           "200": {
