@@ -407,7 +407,7 @@
             }
           }
         },
-        "description": "회원 정보 변경",
+        "description": "회원정보 변경입니다.\n기본적으로 Body 필드에 포함된 항목만 수정합니다.\n모든 항목을 포함해서 PUT처럼 사용하셔도 됩니다.",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
@@ -422,6 +422,9 @@
                   "nickname": {
                     "type": "string",
                     "description": "변경할 닉네임"
+                  },
+                  "imgUrl": {
+                    "type": "string"
                   }
                 },
                 "required": [
@@ -433,10 +436,17 @@
                   "value": {
                     "nickname": "변경할 닉네임"
                   }
+                },
+                "\b닉네임과 프로필이미지 변경 요청": {
+                  "value": {
+                    "nickname": "변경할 닉네임",
+                    "imgUrl": "변경할 URL (임시 저장한)"
+                  }
                 }
               }
             }
-          }
+          },
+          "description": ""
         }
       }
     },
