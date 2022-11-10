@@ -462,7 +462,7 @@
                       "type": "array",
                       "description": "비전 리스트",
                       "items": {
-                        "$ref": "#/components/schemas/Vision"
+                        "$ref": "#/components/schemas/VisionListDto"
                       }
                     }
                   },
@@ -476,37 +476,292 @@
                   "비전 목록 조회 성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공",
+                      "message": "[DEV] 성공",
                       "data": [
                         {
-                          "visionId": 77,
-                          "title": "해외에서 두달 살기",
-                          "contents": "하와이, 아이와 함께",
-                          "createAt": "2022-10-19 14:43:25",
-                          "tags": [
+                          "visionId": 1,
+                          "title": "문구점 사장님 되기",
+                          "contents": "기록광을 위한 문구점",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision1/vision.png",
+                          "memberId": 1,
+                          "createAt": "2022-11-03T06:51:40Z",
+                          "lastUpdateAt": "2022-11-03T06:51:40Z",
+                          "themes": [
                             {
-                              "tagId": 1,
-                              "tagName": "하고싶은것"
-                            },
-                            {
-                              "tagId": 10,
-                              "tagName": "가족"
+                              "themeId": 6,
+                              "themeName": "버킷 리스트",
+                              "themeDescription": "언젠가 꼭 시도해보고 싶은 삶의 로망 실현하기",
+                              "themeQuestion": "지금 당신의 삶이 1년 밖에 남지 않았다면 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/bucketlist.png"
                             }
                           ],
-                          "imgUrl": "https://content.skyscnr.com/m/41acfff761f8ea1a/original/GettyImages-519763361.jpg?resize=1800px:1800px&quality=100"
+                          "private": false
                         },
                         {
-                          "visionId": 77,
-                          "title": "국내에서 두달 살기",
-                          "contents": "제주, 아이와 함께",
-                          "createAt": "2022-10-24T02:32:18Z",
-                          "tags": [
+                          "visionId": 2,
+                          "title": "한 달에 LP 하나",
+                          "contents": "턴테이블 할머니가 꿈",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision2/vision.png",
+                          "memberId": 1,
+                          "createAt": "2022-11-03T06:51:40Z",
+                          "lastUpdateAt": "2022-11-03T06:51:40Z",
+                          "themes": [
                             {
-                              "tagId": 1,
-                              "tagName": "하고싶은것"
+                              "themeId": 2,
+                              "themeName": "리추얼",
+                              "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                              "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/ritual.png"
                             }
                           ],
-                          "imgUrl": "https://content.skyscnr.com/m/41acfff761f8ea1a/original/GettyImages-519763361.jpg?resize=1800px:1800px&quality=100"
+                          "private": false
+                        },
+                        {
+                          "visionId": 3,
+                          "title": "주 2회 클라이밍",
+                          "contents": "등근육 가보자고",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision3/vision.png",
+                          "memberId": 1,
+                          "createAt": "2022-11-03T06:51:40Z",
+                          "lastUpdateAt": "2022-11-03T06:51:40Z",
+                          "themes": [
+                            {
+                              "themeId": 3,
+                              "themeName": "챌린지",
+                              "themeDescription": "가까운 미래에 달성해야 할 목표 만들기",
+                              "themeQuestion": "삶을 더 나은 방향으로 변화시키기 위해 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/challenge.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 4,
+                          "title": "7일 무지출 챌린지",
+                          "contents": "아이폰 14프로를 위한 여정",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/vision.png",
+                          "memberId": 1,
+                          "createAt": "2022-11-03T06:51:40Z",
+                          "lastUpdateAt": "2022-11-03T06:51:40Z",
+                          "themes": [
+                            {
+                              "themeId": 3,
+                              "themeName": "챌린지",
+                              "themeDescription": "가까운 미래에 달성해야 할 목표 만들기",
+                              "themeQuestion": "삶을 더 나은 방향으로 변화시키기 위해 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/challenge.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 5,
+                          "title": "매일 식단 기록",
+                          "contents": "다이어트도 맛있게 할 수 있어",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision5/vision.png",
+                          "memberId": 1,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 2,
+                              "themeName": "리추얼",
+                              "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                              "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/ritual.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 6,
+                          "title": "문구점 사장님 되기",
+                          "contents": "기록광을 위한 문구점",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision1/vision.png",
+                          "memberId": 2,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 6,
+                              "themeName": "버킷 리스트",
+                              "themeDescription": "언젠가 꼭 시도해보고 싶은 삶의 로망 실현하기",
+                              "themeQuestion": "지금 당신의 삶이 1년 밖에 남지 않았다면 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/bucketlist.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 7,
+                          "title": "한 달에 LP 하나",
+                          "contents": "턴테이블 할머니가 꿈",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision2/vision.png",
+                          "memberId": 2,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 2,
+                              "themeName": "리추얼",
+                              "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                              "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/ritual.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 8,
+                          "title": "주 2회 클라이밍",
+                          "contents": "등근육 가보자고",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision3/vision.png",
+                          "memberId": 2,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 3,
+                              "themeName": "챌린지",
+                              "themeDescription": "가까운 미래에 달성해야 할 목표 만들기",
+                              "themeQuestion": "삶을 더 나은 방향으로 변화시키기 위해 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/challenge.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 9,
+                          "title": "7일 무지출 챌린지",
+                          "contents": "아이폰 14프로를 위한 여정",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/vision.png",
+                          "memberId": 2,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 3,
+                              "themeName": "챌린지",
+                              "themeDescription": "가까운 미래에 달성해야 할 목표 만들기",
+                              "themeQuestion": "삶을 더 나은 방향으로 변화시키기 위해 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/challenge.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 10,
+                          "title": "매일 식단 기록",
+                          "contents": "다이어트도 맛있게 할 수 있어",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision5/vision.png",
+                          "memberId": 2,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 2,
+                              "themeName": "리추얼",
+                              "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                              "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/ritual.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 11,
+                          "title": "문구점 사장님 되기",
+                          "contents": "기록광을 위한 문구점",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision1/vision.png",
+                          "memberId": 3,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 6,
+                              "themeName": "버킷 리스트",
+                              "themeDescription": "언젠가 꼭 시도해보고 싶은 삶의 로망 실현하기",
+                              "themeQuestion": "지금 당신의 삶이 1년 밖에 남지 않았다면 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/bucketlist.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 12,
+                          "title": "한 달에 LP 하나",
+                          "contents": "턴테이블 할머니가 꿈",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision2/vision.png",
+                          "memberId": 3,
+                          "createAt": "2022-11-03T06:51:42Z",
+                          "lastUpdateAt": "2022-11-03T06:51:42Z",
+                          "themes": [
+                            {
+                              "themeId": 2,
+                              "themeName": "리추얼",
+                              "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                              "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/ritual.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 13,
+                          "title": "주 2회 클라이밍",
+                          "contents": "등근육 가보자고",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision3/vision.png",
+                          "memberId": 3,
+                          "createAt": "2022-11-03T06:51:42Z",
+                          "lastUpdateAt": "2022-11-03T06:51:42Z",
+                          "themes": [
+                            {
+                              "themeId": 3,
+                              "themeName": "챌린지",
+                              "themeDescription": "가까운 미래에 달성해야 할 목표 만들기",
+                              "themeQuestion": "삶을 더 나은 방향으로 변화시키기 위해 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/challenge.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 14,
+                          "title": "7일 무지출 챌린지",
+                          "contents": "아이폰 14프로를 위한 여정",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/vision.png",
+                          "memberId": 3,
+                          "createAt": "2022-11-03T06:51:42Z",
+                          "lastUpdateAt": "2022-11-03T06:51:42Z",
+                          "themes": [
+                            {
+                              "themeId": 3,
+                              "themeName": "챌린지",
+                              "themeDescription": "가까운 미래에 달성해야 할 목표 만들기",
+                              "themeQuestion": "삶을 더 나은 방향으로 변화시키기 위해 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/challenge.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 15,
+                          "title": "매일 식단 기록",
+                          "contents": "다이어트도 맛있게 할 수 있어",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision5/vision.png",
+                          "memberId": 3,
+                          "createAt": "2022-11-03T06:51:42Z",
+                          "lastUpdateAt": "2022-11-03T06:51:42Z",
+                          "themes": [
+                            {
+                              "themeId": 2,
+                              "themeName": "리추얼",
+                              "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                              "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/ritual.png"
+                            }
+                          ],
+                          "private": false
                         }
                       ]
                     }
@@ -630,7 +885,7 @@
                       "$ref": "#/components/schemas/ResponseMessage"
                     },
                     "data": {
-                      "$ref": "#/components/schemas/Vision"
+                      "$ref": "#/components/schemas/VisionDto"
                     }
                   },
                   "required": [
@@ -643,23 +898,33 @@
                   "비전 조회 성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공",
+                      "message": "[DEV] 성공",
                       "data": {
-                        "visionId": 77,
-                        "title": "해외에서 두달 살기",
-                        "contents": "하와이, 아이와 함께",
-                        "createAt": "2022-10-24T02:32:18Z",
-                        "tags": [
+                        "visionId": 1,
+                        "title": "문구점 사장님 되기",
+                        "contents": "기록광을 위한 문구점",
+                        "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision1/vision.png",
+                        "memberId": 1,
+                        "nickname": "유저01",
+                        "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                        "viewCount": 0,
+                        "userViewCount": 0,
+                        "followCount": 0,
+                        "likeCount": 0,
+                        "postCount": 0,
+                        "commentCount": 0,
+                        "createAt": "2022-11-03T06:51:40Z",
+                        "lastUpdateAt": "2022-11-03T06:51:40Z",
+                        "themes": [
                           {
-                            "tagId": 1,
-                            "tagName": "하고싶은것"
-                          },
-                          {
-                            "tagId": 10,
-                            "tagName": "가족"
+                            "themeId": 6,
+                            "themeName": "버킷 리스트",
+                            "themeDescription": "언젠가 꼭 시도해보고 싶은 삶의 로망 실현하기",
+                            "themeQuestion": "지금 당신의 삶이 1년 밖에 남지 않았다면 무엇을 하고 싶나요?",
+                            "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/bucketlist.png"
                           }
                         ],
-                        "imgUrl": "https://content.skyscnr.com/m/41acfff761f8ea1a/original/GettyImages-519763361.jpg?resize=1800px:1800px&quality=100"
+                        "private": false
                       }
                     }
                   }
@@ -1049,7 +1314,7 @@
                       "type": "array",
                       "description": "액션보드 리스트",
                       "items": {
-                        "$ref": "#/components/schemas/PostDto"
+                        "$ref": "#/components/schemas/PostListDto"
                       }
                     },
                     "pageNum": {
@@ -1075,45 +1340,126 @@
                   "액션보드 조회 성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공",
+                      "message": "[DEV] 성공",
                       "data": [
                         {
-                          "title": "7일 무지출 챌린지 1일차!",
-                          "contents": "내가 생각해도 맛있어보이는 점심도시락",
-                          "postId": 1,
+                          "postId": 16,
+                          "title": "23년 다이어리 기획",
+                          "contents": "2023년 새해 다이어리 출시 계획을 세웠다.\n매일 쓰고싶고 쓰기 쉽도록 만듦새가 좋은 다이어리를 만들고 싶다. 내년엔 더 많은 사람들이 기록의 힘을 믿을 수 있도록 좋은 제품을 많이 만들어봐야지.",
                           "visionId": 1,
-                          "visionTitle": "7일 무지출 챌린지",
-                          "isPrivate": false,
-                          "createAt": "2022-10-24T02:32:18Z",
+                          "visionTitle": "문구점 사장님 되기",
+                          "createAt": "2022-11-04T02:16:05Z",
+                          "lastUpdateAt": "2022-11-04T02:16:05Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision2/action1.png",
                           "wtags": [
                             {
-                              "wtagType": 2,
-                              "wtagName": "점심시간"
+                              "wtagId": 32,
+                              "wtagName": "오후 2시",
+                              "wtagType": "WHEN",
+                              "private": false
                             },
                             {
-                              "wtagType": 3,
-                              "wtagName": "14층 라운지"
+                              "wtagId": 33,
+                              "wtagName": "매뉴팩트커피에서",
+                              "wtagType": "WHERE",
+                              "private": false
                             }
                           ],
-                          "media": [
+                          "media": [],
+                          "private": false
+                        },
+                        {
+                          "postId": 17,
+                          "title": "엽서가 도착했다",
+                          "contents": "그동안 그려온 그림으로 만든 엽서가 드디어 도착했다. 오랫동안 머릿속으로만 그려온 것을 직접 만져보니 꿈만 같았다. 내가 좋아하는 것들이 잔뜩 그려진 이 종이들을 사람들이 좋아해주면 좋겠다!",
+                          "visionId": 1,
+                          "visionTitle": "문구점 사장님 되기",
+                          "createAt": "2022-11-04T02:16:05Z",
+                          "lastUpdateAt": "2022-11-04T02:16:05Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision2/action2.png",
+                          "wtags": [
                             {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                              "wtagId": 34,
+                              "wtagName": "우리집책상위",
+                              "wtagType": "WHERE",
+                              "private": false
                             },
                             {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                              "wtagId": 35,
+                              "wtagName": "고양이랑",
+                              "wtagType": "WHO",
+                              "private": false
                             },
                             {
-                              "contentType": 0,
-                              "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+                              "wtagId": 36,
+                              "wtagName": "작업물검수물",
+                              "wtagType": "WHAT",
+                              "private": false
                             }
-                          ]
+                          ],
+                          "media": [],
+                          "private": false
+                        },
+                        {
+                          "postId": 18,
+                          "title": "오늘의 문구 자랑",
+                          "contents": "너무 너무 사랑스러운 나의 문구들",
+                          "visionId": 1,
+                          "visionTitle": "문구점 사장님 되기",
+                          "createAt": "2022-11-04T02:16:05Z",
+                          "lastUpdateAt": "2022-11-04T02:16:05Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision2/action7.png",
+                          "wtags": [
+                            {
+                              "wtagId": 37,
+                              "wtagName": "합정동",
+                              "wtagType": "WHERE",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 38,
+                              "wtagName": "우리집",
+                              "wtagType": "WHERE",
+                              "private": false
+                            }
+                          ],
+                          "media": [],
+                          "private": false
+                        },
+                        {
+                          "postId": 1,
+                          "title": "23년 다이어리 기획",
+                          "contents": "2023년 새해 다이어리 출시 계획을 세웠다.\n매일 쓰고싶고 쓰기 쉽도록 만듦새가 좋은 다이어리를 만들고 싶다. 내년엔 더 많은 사람들이 기록의 힘을 믿을 수 있도록 좋은 제품을 많이 만들어봐야지.",
+                          "visionId": 1,
+                          "visionTitle": "문구점 사장님 되기",
+                          "createAt": "2022-11-03T08:41:56Z",
+                          "lastUpdateAt": "2022-11-03T08:41:56Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision2/action1.png",
+                          "wtags": [
+                            {
+                              "wtagId": 1,
+                              "wtagName": "오후 2시",
+                              "wtagType": "WHEN",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 2,
+                              "wtagName": "매뉴팩트커피에서",
+                              "wtagType": "WHERE",
+                              "private": false
+                            }
+                          ],
+                          "media": [],
+                          "private": false
                         }
                       ],
                       "pageNum": 1,
-                      "pageSize": 10,
-                      "totalCount": 1
+                      "totalCount": 4,
+                      "pageSize": 10
                     }
                   }
                 }
@@ -1319,39 +1665,57 @@
                   "액션보드 조회 성공": {
                     "value": {
                       "code": 0,
-                      "message": "string",
+                      "message": "[DEV] 성공",
                       "data": {
-                        "title": "7일 무지출 챌린지 1일차!",
-                        "contents": "내가 생각해도 맛있어보이는 점심도시락",
                         "postId": 1,
+                        "title": "23년 다이어리 기획",
+                        "contents": "2023년 새해 다이어리 출시 계획을 세웠다.\n매일 쓰고싶고 쓰기 쉽도록 만듦새가 좋은 다이어리를 만들고 싶다. 내년엔 더 많은 사람들이 기록의 힘을 믿을 수 있도록 좋은 제품을 많이 만들어봐야지.",
                         "visionId": 1,
-                        "visionTitle": "7일 무지출 챌린지",
-                        "isPrivate": false,
-                        "createAt": "2022-10-24T02:32:18Z",
+                        "visionTitle": "문구점 사장님 되기",
+                        "memberId": 1,
+                        "nickname": "유저01",
+                        "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                        "viewCount": 1,
+                        "userViewCount": 1,
+                        "likeCount": 0,
+                        "commentCount": 0,
+                        "createAt": "2022-11-03T08:41:56Z",
+                        "lastUpdateAt": "2022-11-03T08:41:56Z",
                         "wtags": [
                           {
-                            "wtagType": 2,
-                            "wtagName": "점심시간"
+                            "wtagId": 1,
+                            "wtagName": "오후 2시",
+                            "wtagType": "WHEN",
+                            "private": false
                           },
                           {
-                            "wtagType": 3,
-                            "wtagName": "14층 라운지"
+                            "wtagId": 2,
+                            "wtagName": "매뉴팩트커피에서",
+                            "wtagType": "WHERE",
+                            "private": false
                           }
                         ],
                         "media": [
                           {
-                            "contentType": 0,
-                            "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+                            "mediaId": 1,
+                            "contentType": "IMAGE",
+                            "contentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision2/action1.png",
+                            "createAt": "2022-11-09T20:41:01Z"
                           },
                           {
-                            "contentType": 0,
-                            "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+                            "mediaId": 2,
+                            "contentType": "IMAGE",
+                            "contentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision2/action3.png",
+                            "createAt": "2022-11-09T20:41:01Z"
                           },
                           {
-                            "contentType": 0,
-                            "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+                            "mediaId": 3,
+                            "contentType": "IMAGE",
+                            "contentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision2/action5.png",
+                            "createAt": "2022-11-09T20:41:01Z"
                           }
-                        ]
+                        ],
+                        "private": false
                       }
                     }
                   }
@@ -2573,21 +2937,25 @@
           "id": "gp3odcej1yr4k"
         },
         "type": "object",
-        "description": "태그 리스트",
+        "description": "미디어 리스트",
         "properties": {
           "mediaId": {
             "type": "integer"
           },
           "contentType": {
-            "type": "integer"
+            "type": "string"
           },
           "contentUrl": {
             "type": "string"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time",
+            "description": "생성일시"
           }
         }
       },
-      "Vision": {
-        "title": "Vision",
+      "VisionDto": {
+        "title": "VisionDto",
         "x-stoplight": {
           "id": "rpvuv71tertxt"
         },
@@ -2611,7 +2979,95 @@
             "imgUrl": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
           }
         ],
-        "description": "비전",
+        "description": "비전 상세 Dto",
+        "properties": {
+          "visionId": {
+            "$ref": "#/components/schemas/VisionId"
+          },
+          "title": {
+            "type": "string",
+            "description": "비전 제목"
+          },
+          "contents": {
+            "type": "string",
+            "description": "비전 상세 설명"
+          },
+          "imgUrl": {
+            "type": "string",
+            "description": "이미지 URL"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time",
+            "description": "생성일시"
+          },
+          "lastUpdateAt": {
+            "$ref": "#/components/schemas/Time",
+            "description": "마지막수정일시"
+          },
+          "viewCount": {
+            "type": "integer",
+            "description": "조회수"
+          },
+          "userViewCount": {
+            "type": "integer",
+            "description": "유저조회수"
+          },
+          "followCount": {
+            "type": "integer",
+            "description": "팔로우수"
+          },
+          "likeCount": {
+            "type": "integer",
+            "description": "좋아요수"
+          },
+          "postCount": {
+            "type": "integer",
+            "description": "액션보드수"
+          },
+          "commentCount": {
+            "type": "integer",
+            "description": "댓글수"
+          },
+          "themes": {
+            "description": "등록된 테마 리스트",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ThemeDto"
+            }
+          }
+        },
+        "required": [
+          "visionId",
+          "imgUrl",
+          "createAt"
+        ]
+      },
+      "VisionListDto": {
+        "title": "VisionListDto",
+        "x-stoplight": {
+          "id": "rpvuv71tertxt"
+        },
+        "type": "object",
+        "examples": [
+          {
+            "visionId": 77,
+            "title": "해외에서 두달 살기",
+            "contents": "하와이, 아이와 함께",
+            "createAt": "2022-10-24T02:32:18Z",
+            "tags": [
+              {
+                "tagId": 1,
+                "tagName": "하고싶은것"
+              },
+              {
+                "tagId": 10,
+                "tagName": "가족"
+              }
+            ],
+            "imgUrl": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+          }
+        ],
+        "description": "비전 리스트 Dto",
         "properties": {
           "visionId": {
             "$ref": "#/components/schemas/VisionId"
@@ -2636,7 +3092,8 @@
             "description": "이미지 URL"
           },
           "createAt": {
-            "$ref": "#/components/schemas/Time"
+            "$ref": "#/components/schemas/Time",
+            "description": "생성일시"
           }
         },
         "required": [
@@ -2688,7 +3145,133 @@
             ]
           }
         ],
-        "description": "액션보드",
+        "description": "액션보드 상세 Dto",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "description": "액션보드 id"
+          },
+          "title": {
+            "type": "string",
+            "description": "액션보드 제목"
+          },
+          "contents": {
+            "type": "string",
+            "description": "액션보드 상세 설명"
+          },
+          "visionId": {
+            "type": "integer",
+            "description": "드림보드 id"
+          },
+          "visionTitle": {
+            "type": "string",
+            "description": "드림보드 제목"
+          },
+          "memberId": {
+            "type": "integer",
+            "description": "액션보드 등록자 id"
+          },
+          "nickName": {
+            "type": "string",
+            "description": "액션보드 등록자 닉네임"
+          },
+          "memberImgUrl": {
+            "type": "string",
+            "description": "액션보드 등록자 이미지 URL"
+          },
+          "isPrivate": {
+            "type": "boolean",
+            "description": "공개여부"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time",
+            "description": "생성일시"
+          },
+          "lastUpdateAt": {
+            "$ref": "#/components/schemas/Time",
+            "description": "마지막수정일시"
+          },
+          "viewCount": {
+            "type": "integer",
+            "description": "조회수"
+          },
+          "userViewCount": {
+            "type": "integer",
+            "description": "유저조회수"
+          },
+          "likeCount": {
+            "type": "integer",
+            "description": "좋아요수"
+          },
+          "commentCount": {
+            "type": "integer",
+            "description": "댓글수"
+          },
+          "wtags": {
+            "description": "등록된 태그 리스트",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WtagDto"
+            }
+          },
+          "media": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Media"
+            }
+          }
+        },
+        "required": [
+          "postId",
+          "memberId",
+          "createAt",
+          "lastUpdateAt"
+        ]
+      },
+      "PostListDto": {
+        "title": "PostListDto",
+        "x-stoplight": {
+          "id": "rpvuv71tertxt"
+        },
+        "type": "object",
+        "examples": [
+          {
+            "postId": 1,
+            "title": "7일 무지출 챌린지 1일차!",
+            "contents": "내가 생각해도 맛있어보이는 점심도시락",
+            "visionId": 1,
+            "visionTitle": "7일 무지출 챌린지",
+            "memberId": 1,
+            "isPrivate": false,
+            "createAt": "2022-10-24T02:32:18Z",
+            "lastUpdateAt": "2022-10-30T09:22:28Z",
+            "wtags": [
+              {
+                "wtagType": 2,
+                "wtagName": "점심시간"
+              },
+              {
+                "wtagType": 3,
+                "wtagName": "14층 라운지"
+              }
+            ],
+            "media": [
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+              },
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+              },
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+              }
+            ]
+          }
+        ],
+        "description": "액션보드 리스트 Dto",
         "properties": {
           "postId": {
             "type": "integer",
@@ -2719,10 +3302,20 @@
             "description": "공개여부"
           },
           "createAt": {
-            "$ref": "#/components/schemas/Time"
+            "$ref": "#/components/schemas/Time",
+            "description": "생성일시"
           },
           "lastUpdateAt": {
-            "$ref": "#/components/schemas/Time"
+            "$ref": "#/components/schemas/Time",
+            "description": "마지막수정일시"
+          },
+          "thumbContentType": {
+            "type": "string",
+            "description": "썸네일 미디어 타입"
+          },
+          "thumbContentUrl": {
+            "type": "string",
+            "description": "썸네일 미디어 URL"
           },
           "wtags": {
             "description": "등록된 태그 리스트",
@@ -2730,21 +3323,13 @@
             "items": {
               "$ref": "#/components/schemas/WtagDto"
             }
-          },
-          "media": {
-            "type": "array",
-            "description": "등록된 미디어 리스트",
-            "items": {
-              "$ref": "#/components/schemas/Media"
-            }
           }
         },
         "required": [
           "postId",
           "memberId",
           "createAt",
-          "lastUpdateAt",
-          "media"
+          "lastUpdateAt"
         ]
       },
       "VisionId": {
@@ -2764,9 +3349,9 @@
           "id": "9ovpilriqw3o2"
         },
         "type": "string",
-        "description": "시간 (YYYY-mm-dd HH:mm:ss)",
+        "description": "시간값 (ISO 8601, UTC) ",
         "examples": [
-          "2022-12-31 13:00:00"
+          "2016-10-27T17:13:40Z"
         ]
       },
       "Date": {
