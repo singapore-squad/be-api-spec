@@ -2108,26 +2108,199 @@
                       "message": "성공",
                       "data": [
                         {
-                          "visionId": 77,
-                          "title": "해외에서 두달 살기",
-                          "contents": "하와이, 아이와 함께",
-                          "createAt": "2022-10-24T02:32:18Z",
-                          "tags": [
+                          "visionId": 12,
+                          "title": "한 달에 LP 하나",
+                          "contents": "턴테이블 할머니가 꿈",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision2/vision.png",
+                          "memberId": 3,
+                          "createAt": "2022-11-03T06:51:42Z",
+                          "lastUpdateAt": "2022-11-03T06:51:42Z",
+                          "themes": [
                             {
-                              "tagId": 1,
-                              "tagName": "하고싶은것"
-                            },
-                            {
-                              "tagId": 10,
-                              "tagName": "가족"
+                              "themeId": 2,
+                              "themeName": "리추얼",
+                              "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                              "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/ritual.png"
                             }
                           ],
-                          "imgUrl": "https://images.unsplash.com/photo-1648612153876-db4fd5ce1a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+                          "private": false
+                        },
+                        {
+                          "visionId": 13,
+                          "title": "주 2회 클라이밍",
+                          "contents": "등근육 가보자고",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision3/vision.png",
+                          "memberId": 3,
+                          "createAt": "2022-11-03T06:51:42Z",
+                          "lastUpdateAt": "2022-11-03T06:51:42Z",
+                          "themes": [
+                            {
+                              "themeId": 3,
+                              "themeName": "챌린지",
+                              "themeDescription": "가까운 미래에 달성해야 할 목표 만들기",
+                              "themeQuestion": "삶을 더 나은 방향으로 변화시키기 위해 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/challenge.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 14,
+                          "title": "7일 무지출 챌린지",
+                          "contents": "아이폰 14프로를 위한 여정",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/vision.png",
+                          "memberId": 3,
+                          "createAt": "2022-11-03T06:51:42Z",
+                          "lastUpdateAt": "2022-11-03T06:51:42Z",
+                          "themes": [
+                            {
+                              "themeId": 3,
+                              "themeName": "챌린지",
+                              "themeDescription": "가까운 미래에 달성해야 할 목표 만들기",
+                              "themeQuestion": "삶을 더 나은 방향으로 변화시키기 위해 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/challenge.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 15,
+                          "title": "매일 식단 기록",
+                          "contents": "다이어트도 맛있게 할 수 있어",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision5/vision.png",
+                          "memberId": 3,
+                          "createAt": "2022-11-03T06:51:42Z",
+                          "lastUpdateAt": "2022-11-03T06:51:42Z",
+                          "themes": [
+                            {
+                              "themeId": 2,
+                              "themeName": "리추얼",
+                              "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                              "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/ritual.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 5,
+                          "title": "매일 식단 기록",
+                          "contents": "다이어트도 맛있게 할 수 있어",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision5/vision.png",
+                          "memberId": 1,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 2,
+                              "themeName": "리추얼",
+                              "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                              "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/ritual.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 6,
+                          "title": "문구점 사장님 되기",
+                          "contents": "기록광을 위한 문구점",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision1/vision.png",
+                          "memberId": 2,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 6,
+                              "themeName": "버킷 리스트",
+                              "themeDescription": "언젠가 꼭 시도해보고 싶은 삶의 로망 실현하기",
+                              "themeQuestion": "지금 당신의 삶이 1년 밖에 남지 않았다면 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/bucketlist.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 7,
+                          "title": "한 달에 LP 하나",
+                          "contents": "턴테이블 할머니가 꿈",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision2/vision.png",
+                          "memberId": 2,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 2,
+                              "themeName": "리추얼",
+                              "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                              "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/ritual.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 8,
+                          "title": "주 2회 클라이밍",
+                          "contents": "등근육 가보자고",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision3/vision.png",
+                          "memberId": 2,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 3,
+                              "themeName": "챌린지",
+                              "themeDescription": "가까운 미래에 달성해야 할 목표 만들기",
+                              "themeQuestion": "삶을 더 나은 방향으로 변화시키기 위해 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/challenge.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 9,
+                          "title": "7일 무지출 챌린지",
+                          "contents": "아이폰 14프로를 위한 여정",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/vision.png",
+                          "memberId": 2,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 3,
+                              "themeName": "챌린지",
+                              "themeDescription": "가까운 미래에 달성해야 할 목표 만들기",
+                              "themeQuestion": "삶을 더 나은 방향으로 변화시키기 위해 무엇을 하고 싶나요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/challenge.png"
+                            }
+                          ],
+                          "private": false
+                        },
+                        {
+                          "visionId": 10,
+                          "title": "매일 식단 기록",
+                          "contents": "다이어트도 맛있게 할 수 있어",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision5/vision.png",
+                          "memberId": 2,
+                          "createAt": "2022-11-03T06:51:41Z",
+                          "lastUpdateAt": "2022-11-03T06:51:41Z",
+                          "themes": [
+                            {
+                              "themeId": 2,
+                              "themeName": "리추얼",
+                              "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                              "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?",
+                              "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/ritual.png"
+                            }
+                          ],
+                          "private": false
                         }
                       ],
                       "pageNum": 1,
-                      "pageSize": 10,
-                      "totalCount": 1
+                      "totalCount": 15,
+                      "pageSize": 10
                     }
                   }
                 }
