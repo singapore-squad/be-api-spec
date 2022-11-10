@@ -3286,12 +3286,10 @@
             "description": "공개여부"
           },
           "createAt": {
-            "$ref": "#/components/schemas/Time",
-            "description": "생성일시"
+            "$ref": "#/components/schemas/Time"
           },
           "lastUpdateAt": {
-            "$ref": "#/components/schemas/Time",
-            "description": "마지막수정일시"
+            "$ref": "#/components/schemas/Time"
           },
           "viewCount": {
             "type": "integer",
@@ -3318,6 +3316,7 @@
           },
           "media": {
             "type": "array",
+            "description": "등록된 미디어 리스트",
             "items": {
               "$ref": "#/components/schemas/Media"
             }
