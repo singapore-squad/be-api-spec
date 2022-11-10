@@ -983,7 +983,7 @@
         "description": "드림보드 단건 삭제"
       },
       "patch": {
-        "summary": "드림보드 수정 (개발중)",
+        "summary": "드림보드 수정",
         "operationId": "patch-v1-visions-visionId",
         "responses": {
           "200": {
