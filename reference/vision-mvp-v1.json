@@ -2892,7 +2892,7 @@
     },
     "/v1/recommend/search-word": {
       "get": {
-        "summary": "추천 검색어 리스트 조회 (개발중)",
+        "summary": "추천 검색어 리스트 조회 (멤버용)",
         "tags": [],
         "responses": {
           "200": {
@@ -2912,7 +2912,7 @@
                       "type": "array",
                       "description": "추천 검색어 리스트",
                       "items": {
-                        "$ref": "#/components/schemas/RecomSearchWord"
+                        "$ref": "#/components/schemas/RecomSearchWordDto"
                       }
                     }
                   },
@@ -2923,7 +2923,46 @@
                   ]
                 },
                 "examples": {
-                  "추천 검색어 리스트 조회 성공": {}
+                  "추천 검색어 리스트 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": [
+                        {
+                          "word": "N잡러",
+                          "seqNumber": 1
+                        },
+                        {
+                          "word": "운동",
+                          "seqNumber": 2
+                        },
+                        {
+                          "word": "갓생",
+                          "seqNumber": 3
+                        },
+                        {
+                          "word": "아르바이트",
+                          "seqNumber": 4
+                        },
+                        {
+                          "word": "창업",
+                          "seqNumber": 5
+                        },
+                        {
+                          "word": "취미",
+                          "seqNumber": 6
+                        },
+                        {
+                          "word": "일상력",
+                          "seqNumber": 7
+                        },
+                        {
+                          "word": "헬스",
+                          "seqNumber": 9
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -3300,7 +3339,7 @@
     },
     "/admin/v1/recommend/search-word": {
       "get": {
-        "summary": "추천 검색어 리스트 전체 조회",
+        "summary": "추천 검색어 리스트 어드민 조회",
         "tags": [],
         "responses": {
           "200": {
@@ -3320,7 +3359,7 @@
                       "type": "array",
                       "description": "태그 리스트",
                       "items": {
-                        "$ref": "#/components/schemas/ThemeDto"
+                        "$ref": "#/components/schemas/RecomSearchWordAdminDto"
                       }
                     }
                   },
@@ -3339,79 +3378,110 @@
                         {
                           "wordId": 1,
                           "word": "N잡러",
-                          "memberId": 1,
                           "expose": true,
-                          "seqNumber": 1
+                          "seqNumber": 1,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
                         },
                         {
                           "wordId": 2,
                           "word": "운동",
-                          "memberId": 1,
                           "expose": true,
-                          "seqNumber": 2
+                          "seqNumber": 2,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
                         },
                         {
                           "wordId": 3,
                           "word": "갓생",
-                          "memberId": 1,
                           "expose": true,
-                          "seqNumber": 3
+                          "seqNumber": 3,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
                         },
                         {
                           "wordId": 4,
                           "word": "아르바이트",
-                          "memberId": 1,
                           "expose": true,
-                          "seqNumber": 4
+                          "seqNumber": 4,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
                         },
                         {
                           "wordId": 5,
                           "word": "창업",
-                          "memberId": 1,
                           "expose": true,
-                          "seqNumber": 5
+                          "seqNumber": 5,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
                         },
                         {
                           "wordId": 6,
                           "word": "취미",
-                          "memberId": 1,
                           "expose": true,
-                          "seqNumber": 6
+                          "seqNumber": 6,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
                         },
                         {
                           "wordId": 7,
                           "word": "일상력",
-                          "memberId": 1,
                           "expose": true,
-                          "seqNumber": 7
+                          "seqNumber": 7,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
                         },
                         {
                           "wordId": 8,
                           "word": "루틴",
-                          "memberId": 1,
                           "expose": false,
-                          "seqNumber": 8
+                          "seqNumber": 8,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
                         },
                         {
                           "wordId": 9,
                           "word": "헬스",
-                          "memberId": 1,
                           "expose": true,
-                          "seqNumber": 9
-                        },
-                        {
-                          "wordId": 11,
-                          "word": "취미",
-                          "memberId": 1,
-                          "expose": true,
-                          "seqNumber": 11
-                        },
-                        {
-                          "wordId": 10,
-                          "word": "취미",
-                          "memberId": 1,
-                          "expose": true,
-                          "seqNumber": 12
+                          "seqNumber": 9,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
                         }
                       ]
                     }
@@ -4169,13 +4239,31 @@
         "type": "integer",
         "description": "전체 데이터 건수"
       },
-      "RecomSearchWord": {
-        "title": "RecomSearchWord",
+      "RecomSearchWordDto": {
+        "title": "RecomSearchWordDto",
         "x-stoplight": {
           "id": "993htlj7tn2k8"
         },
         "type": "object",
         "description": "추천검색어 (유저)",
+        "properties": {
+          "word": {
+            "type": "string",
+            "description": "검색어"
+          },
+          "seqNumber": {
+            "type": "integer",
+            "description": "노출순서"
+          }
+        }
+      },
+      "RecomSearchWordAdminDto": {
+        "title": "RecomSearchWordAdminDto",
+        "x-stoplight": {
+          "id": "993htlj7tn2k8"
+        },
+        "type": "object",
+        "description": "추천검색어 (어드민)",
         "properties": {
           "wordId": {
             "type": "integer",
@@ -4192,6 +4280,28 @@
           "seqNumber": {
             "type": "integer",
             "description": "노출순서"
+          },
+          "createBy": {
+            "type": "integer",
+            "description": "등록자 id"
+          },
+          "createByNickname": {
+            "type": "string",
+            "description": "등록자 닉네임"
+          },
+          "lastUpdateBy": {
+            "type": "integer",
+            "description": "수정자 id"
+          },
+          "lastUpdateByNickname": {
+            "type": "string",
+            "description": "수정자 닉네임"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "lastUpdateAt": {
+            "$ref": "#/components/schemas/Time"
           }
         }
       }
