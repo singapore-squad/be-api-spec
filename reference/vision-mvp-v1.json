@@ -3300,7 +3300,7 @@
     },
     "/admin/v1/recommend/search-word": {
       "get": {
-        "summary": "추천 검색어 전체 조회 (개발중)",
+        "summary": "추천 검색어 리스트 전체 조회",
         "tags": [],
         "responses": {
           "200": {
@@ -3331,46 +3331,87 @@
                   ]
                 },
                 "examples": {
-                  "\b테마 리스트 조회 성공": {
+                  "추천 검색어 리스트 전체 조회 성공": {
                     "value": {
                       "code": 0,
                       "message": "[DEV] 성공",
                       "data": [
                         {
-                          "themeId": 1,
-                          "themeName": "신념",
-                          "themeDescription": "삶의 중심이 되는 가치관이나 태도",
-                          "themeQuestion": "이것만은 꼭 지키며 살겠다는 중요한 가치는 무엇인가요?"
+                          "wordId": 1,
+                          "word": "N잡러",
+                          "memberId": 1,
+                          "expose": true,
+                          "seqNumber": 1
                         },
                         {
-                          "themeId": 2,
-                          "themeName": "리추얼",
-                          "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
-                          "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?"
+                          "wordId": 2,
+                          "word": "운동",
+                          "memberId": 1,
+                          "expose": true,
+                          "seqNumber": 2
                         },
                         {
-                          "themeId": 3,
-                          "themeName": "챌린지",
-                          "themeDescription": "가까운 미래에 달성해야 할 목표 만들기",
-                          "themeQuestion": "삶을 더 나은 방향으로 변화시키기 위해 무엇을 하고 싶나요?"
+                          "wordId": 3,
+                          "word": "갓생",
+                          "memberId": 1,
+                          "expose": true,
+                          "seqNumber": 3
                         },
                         {
-                          "themeId": 4,
-                          "themeName": "롤모델",
-                          "themeDescription": "각별히 좋아하거나 존경하는 인물 본받기",
-                          "themeQuestion": "최근 당신에게 가장 긍정적인 영향을 준 사람은 누구인가요?"
+                          "wordId": 4,
+                          "word": "아르바이트",
+                          "memberId": 1,
+                          "expose": true,
+                          "seqNumber": 4
                         },
                         {
-                          "themeId": 5,
-                          "themeName": "유대관계",
-                          "themeDescription": "친애하는 존재와의 건강한 관계 쌓기",
-                          "themeQuestion": "미래의 우리를 위해 지금 어떤 시간을 만들어가고 싶나요?"
+                          "wordId": 5,
+                          "word": "창업",
+                          "memberId": 1,
+                          "expose": true,
+                          "seqNumber": 5
                         },
                         {
-                          "themeId": 6,
-                          "themeName": "버킷 리스트",
-                          "themeDescription": "언젠가 꼭 시도해보고 싶은 삶의 로망 실현하기",
-                          "themeQuestion": "지금 당신의 삶이 1년 밖에 남지 않았다면 무엇을 하고 싶나요?"
+                          "wordId": 6,
+                          "word": "취미",
+                          "memberId": 1,
+                          "expose": true,
+                          "seqNumber": 6
+                        },
+                        {
+                          "wordId": 7,
+                          "word": "일상력",
+                          "memberId": 1,
+                          "expose": true,
+                          "seqNumber": 7
+                        },
+                        {
+                          "wordId": 8,
+                          "word": "루틴",
+                          "memberId": 1,
+                          "expose": false,
+                          "seqNumber": 8
+                        },
+                        {
+                          "wordId": 9,
+                          "word": "헬스",
+                          "memberId": 1,
+                          "expose": true,
+                          "seqNumber": 9
+                        },
+                        {
+                          "wordId": 11,
+                          "word": "취미",
+                          "memberId": 1,
+                          "expose": true,
+                          "seqNumber": 11
+                        },
+                        {
+                          "wordId": 10,
+                          "word": "취미",
+                          "memberId": 1,
+                          "expose": true,
+                          "seqNumber": 12
                         }
                       ]
                     }
@@ -3390,7 +3431,7 @@
       },
       "parameters": [],
       "post": {
-        "summary": "추천 검색어 등록 (개발중)",
+        "summary": "추천 검색어 등록",
         "operationId": "post-admin-v1-recommend-search-word",
         "responses": {
           "200": {
@@ -3407,7 +3448,29 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                  "word": {
+                    "type": "string",
+                    "description": "검색어"
+                  },
+                  "expose": {
+                    "type": "boolean",
+                    "description": "노출여부"
+                  },
+                  "seqNum": {
+                    "type": "integer",
+                    "description": "노출순서"
+                  }
+                }
+              },
+              "examples": {
+                "추천검색어 등록": {
+                  "value": {
+                    "word": "취미",
+                    "expose": true,
+                    "seqNum": 10
+                  }
+                }
               }
             }
           }
@@ -3422,7 +3485,8 @@
           },
           "name": "wordId",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "추천검색어 id"
         }
       ],
       "delete": {
@@ -3438,6 +3502,86 @@
             "$ref": "#/components/parameters/Authorization"
           }
         ]
+      },
+      "patch": {
+        "summary": "추천 검색어 수정",
+        "operationId": "delete-admin-v1-recommend-search-word-wordId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/RecomSearchWord"
+                    }
+                  }
+                },
+                "examples": {
+                  "추천검색어 수정 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "wordId": 1,
+                        "word": "N잡러",
+                        "memberId": 1,
+                        "expose": true,
+                        "seqNumber": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "word": {
+                    "type": "string",
+                    "description": "검색어"
+                  },
+                  "expose": {
+                    "type": "boolean",
+                    "description": "노출여부"
+                  },
+                  "seqNum": {
+                    "type": "integer",
+                    "description": "노출순서"
+                  }
+                }
+              },
+              "examples": {
+                "추천검색어 수정": {
+                  "value": {
+                    "word": "취미 수정",
+                    "expose": true,
+                    "seqNum": 10
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
       }
     }
   },
@@ -4040,6 +4184,14 @@
           "word": {
             "type": "string",
             "description": "검색어"
+          },
+          "expose": {
+            "type": "boolean",
+            "description": "노출여부"
+          },
+          "seqNumber": {
+            "type": "integer",
+            "description": "노출순서"
           }
         }
       }
