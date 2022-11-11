@@ -21,7 +21,7 @@
       "url": "https://life-api-dev-ddfgcoc74q-du.a.run.app",
       "description": "Dev"
     },
-     {
+    {
       "url": "https://ab71-58-150-46-115.jp.ngrok.io",
       "description": "ngLock"
     }
@@ -3499,7 +3499,7 @@
         "description": "추천 검색어 전체 조회",
         "parameters": [
           {
-            "$ref": "#/components/parameters/Authorization"
+            "$ref": "#/components/parameters/AdminAuthorization"
           }
         ]
       },
@@ -3514,7 +3514,7 @@
         },
         "parameters": [
           {
-            "$ref": "#/components/parameters/Authorization"
+            "$ref": "#/components/parameters/AdminAuthorization"
           }
         ],
         "requestBody": {
@@ -3564,7 +3564,7 @@
         }
       ],
       "delete": {
-        "summary": "추천 검색어 삭제 (개발중)",
+        "summary": "추천 검색어 삭제",
         "operationId": "delete-admin-v1-recommend-search-word-wordId",
         "responses": {
           "200": {
@@ -3573,7 +3573,7 @@
         },
         "parameters": [
           {
-            "$ref": "#/components/parameters/Authorization"
+            "$ref": "#/components/parameters/AdminAuthorization"
           }
         ]
       },
@@ -3620,7 +3620,7 @@
         },
         "parameters": [
           {
-            "$ref": "#/components/parameters/Authorization"
+            "$ref": "#/components/parameters/AdminAuthorization"
           }
         ],
         "requestBody": {
@@ -3655,7 +3655,8 @@
             }
           },
           "description": ""
-        }
+        },
+        "description": ""
       }
     }
   },
@@ -4322,7 +4323,7 @@
         "description": "Bearer accessToken",
         "required": true
       },
-     "AdminAuthorization": {
+      "AdminAuthorization": {
         "name": "Authorization",
         "in": "header",
         "schema": {
@@ -4331,7 +4332,7 @@
         },
         "description": "Admin Bearer accessToken",
         "required": true
-      },     
+      },
       "visionId": {
         "name": "visionId",
         "in": "query",
