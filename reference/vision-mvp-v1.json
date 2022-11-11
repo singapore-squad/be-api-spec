@@ -20,6 +20,10 @@
     {
       "url": "https://life-api-dev-ddfgcoc74q-du.a.run.app",
       "description": "Dev"
+    },
+     {
+      "url": "https://ab71-58-150-46-115.jp.ngrok.io",
+      "description": "ngLock"
     }
   ],
   "paths": {
@@ -4318,6 +4322,16 @@
         "description": "Bearer accessToken",
         "required": true
       },
+     "AdminAuthorization": {
+        "name": "Authorization",
+        "in": "header",
+        "schema": {
+          "type": "string",
+          "example": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjAxQGVtYWlsLmNvbSIsImlhdCI6MTY2ODE1MDIyNSwiZXhwIjoxNjgxMTEwMjI1LCJwcm92aWRlciI6IkVNQUlMIn0.NUKsj8CYIEHAE2QXF_Y8FegCe1sUTPyNcKIIhwaQMztnIteUATqVxFJAh_1QAkuOXBAOCIm9jH5FZpxY3wn_2A"
+        },
+        "description": "Admin Bearer accessToken",
+        "required": true
+      },     
       "visionId": {
         "name": "visionId",
         "in": "query",
