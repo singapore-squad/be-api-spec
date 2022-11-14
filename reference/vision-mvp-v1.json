@@ -3399,7 +3399,7 @@
       },
       "parameters": []
     },
-    "/admin/v1/recommend/search-word": {
+    "/admin/v1/recommend/search-words": {
       "get": {
         "summary": "추천 검색어 리스트 어드민 조회",
         "tags": [],
@@ -3609,7 +3609,7 @@
         }
       }
     },
-    "/admin/v1/recommend/search-word/{wordId}": {
+    "/admin/v1/recommend/search-words/{wordId}": {
       "parameters": [
         {
           "schema": {
