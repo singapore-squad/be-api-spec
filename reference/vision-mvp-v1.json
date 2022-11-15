@@ -3030,7 +3030,7 @@
             }
           }
         },
-        "operationId": "get-v1-tags",
+        "operationId": "get-v1-recom-serch-words",
         "description": "추천 검색어 리스트 조회",
         "parameters": [
           {
@@ -3132,7 +3132,7 @@
                     },
                     "data": {
                       "type": "array",
-                      "description": "태그 리스트",
+                      "description": "테마 리스트",
                       "items": {
                         "$ref": "#/components/schemas/ThemeDto"
                       }
@@ -3194,7 +3194,7 @@
             }
           }
         },
-        "operationId": "get-v1-tags",
+        "operationId": "get-v1-themes",
         "description": "테마 리스트 조회",
         "parameters": [
           {
@@ -3204,7 +3204,7 @@
       },
       "post": {
         "summary": "테마 등록",
-        "operationId": "post-v1-tags",
+        "operationId": "post-v1-themes",
         "responses": {
           "201": {
             "description": "Created",
@@ -3306,7 +3306,7 @@
       ],
       "delete": {
         "summary": "테마 삭제",
-        "operationId": "delete-v1-tags-tagId",
+        "operationId": "delete-v1-themes-themeId",
         "responses": {
           "200": {
             "description": "OK",
@@ -3491,7 +3491,7 @@
                     },
                     "data": {
                       "type": "array",
-                      "description": "태그 리스트",
+                      "description": "추천 검색어 리스트",
                       "items": {
                         "$ref": "#/components/schemas/RecomSearchWordAdminDto"
                       }
@@ -3625,7 +3625,7 @@
             }
           }
         },
-        "operationId": "get-v1-tags",
+        "operationId": "get-admin-v1-recommend-search-word-wordId",
         "description": "추천 검색어 전체 조회",
         "parameters": [
           {
@@ -3787,6 +3787,216 @@
           "description": ""
         },
         "description": ""
+      }
+    },
+    "/admin/v1/reports": {
+      "get": {
+        "summary": "신고 리스트 어드민 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "description": "신고리스트",
+                      "items": {
+                        "$ref": "#/components/schemas/ReportAdminDto"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "추천 검색어 리스트 전체 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": [
+                        {
+                          "wordId": 1,
+                          "word": "N잡러",
+                          "expose": true,
+                          "seqNumber": 1,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 2,
+                          "word": "운동",
+                          "expose": true,
+                          "seqNumber": 2,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 3,
+                          "word": "갓생",
+                          "expose": true,
+                          "seqNumber": 3,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 4,
+                          "word": "아르바이트",
+                          "expose": true,
+                          "seqNumber": 4,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 5,
+                          "word": "창업",
+                          "expose": true,
+                          "seqNumber": 5,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 6,
+                          "word": "취미",
+                          "expose": true,
+                          "seqNumber": 6,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 7,
+                          "word": "일상력",
+                          "expose": true,
+                          "seqNumber": 7,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 8,
+                          "word": "루틴",
+                          "expose": false,
+                          "seqNumber": 8,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 9,
+                          "word": "헬스",
+                          "expose": true,
+                          "seqNumber": 9,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-admin-v1-reports",
+        "description": "신고리스트 어드민 조회",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ]
+      },
+      "parameters": [],
+      "post": {
+        "summary": "추천 검색어 등록",
+        "operationId": "post-admin-v1-recommend-search-word",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "word": {
+                    "type": "string",
+                    "description": "검색어"
+                  },
+                  "expose": {
+                    "type": "boolean",
+                    "description": "노출여부"
+                  },
+                  "seqNum": {
+                    "type": "integer",
+                    "description": "노출순서"
+                  }
+                }
+              },
+              "examples": {
+                "추천검색어 등록": {
+                  "value": {
+                    "word": "취미",
+                    "expose": true,
+                    "seqNum": 10
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -4437,6 +4647,83 @@
           },
           "lastUpdateAt": {
             "$ref": "#/components/schemas/Time"
+          }
+        }
+      },
+      "ReportAdminDto": {
+        "title": "RecomSearchWordAdminDto",
+        "x-stoplight": {
+          "id": "993htlj7tn2k8"
+        },
+        "type": "object",
+        "description": "추천검색어 (어드민)",
+        "examples": [
+          null
+        ],
+        "properties": {
+          "reportId": {
+            "type": "integer",
+            "description": "신고 id"
+          },
+          "reportType": {
+            "type": "string",
+            "description": "신고유형 0(ETC),1(IMPROPER), 2(COPYRIGHT)"
+          },
+          "reportTargetType": {
+            "description": "신고대상유형 0(MEMBER),1(VISION),2(POST),3(COMMENT)",
+            "type": "string"
+          },
+          "reportTargetId": {
+            "type": "integer",
+            "description": "신고대상 id"
+          },
+          "reportStatus": {
+            "type": "string",
+            "description": "신고처리상태 0(WAIT),1(ONGOING),2(DONE),3(DELETE)"
+          },
+          "contents": {
+            "type": "string",
+            "description": "신고내용"
+          },
+          "memo": {
+            "type": "string",
+            "description": "\b처리자 메모"
+          },
+          "resolveBy": {
+            "description": "처리자 id",
+            "type": "integer"
+          },
+          "resolveByNickname": {
+            "type": "string",
+            "description": "처리자 닉네임"
+          },
+          "createBy": {
+            "type": "integer",
+            "description": "신고자 id"
+          },
+          "createByNickname": {
+            "type": "string",
+            "description": "신고자 닉네임"
+          },
+          "lastUpdateBy": {
+            "type": "integer",
+            "description": "수정자 id"
+          },
+          "lastUpdateByNickname": {
+            "type": "string",
+            "description": "수정자 닉네임"
+          },
+          "resolveAt": {
+            "type": "string",
+            "description": "처리일시"
+          },
+          "createAt": {
+            "type": "string",
+            "description": "신고일시"
+          },
+          "lastUpdateAt": {
+            "type": "string",
+            "description": "수정일시"
           }
         }
       }
