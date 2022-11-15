@@ -2952,7 +2952,7 @@
         ]
       }
     },
-    "/v1/recommend/search-word": {
+    "/v1/recommend/search-words": {
       "get": {
         "summary": "추천 검색어 리스트 조회 (멤버용)",
         "tags": [],
@@ -3039,6 +3039,78 @@
         ]
       },
       "parameters": []
+    },
+    "/v1/reports": {
+      "parameters": [],
+      "post": {
+        "summary": "신고하기",
+        "operationId": "post-v1-reports",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "integer",
+                      "description": "등록된 신고의 id값"
+                    }
+                  }
+                },
+                "examples": {
+                  "신고 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": 90
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "신고하기",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reportTargetType": {
+                    "type": "string",
+                    "description": "신고 대상 타입 0(MEMBER),1(VISION),2(POST),3(COMMENT)"
+                  },
+                  "reportTargetId": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "examples": {
+                "신고하기 요청": {
+                  "value": {
+                    "reportTargetType": "POST",
+                    "reportTargetId": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "/v1/themes": {
       "get": {
