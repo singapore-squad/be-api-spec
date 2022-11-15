@@ -3065,8 +3065,8 @@
                   "신고 성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공",
-                      "data": 90
+                      "message": "[DEV] 성공",
+                      "data": 6
                     }
                   }
                 }
@@ -3818,120 +3818,195 @@
                   ]
                 },
                 "examples": {
-                  "추천 검색어 리스트 전체 조회 성공": {
+                  "신고 리스트 페이지 조회 성공": {
                     "value": {
                       "code": 0,
                       "message": "[DEV] 성공",
                       "data": [
                         {
-                          "wordId": 1,
-                          "word": "N잡러",
-                          "expose": true,
-                          "seqNumber": 1,
+                          "reportId": 57,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 281,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
                           "createBy": 9001,
                           "createByNickname": "어드민01",
-                          "lastUpdateBy": 9001,
-                          "lastUpdateByNickname": "어드민01",
-                          "createAt": "2022-11-11T01:55:17Z",
-                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
                         },
                         {
-                          "wordId": 2,
-                          "word": "운동",
-                          "expose": true,
-                          "seqNumber": 2,
+                          "reportId": 56,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 282,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
                           "createBy": 9001,
                           "createByNickname": "어드민01",
-                          "lastUpdateBy": 9001,
-                          "lastUpdateByNickname": "어드민01",
-                          "createAt": "2022-11-11T01:55:17Z",
-                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
                         },
                         {
-                          "wordId": 3,
-                          "word": "갓생",
-                          "expose": true,
-                          "seqNumber": 3,
+                          "reportId": 55,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 283,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
                           "createBy": 9001,
                           "createByNickname": "어드민01",
-                          "lastUpdateBy": 9001,
-                          "lastUpdateByNickname": "어드민01",
-                          "createAt": "2022-11-11T01:55:17Z",
-                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
                         },
                         {
-                          "wordId": 4,
-                          "word": "아르바이트",
-                          "expose": true,
-                          "seqNumber": 4,
+                          "reportId": 54,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 284,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
                           "createBy": 9001,
                           "createByNickname": "어드민01",
-                          "lastUpdateBy": 9001,
-                          "lastUpdateByNickname": "어드민01",
-                          "createAt": "2022-11-11T01:55:17Z",
-                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
                         },
                         {
-                          "wordId": 5,
-                          "word": "창업",
-                          "expose": true,
-                          "seqNumber": 5,
+                          "reportId": 53,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 285,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
                           "createBy": 9001,
                           "createByNickname": "어드민01",
-                          "lastUpdateBy": 9001,
-                          "lastUpdateByNickname": "어드민01",
-                          "createAt": "2022-11-11T01:55:17Z",
-                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
                         },
                         {
-                          "wordId": 6,
-                          "word": "취미",
-                          "expose": true,
-                          "seqNumber": 6,
+                          "reportId": 52,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 286,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
                           "createBy": 9001,
                           "createByNickname": "어드민01",
-                          "lastUpdateBy": 9001,
-                          "lastUpdateByNickname": "어드민01",
-                          "createAt": "2022-11-11T01:55:17Z",
-                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
                         },
                         {
-                          "wordId": 7,
-                          "word": "일상력",
-                          "expose": true,
-                          "seqNumber": 7,
+                          "reportId": 51,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 287,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
                           "createBy": 9001,
                           "createByNickname": "어드민01",
-                          "lastUpdateBy": 9001,
-                          "lastUpdateByNickname": "어드민01",
-                          "createAt": "2022-11-11T01:55:17Z",
-                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
                         },
                         {
-                          "wordId": 8,
-                          "word": "루틴",
-                          "expose": false,
-                          "seqNumber": 8,
+                          "reportId": 50,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 288,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
                           "createBy": 9001,
                           "createByNickname": "어드민01",
-                          "lastUpdateBy": 9001,
-                          "lastUpdateByNickname": "어드민01",
-                          "createAt": "2022-11-11T01:55:17Z",
-                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
                         },
                         {
-                          "wordId": 9,
-                          "word": "헬스",
-                          "expose": true,
-                          "seqNumber": 9,
+                          "reportId": 49,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 289,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
                           "createBy": 9001,
                           "createByNickname": "어드민01",
-                          "lastUpdateBy": 9001,
-                          "lastUpdateByNickname": "어드민01",
-                          "createAt": "2022-11-11T01:55:17Z",
-                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
+                        },
+                        {
+                          "reportId": 48,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 290,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
                         }
-                      ]
+                      ],
+                      "pageNum": 1,
+                      "totalCount": 50,
+                      "pageSize": 10
                     }
                   }
                 }
@@ -3944,10 +4019,18 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/AdminAuthorization"
+          },
+          {
+            "$ref": "#/components/parameters/pageNum"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
           }
         ]
-      },
-      "parameters": []
+      }
     },
     "/admin/v1/reports/{reportId}": {
       "parameters": [
@@ -3982,6 +4065,32 @@
                       "$ref": "#/components/schemas/ReportAdminDto"
                     }
                   }
+                },
+                "examples": {
+                  "신고 수정 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "reportId": 1,
+                        "reportType": "ETC",
+                        "reportTargetType": "POST",
+                        "reportStatus": "ONGOING",
+                        "reportTargetId": 330,
+                        "contents": null,
+                        "memo": "test",
+                        "resolveBy": 9001,
+                        "resolveByNickname": "어드민01",
+                        "createBy": 9001,
+                        "createByNickname": "어드민01",
+                        "lastUpdateBy": null,
+                        "lastUpdateByNickname": null,
+                        "resolveAt": null,
+                        "createAt": "2022-11-15T05:17:46Z",
+                        "lastUpdateAt": "2022-11-15T05:18:31Z"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -4008,9 +4117,18 @@
                     "description": "신고상태"
                   }
                 }
+              },
+              "examples": {
+                "신고 수정 요청": {
+                  "value": {
+                    "memo": "test",
+                    "reportStatus": "ONGOING"
+                  }
+                }
               }
             }
-          }
+          },
+          "description": ""
         }
       },
       "delete": {
@@ -4033,10 +4151,10 @@
                   }
                 },
                 "examples": {
-                  "example-1": {
+                  "신고 삭제 성공": {
                     "value": {
                       "code": 0,
-                      "message": "string"
+                      "message": "[DEV] 성공"
                     }
                   }
                 }
