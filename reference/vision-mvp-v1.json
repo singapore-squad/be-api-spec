@@ -844,8 +844,17 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "memberId",
+            "description": "멤버 id"
           }
-        ]
+        ],
+        "description": "- 드림보드 목록을 페이징합니다.\n- memberId Query Param이 없으면 자신의 드림보드 목록 요청으로 간주합니다. (비공개 드림보드도 포함)\n- memberId Query Param이 있으면 다른 유저의 \b드림보드 목록 요청으로 간주합니다"
       },
       "post": {
         "summary": "드림보드 등록",
@@ -1358,7 +1367,7 @@
           }
         },
         "operationId": "get-v1-posts",
-        "description": "- 액션보드 목록을 페이징합니다.\n- memberId Query Param이 없으면 자신의 액션보드 목록 요청으로 간주합니다. (비공개 포스트도 포함하고 해당 비전이 자기 소유가 아닐시 에러)\n- memberId Query Param이 있으면 다른 유저의 액션보드 목록 요청으로 간주합니다\n- visionId Query Param이 없으면 해당 유저의 전체 액션보드를 페이징합니다.",
+        "description": "- 액션보드 목록을 페이징합니다.\n- memberId Query Param이 없으면 자신의 액션보드 목록 요청으로 간주합니다. (비공개포스트도 포함하고 visionId Query Param의 비전이 자기 소유가 아닐시 에러)\n- memberId Query Param이 있으면 다른 유저의 액션보드 목록 요청으로 간주합니다\n- visionId Query Param이 없으면 해당 유저의 전체 액션보드를 페이징합니다.",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
