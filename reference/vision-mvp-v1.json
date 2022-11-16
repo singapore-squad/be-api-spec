@@ -3091,7 +3091,8 @@
                     "description": "신고 대상 타입 0(MEMBER),1(VISION),2(POST),3(COMMENT)"
                   },
                   "reportTargetId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "신고 대상 id"
                   }
                 }
               },
@@ -4045,7 +4046,7 @@
         }
       ],
       "patch": {
-        "summary": "신고 수정",
+        "summary": "신고 어드민 수정",
         "operationId": "patch-admin-v1-reports-reportId",
         "responses": {
           "200": {
@@ -4130,43 +4131,6 @@
           },
           "description": ""
         }
-      },
-      "delete": {
-        "summary": "",
-        "operationId": "delete-admin-v1-reports-reportId",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "$ref": "#/components/schemas/ResponseCode"
-                    },
-                    "message": {
-                      "$ref": "#/components/schemas/ResponseMessage"
-                    }
-                  }
-                },
-                "examples": {
-                  "신고 삭제 성공": {
-                    "value": {
-                      "code": 0,
-                      "message": "[DEV] 성공"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/AdminAuthorization"
-          }
-        ]
       }
     }
   },
