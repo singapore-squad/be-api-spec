@@ -2943,7 +2943,7 @@
           }
         },
         "operationId": "get-v1-search-posts",
-        "description": "* 아래의 노출 우선순위로 액션보드를 검색합니다.\n\n* 노출 우선순위 :\n* 1순위) 드림보드와 액션보드 모두 키워드 포함\n* 2순위) 드림보드에 키워드 포함\n* 3순위) 액션보드에 키워드 포함",
+        "description": "검색어(q), 테마명(theme) 중 둘중 하나는 입력된 값이 있어야 합니다.\n\n* 아래의 노출 우선순위로 액션보드를 검색합니다.\n* 노출 우선순위 :\n* 1순위) 드림보드와 액션보드 모두 키워드 포함\n* 2순위) 드림보드에 키워드 포함\n* 3순위) 액션보드에 키워드 포함",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
@@ -2963,8 +2963,7 @@
             },
             "in": "query",
             "name": "q",
-            "description": "검색어",
-            "required": true
+            "description": "검색어"
           },
           {
             "schema": {
