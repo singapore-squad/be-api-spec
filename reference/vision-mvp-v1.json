@@ -2965,6 +2965,14 @@
             "name": "q",
             "description": "검색어",
             "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "theme",
+            "description": "테마명"
           }
         ]
       }
