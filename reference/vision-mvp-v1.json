@@ -3792,6 +3792,404 @@
         ]
       }
     },
+    "/v1/pub/search/posts ": {
+      "get": {
+        "summary": "비로그인 액션보드 검색",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PostListDto"
+                      }
+                    },
+                    "pageNum": {
+                      "$ref": "#/components/schemas/PageNum"
+                    },
+                    "pageSize": {
+                      "$ref": "#/components/schemas/PageSize"
+                    },
+                    "totalCount": {
+                      "$ref": "#/components/schemas/TotalCount"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data",
+                    "pageNum",
+                    "pageSize",
+                    "totalCount"
+                  ]
+                },
+                "examples": {
+                  "검색 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": [
+                        {
+                          "postId": 199,
+                          "title": "자전거 출근",
+                          "contents": "무지출 챌린지 1일차\n일주일 무지출 챌린지의 첫시작은 자전거출근으로\n교통비도 조금이나마 아끼고 아침을 힘차게 맞이할 수 있어 좋다.\n이번주 평일은 자전거 출퇴근 도전 !",
+                          "visionId": 4,
+                          "visionTitle": "7일 무지출 챌린지",
+                          "memberId": 3,
+                          "nickname": "유저03",
+                          "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-11-04T02:16:11Z",
+                          "lastUpdateAt": "2022-11-04T02:16:11Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/action1.png",
+                          "wtags": [
+                            {
+                              "wtagId": 413,
+                              "wtagName": "새벽출근길",
+                              "wtagType": "WHEN",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 414,
+                              "wtagName": "퇴계원역에서",
+                              "wtagType": "WHERE",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 415,
+                              "wtagName": "자전거출근",
+                              "wtagType": "WHAT",
+                              "private": false
+                            }
+                          ],
+                          "media": [],
+                          "private": false
+                        },
+                        {
+                          "postId": 206,
+                          "title": "챌린지 끝 아이폰 겟?",
+                          "contents": "7일간의 무지출 챌린지 끝!\n아이폰 14프로를 사기에는 돈이 조금 부족해서 7일동안 무지출 챌린지를 했다.\n평일 출퇴근은 자전거로 하고, 저녁은 최대한 냉장고에 있는 것을 활용해 먹었다.\n캐시슬라이드와 당근마켓은 처음 써봤는데, 앞으로도 자주 활용해야겠다.\n증긴증긴 실패할뻔한 적도 있지만, 아이폰 14프로를 생각하며 버텼다 ..!\n아이폰 14프로야 반가워 ♥\n",
+                          "visionId": 4,
+                          "visionTitle": "7일 무지출 챌린지",
+                          "memberId": 3,
+                          "nickname": "유저03",
+                          "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-11-04T02:16:11Z",
+                          "lastUpdateAt": "2022-11-04T02:16:11Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/action12.png",
+                          "wtags": [
+                            {
+                              "wtagId": 428,
+                              "wtagName": "퇴근후저녁",
+                              "wtagType": "WHEN",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 429,
+                              "wtagName": "가로수길에서",
+                              "wtagType": "WHERE",
+                              "private": false
+                            }
+                          ],
+                          "media": [],
+                          "private": false
+                        },
+                        {
+                          "postId": 205,
+                          "title": "비장의 카드 당근마켓",
+                          "contents": "무지출 챌린지 7일차\n꼬깃꼬깃 소중한 5만원..\n아이폰 사는데 돈이 조금 모자라길래\n당근마켓에 필요없는 코트 팔아서 5만원 벌었다\n아이폰 살때 보태야지 ㅎㅎ 무지출 챌린지 끝!",
+                          "visionId": 4,
+                          "visionTitle": "7일 무지출 챌린지",
+                          "memberId": 3,
+                          "nickname": "유저03",
+                          "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-11-04T02:16:11Z",
+                          "lastUpdateAt": "2022-11-04T02:16:11Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/action11.png",
+                          "wtags": [
+                            {
+                              "wtagId": 426,
+                              "wtagName": "일요일오후",
+                              "wtagType": "WHEN",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 427,
+                              "wtagName": "우리동네에서",
+                              "wtagType": "WHERE",
+                              "private": false
+                            }
+                          ],
+                          "media": [],
+                          "private": false
+                        },
+                        {
+                          "postId": 204,
+                          "title": "공짜라 더 맛있는 도넛",
+                          "contents": "무지출 챌린지 6일차\n캐시워크 포인트로 오리지널 글레이즈드 도넛 겟!\n평소에 많이 걷기도 하고 돈버는 퀴즈도 열심히 했더니\n어느새 포인트가 꽤 쌓여있었다\n집에 있는 드립커피 내려서 도넛이랑 같이 먹었더니 꿀맛 ~",
+                          "visionId": 4,
+                          "visionTitle": "7일 무지출 챌린지",
+                          "memberId": 3,
+                          "nickname": "유저03",
+                          "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-11-04T02:16:11Z",
+                          "lastUpdateAt": "2022-11-04T02:16:11Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/action10.png",
+                          "wtags": [
+                            {
+                              "wtagId": 424,
+                              "wtagName": "퇴근후저녁",
+                              "wtagType": "WHEN",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 425,
+                              "wtagName": "집에서",
+                              "wtagType": "WHERE",
+                              "private": false
+                            }
+                          ],
+                          "media": [],
+                          "private": false
+                        },
+                        {
+                          "postId": 203,
+                          "title": "캐시슬라이드가 준 공짜 커피",
+                          "contents": "무지출 챌린지 3일차\n캐시슬라이드로 차곡차곡 포인트 모아서 얻은 스타벅스 기프티콘 !\n힘들게 얻은 공짜의 맛.. 달다\n무지출 챌린지 아직 절반 지남 ㅠ",
+                          "visionId": 4,
+                          "visionTitle": "7일 무지출 챌린지",
+                          "memberId": 3,
+                          "nickname": "유저03",
+                          "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-11-04T02:16:11Z",
+                          "lastUpdateAt": "2022-11-04T02:16:11Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/action9.png",
+                          "wtags": [
+                            {
+                              "wtagId": 422,
+                              "wtagName": "수요일점심",
+                              "wtagType": "WHEN",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 423,
+                              "wtagName": "회사옆카페에서",
+                              "wtagType": "WHERE",
+                              "private": false
+                            }
+                          ],
+                          "media": [],
+                          "private": false
+                        },
+                        {
+                          "postId": 202,
+                          "title": "산책하면서 포인트 쌓기",
+                          "contents": "무지출 챌린지 2일차\n요즘 우리집 강아지랑 산책하면서\n캐시워크 포인트도 열심히 쌓고있다\n산책도 하고 포인트도 쌓고 일석이조",
+                          "visionId": 4,
+                          "visionTitle": "7일 무지출 챌린지",
+                          "memberId": 3,
+                          "nickname": "유저03",
+                          "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-11-04T02:16:11Z",
+                          "lastUpdateAt": "2022-11-04T02:16:11Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/action8.png",
+                          "wtags": [
+                            {
+                              "wtagId": 420,
+                              "wtagName": "화요일저녁",
+                              "wtagType": "WHEN",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 421,
+                              "wtagName": "집옆산책로에서",
+                              "wtagType": "WHERE",
+                              "private": false
+                            }
+                          ],
+                          "media": [],
+                          "private": false
+                        },
+                        {
+                          "postId": 201,
+                          "title": "자급자족 딸기 키우기",
+                          "contents": "무지출 챌린지 6일차\n나의 반려식물 ?\n무럭무럭 자라고 있구나 ? 귀여운 녀석들\n요즘 대파값이 비싸던데 다음에는 대파를 길러봐야겠다\n근데 딸기.. 언제 익지 (군침)",
+                          "visionId": 4,
+                          "visionTitle": "7일 무지출 챌린지",
+                          "memberId": 3,
+                          "nickname": "유저03",
+                          "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-11-04T02:16:11Z",
+                          "lastUpdateAt": "2022-11-04T02:16:11Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/action7.png",
+                          "wtags": [
+                            {
+                              "wtagId": 418,
+                              "wtagName": "나른한주말오후",
+                              "wtagType": "WHEN",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 419,
+                              "wtagName": "우리집에서",
+                              "wtagType": "WHERE",
+                              "private": false
+                            }
+                          ],
+                          "media": [],
+                          "private": false
+                        },
+                        {
+                          "postId": 200,
+                          "title": "오늘의 간식은 약단밤 ?",
+                          "contents": "무지출 챌린지 5일차\n시골에서 할머니가 보내주신 밤으로 간식 해결 !\n밤 칼집내서 에어프라이기 돌리면 얼마나 맛있게요 ?\n역시 겨울에는 구황작물이지 ♥\n오늘도 지출 0원 달성 !",
+                          "visionId": 4,
+                          "visionTitle": "7일 무지출 챌린지",
+                          "memberId": 3,
+                          "nickname": "유저03",
+                          "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-11-04T02:16:11Z",
+                          "lastUpdateAt": "2022-11-04T02:16:11Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/action6.png",
+                          "wtags": [
+                            {
+                              "wtagId": 416,
+                              "wtagName": "야심한새벽",
+                              "wtagType": "WHEN",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 417,
+                              "wtagName": "우리집에서",
+                              "wtagType": "WHERE",
+                              "private": false
+                            }
+                          ],
+                          "media": [],
+                          "private": false
+                        },
+                        {
+                          "postId": 193,
+                          "title": "자급자족 딸기 키우기",
+                          "contents": "무지출 챌린지 6일차\n나의 반려식물 ?\n무럭무럭 자라고 있구나 ? 귀여운 녀석들\n요즘 대파값이 비싸던데 다음에는 대파를 길러봐야겠다\n근데 딸기.. 언제 익지 (군침)",
+                          "visionId": 14,
+                          "visionTitle": "7일 무지출 챌린지",
+                          "memberId": 2,
+                          "nickname": "유저02",
+                          "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-11-04T02:16:11Z",
+                          "lastUpdateAt": "2022-11-04T02:16:11Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/action7.png",
+                          "wtags": [
+                            {
+                              "wtagId": 401,
+                              "wtagName": "나른한주말오후",
+                              "wtagType": "WHEN",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 402,
+                              "wtagName": "우리집에서",
+                              "wtagType": "WHERE",
+                              "private": false
+                            }
+                          ],
+                          "media": [],
+                          "private": false
+                        },
+                        {
+                          "postId": 194,
+                          "title": "산책하면서 포인트 쌓기",
+                          "contents": "무지출 챌린지 2일차\n요즘 우리집 강아지랑 산책하면서\n캐시워크 포인트도 열심히 쌓고있다\n산책도 하고 포인트도 쌓고 일석이조",
+                          "visionId": 14,
+                          "visionTitle": "7일 무지출 챌린지",
+                          "memberId": 2,
+                          "nickname": "유저02",
+                          "memberImgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-11-04T02:16:11Z",
+                          "lastUpdateAt": "2022-11-04T02:16:11Z",
+                          "thumbContentType": "IMAGE",
+                          "thumbContentUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision4/action8.png",
+                          "wtags": [
+                            {
+                              "wtagId": 403,
+                              "wtagName": "화요일저녁",
+                              "wtagType": "WHEN",
+                              "private": false
+                            },
+                            {
+                              "wtagId": 404,
+                              "wtagName": "집옆산책로에서",
+                              "wtagType": "WHERE",
+                              "private": false
+                            }
+                          ],
+                          "media": [],
+                          "private": false
+                        }
+                      ],
+                      "pageNum": 1,
+                      "totalCount": 73,
+                      "pageSize": 10
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-search-posts",
+        "description": "검색어(q), 테마명(theme) 중 둘중 하나는 입력된 값이 있어야 합니다.\n\n* 아래의 노출 우선순위로 액션보드를 검색합니다.\n* 노출 우선순위 :\n* 1순위) 드림보드와 액션보드 모두 키워드 포함\n* 2순위) 드림보드에 키워드 포함\n* 3순위) 액션보드에 키워드 포함",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/pageNum"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "q",
+            "description": "검색어"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "theme",
+            "description": "테마명"
+          }
+        ]
+      },
+      "parameters": []
+    },
     "/v1/recommend/search-words": {
       "get": {
         "summary": "추천 검색어 리스트 조회 (멤버용)",
