@@ -4347,7 +4347,7 @@
         }
       }
     },
-    "/v1/themes": {
+    "/v1/pub/themes": {
       "get": {
         "summary": "테마 리스트 조회",
         "tags": [],
@@ -4437,146 +4437,7 @@
           }
         ]
       },
-      "post": {
-        "summary": "테마 등록",
-        "operationId": "post-v1-themes",
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "$ref": "#/components/schemas/ResponseCode"
-                    },
-                    "message": {
-                      "$ref": "#/components/schemas/ResponseMessage"
-                    },
-                    "data": {
-                      "type": "integer",
-                      "description": "등록된 tag의 id값"
-                    }
-                  },
-                  "required": [
-                    "code",
-                    "message",
-                    "data"
-                  ]
-                },
-                "examples": {
-                  "비전 태그 등록 성공": {
-                    "value": {
-                      "code": 0,
-                      "message": "성공",
-                      "data": 90
-                    }
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              }
-            }
-          }
-        },
-        "description": "테마 등록",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Authorization"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "themeName": {
-                    "type": "string",
-                    "description": "태그명"
-                  },
-                  "themeDescription": {
-                    "type": "string"
-                  },
-                  "themeQuestion": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "themeName"
-                ]
-              },
-              "examples": {
-                "비전 \b테마 등록": {
-                  "value": {
-                    "themeName": "신념",
-                    "themeDescription": "삶의 중심이 되는 가치관이나 태도",
-                    "themeQuestion": "이것만은 꼭 지키며 살겠다는 중요한 가치는 무엇인가요?"
-                  }
-                }
-              }
-            }
-          },
-          "description": ""
-        }
-      },
       "parameters": []
-    },
-    "/v1/\bthemes/{themeId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "themeId",
-          "in": "path",
-          "required": true,
-          "description": "테마 아이디"
-        }
-      ],
-      "delete": {
-        "summary": "테마 삭제",
-        "operationId": "delete-v1-themes-themeId",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "$ref": "#/components/schemas/ResponseCode"
-                    },
-                    "message": {
-                      "$ref": "#/components/schemas/ResponseMessage"
-                    }
-                  }
-                },
-                "examples": {
-                  "삭제 성공": {
-                    "value": {
-                      "code": 0,
-                      "message": "성공"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "description": "\b테마 삭제",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Authorization"
-          }
-        ]
-      }
     },
     "/v1/files": {
       "post": {
