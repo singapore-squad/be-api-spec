@@ -5401,7 +5401,8 @@
             "visionId": 1,
             "visionTitle": "7일 무지출 챌린지",
             "memberId": 1,
-            "isPrivate": false,
+            "private": false,
+            "like": false,
             "createAt": "2022-10-24T02:32:18Z",
             "lastUpdateAt": "2022-10-30T09:22:28Z",
             "wtags": [
@@ -5464,7 +5465,7 @@
             "type": "string",
             "description": "액션보드 등록자 이미지 URL"
           },
-          "isPrivate": {
+          "private": {
             "type": "boolean",
             "description": "공개여부"
           },
@@ -5503,13 +5504,31 @@
             "items": {
               "$ref": "#/components/schemas/Media"
             }
+          },
+          "like": {
+            "type": "boolean",
+            "description": "좋아요여부"
           }
         },
         "required": [
           "postId",
+          "title",
+          "contents",
+          "visionId",
+          "visionTitle",
           "memberId",
+          "nickName",
+          "memberImgUrl",
+          "private",
           "createAt",
-          "lastUpdateAt"
+          "lastUpdateAt",
+          "viewCount",
+          "userViewCount",
+          "likeCount",
+          "commentCount",
+          "wtags",
+          "media",
+          "like"
         ]
       },
       "PostListDto": {
