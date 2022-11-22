@@ -429,6 +429,9 @@
                   },
                   "imgUrl": {
                     "type": "string"
+                  },
+                  "greeting": {
+                    "type": "string"
                   }
                 }
               },
@@ -5425,6 +5428,30 @@
             "type": "string",
             "format": "email",
             "description": "프로필 이미지 url"
+          },
+          "greeting": {
+            "type": "string",
+            "description": "멤버 소개"
+          },
+          "isFollow": {
+            "description": "팔로우 여부",
+            "type": "boolean"
+          },
+          "followCount": {
+            "type": "number",
+            "description": "팔로우수"
+          },
+          "bookmarkCount": {
+            "type": "number",
+            "description": "북마크수"
+          },
+          "visionCount": {
+            "type": "number",
+            "description": "드림보드수"
+          },
+          "postCount": {
+            "type": "number",
+            "description": "에피소드수"
           }
         },
         "required": [
@@ -5638,6 +5665,10 @@
             "type": "string",
             "description": "작성자 프로필 이미지url"
           },
+          "greeting": {
+            "type": "string",
+            "description": "작성자 소개"
+          },
           "private": {
             "type": "boolean",
             "description": "공개여부"
@@ -5662,8 +5693,8 @@
           "memberId",
           "nickname",
           "memberImgUrl",
+          "greeting",
           "private",
-          "bookmark",
           "like"
         ]
       },
@@ -5820,6 +5851,10 @@
             "type": "string",
             "description": "액션보드 등록자 이미지 URL"
           },
+          "greeting": {
+            "type": "string",
+            "description": "액션보드 등록자 소개"
+          },
           "private": {
             "type": "boolean",
             "description": "공개여부"
@@ -5874,6 +5909,7 @@
           "memberId",
           "nickName",
           "memberImgUrl",
+          "greeting",
           "private",
           "createAt",
           "lastUpdateAt",
