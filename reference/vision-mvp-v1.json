@@ -428,10 +428,12 @@
                     "description": "변경할 닉네임"
                   },
                   "imgUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "변경할 이미지 URL"
                   },
                   "greeting": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "변경할 소개"
                   }
                 }
               },
