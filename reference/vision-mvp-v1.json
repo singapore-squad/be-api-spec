@@ -451,6 +451,67 @@
         }
       }
     },
+    "/v1/members/{memberId}": {
+      "get": {
+        "summary": "다른 멤버 프로필 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Member"
+                    }
+                  }
+                },
+                "examples": {
+                  "회원 정보조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "memberId": 1,
+                        "email": "tester01@email.com",
+                        "nickname": "테스터01",
+                        "imgUrl": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-members-me",
+        "description": "\b다른 멤버 프로필 조회",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "memberId",
+          "in": "path",
+          "required": true,
+          "description": "멤버 아이디"
+        }
+      ]
+    },
     "/v1/members/nickname/{nickname}": {
       "parameters": [
         {
@@ -508,6 +569,63 @@
         "description": "- 닉네임 존재여부을 조회합니다. (중복체크에서 사용)",
         "parameters": []
       }
+    },
+    "/v1/pub/members/{memberId}": {
+      "get": {
+        "summary": "비로그인 다른 멤버 프로필 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Member"
+                    }
+                  }
+                },
+                "examples": {
+                  "회원 정보조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "memberId": 1,
+                        "email": "tester01@email.com",
+                        "nickname": "테스터01",
+                        "imgUrl": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-members-me",
+        "description": "\b다른 멤버 프로필 조회",
+        "parameters": []
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "memberId",
+          "in": "path",
+          "required": true,
+          "description": "멤버 아이디"
+        }
+      ]
     },
     "/v1/visions": {
       "get": {
@@ -2933,6 +3051,243 @@
             "$ref": "#/components/parameters/Authorization"
           }
         ]
+      }
+    },
+    "/v1/follows": {
+      "parameters": [],
+      "get": {
+        "summary": "팔로워/팔로이 리스트",
+        "operationId": "get-v1-follows",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FollowMemberDto"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "팔로이 리스트 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": [
+                        {
+                          "memberId": 1,
+                          "email": "tester01@email.com",
+                          "nickname": "유저01",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "greeting": "10년차 프리랜서 디자이너,\n비건지향 간헐적 운동, 장래희망은 문구점 사장\ninstagram.com/nmin_official",
+                          "followAt": "2022-11-22T04:02:44Z"
+                        },
+                        {
+                          "memberId": 3,
+                          "email": "tester03@email.com",
+                          "nickname": "유저03",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "greeting": "10년차 프리랜서 디자이너,\n비건지향 간헐적 운동, 장래희망은 문구점 사장\ninstagram.com/nmin_official",
+                          "followAt": "2022-11-22T04:02:44Z"
+                        }
+                      ],
+                      "pageNum": 1,
+                      "totalCount": 2,
+                      "pageSize": 10
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "followerId",
+            "description": "팔로워 id"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "followeeId",
+            "description": "팔로이 id"
+          }
+        ],
+        "description": "- followeeId가 A -> A를 follow 하는 사람들 목록\n- followerId가 A -> A가 follow 하는 사람들 목록\n\n둘 중에 하나만 입력되어야 합니다. 둘 다 null이거나 둘 다 입력되면 에러발생합니다."
+      }
+    },
+    "/v1/follows/{memberId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "memberId",
+          "in": "path",
+          "required": true,
+          "description": "멤버 id"
+        }
+      ],
+      "post": {
+        "summary": "멤버 팔로우하기",
+        "operationId": "post-v1-follows-memberId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "description": ""
+      },
+      "delete": {
+        "summary": "멤버 언팔로우하기",
+        "operationId": "delete-v1-follows-memberId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      }
+    },
+    "/v1/pub/follows": {
+      "parameters": [],
+      "get": {
+        "summary": "비로그인 팔로워/팔로이 리스트",
+        "operationId": "get-v1-follows",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FollowMemberDto"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "팔로이 리스트 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": [
+                        {
+                          "memberId": 1,
+                          "email": "tester01@email.com",
+                          "nickname": "유저01",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "greeting": "10년차 프리랜서 디자이너,\n비건지향 간헐적 운동, 장래희망은 문구점 사장\ninstagram.com/nmin_official",
+                          "followAt": "2022-11-22T04:02:44Z"
+                        },
+                        {
+                          "memberId": 3,
+                          "email": "tester03@email.com",
+                          "nickname": "유저03",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "greeting": "10년차 프리랜서 디자이너,\n비건지향 간헐적 운동, 장래희망은 문구점 사장\ninstagram.com/nmin_official",
+                          "followAt": "2022-11-22T04:02:44Z"
+                        }
+                      ],
+                      "pageNum": 1,
+                      "totalCount": 2,
+                      "pageSize": 10
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "followerId",
+            "description": "팔로워 id"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "followeeId",
+            "description": "팔로이 id"
+          }
+        ],
+        "description": "- followeeId가 A -> A를 follow 하는 사람들 목록\n- followerId가 A -> A가 follow 하는 사람들 목록"
       }
     },
     "/v1/recommend/visions": {
@@ -5838,6 +6193,34 @@
           "lastUpdateAt": {
             "type": "string",
             "description": "수정일시"
+          }
+        }
+      },
+      "FollowMemberDto": {
+        "title": "FollowMemberDto",
+        "x-stoplight": {
+          "id": "k05mevoqsds2f"
+        },
+        "type": "object",
+        "description": "팔로우 멤버",
+        "properties": {
+          "memberId": {
+            "type": "number"
+          },
+          "email": {
+            "type": "string"
+          },
+          "nickname": {
+            "type": "string"
+          },
+          "imgUrl": {
+            "type": "string"
+          },
+          "greeting": {
+            "type": "string"
+          },
+          "followAt": {
+            "$ref": "#/components/schemas/Time"
           }
         }
       }
