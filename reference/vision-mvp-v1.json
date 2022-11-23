@@ -485,10 +485,17 @@
                       "code": 0,
                       "message": "[DEV] 성공",
                       "data": {
-                        "memberId": 1,
-                        "email": "tester01@email.com",
-                        "nickname": "테스터01",
-                        "imgUrl": ""
+                        "memberId": 2,
+                        "email": "tester02@email.com",
+                        "nickname": "유저02",
+                        "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                        "greeting": "10년차 프리랜서 디자이너,\n비건지향 간헐적 운동, 장래희망은 문구점 사장\ninstagram.com/nmin_official",
+                        "followerCount": 0,
+                        "followingCount": 0,
+                        "bookmarkCount": 0,
+                        "visionCount": 0,
+                        "postCount": 0,
+                        "follow": false
                       }
                     }
                   }
@@ -5439,9 +5446,13 @@
             "description": "팔로우 여부",
             "type": "boolean"
           },
-          "followCount": {
+          "followerCount": {
             "type": "number",
-            "description": "팔로우수"
+            "description": "팔로워수"
+          },
+          "followingCount": {
+            "type": "number",
+            "description": "팔로잉수"
           },
           "bookmarkCount": {
             "type": "number",
