@@ -2810,7 +2810,7 @@
       },
       "parameters": []
     },
-    "/v1/\bbookmark/visions/{visionId}": {
+    "/v1/bookmark/visions/{visionId}": {
       "parameters": [
         {
           "schema": {
