@@ -1745,7 +1745,7 @@
                   "media": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/Media"
+                      "$ref": "#/components/schemas/AddMediaReq"
                     }
                   }
                 }
@@ -4653,7 +4653,7 @@
     },
     "/v1/files": {
       "post": {
-        "summary": "파일 업로드 (form-data)",
+        "summary": "파일 단건 업로드 (form-data)",
         "operationId": "post-v1-files",
         "responses": {
           "200": {
@@ -4709,6 +4709,68 @@
         ],
         "description": "multipart/form-data 형식으로 파일을 받아서 스토리지에 저장하고 임시 URL을 반환합니다"
       }
+    },
+    "/v1/files/multi": {
+      "post": {
+        "summary": "파일 여러개 업로드 (form-data)",
+        "operationId": "post-v1-files",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "string",
+                      "description": "업로드된 파일 URL"
+                    }
+                  }
+                },
+                "examples": {
+                  "성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/File"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "description": "multipart/form-data 형식으로 파일을 받아서 스토리지에 저장하고 임시 URL을 반환합니다"
+      },
+      "parameters": []
     },
     "/v1/files/urls": {
       "post": {
@@ -5605,17 +5667,60 @@
           "mediaId": {
             "type": "integer"
           },
+          "seqNum": {
+            "type": "number",
+            "description": "순서"
+          },
           "contentType": {
-            "type": "string"
+            "type": "string",
+            "description": "컨텐츠 타입"
           },
           "contentUrl": {
-            "type": "string"
+            "type": "string",
+            "description": "컨텐츠 URL"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "기기내 식별자"
           },
           "createAt": {
-            "$ref": "#/components/schemas/Time",
-            "description": "생성일시"
+            "$ref": "#/components/schemas/Time"
           }
-        }
+        },
+        "required": [
+          "contentType",
+          "contentUrl"
+        ]
+      },
+      "AddMediaReq": {
+        "title": "AddMediaReq",
+        "x-stoplight": {
+          "id": "gp3odcej1yr4k"
+        },
+        "type": "object",
+        "description": "미디어 생성 요청",
+        "properties": {
+          "seqNum": {
+            "type": "number",
+            "description": "순서"
+          },
+          "contentType": {
+            "type": "string",
+            "description": "컨텐츠 유형"
+          },
+          "contentUrl": {
+            "type": "string",
+            "description": "컨텐츠 URL"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "기기내 식별자"
+          }
+        },
+        "required": [
+          "contentType",
+          "contentUrl"
+        ]
       },
       "VisionDto": {
         "title": "VisionDto",
@@ -6108,6 +6213,16 @@
         "examples": [
           "2016-10-27T17:13:40Z"
         ]
+      },
+      "File": {
+        "type": "string",
+        "title": "\bFile",
+        "x-stoplight": {
+          "id": "9ovpilriqw3o2"
+        },
+        "description": "파일 바이너리",
+        "examples": [],
+        "format": "binary"
       },
       "Date": {
         "title": "Date",
