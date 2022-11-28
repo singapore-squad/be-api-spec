@@ -522,7 +522,49 @@
           "required": true,
           "description": "멤버 아이디"
         }
-      ]
+      ],
+      "delete": {
+        "summary": "회원 탈퇴",
+        "operationId": "delete-v1-members-memberId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "회원탈퇴",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      }
     },
     "/v1/members/nickname/{nickname}": {
       "parameters": [
