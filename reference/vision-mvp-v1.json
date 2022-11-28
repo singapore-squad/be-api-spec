@@ -4482,6 +4482,94 @@
         },
         "operationId": "get-v1-recom-serch-words",
         "description": "추천 검색어 리스트 조회",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/v1/pub/recommend/search-words": {
+      "get": {
+        "summary": "추천 검색어 리스트 조회 (비로그인용)",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "description": "추천 검색어 리스트",
+                      "items": {
+                        "$ref": "#/components/schemas/RecomSearchWordDto"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "추천 검색어 리스트 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": [
+                        {
+                          "word": "N잡러",
+                          "seqNumber": 1
+                        },
+                        {
+                          "word": "운동",
+                          "seqNumber": 2
+                        },
+                        {
+                          "word": "갓생",
+                          "seqNumber": 3
+                        },
+                        {
+                          "word": "아르바이트",
+                          "seqNumber": 4
+                        },
+                        {
+                          "word": "창업",
+                          "seqNumber": 5
+                        },
+                        {
+                          "word": "취미",
+                          "seqNumber": 6
+                        },
+                        {
+                          "word": "일상력",
+                          "seqNumber": 7
+                        },
+                        {
+                          "word": "헬스",
+                          "seqNumber": 9
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-pub-recom-serch-words",
+        "description": "추천 검색어 리스트 조회 (로그인 하지 않고 둘러보기 시, 사용)",
         "parameters": []
       },
       "parameters": []
