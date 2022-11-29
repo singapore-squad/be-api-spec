@@ -342,15 +342,22 @@
                   }
                 },
                 "examples": {
-                  "회원 정보조회 성공": {
+                  "회원정보 조회 성공": {
                     "value": {
                       "code": 0,
                       "message": "[DEV] 성공",
                       "data": {
                         "memberId": 1,
                         "email": "tester01@email.com",
-                        "nickname": "테스터01",
-                        "imgUrl": ""
+                        "nickname": "유저01",
+                        "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                        "greeting": "10년차 프리랜서 디자이너,\n비건지향 간헐적 운동, 장래희망은 문구점 사장\ninstagram.com/nmin_official",
+                        "followerCount": 0,
+                        "followingCount": 1,
+                        "bookmarkCount": 1,
+                        "visionCount": 0,
+                        "postCount": 0,
+                        "follow": false
                       }
                     }
                   }
@@ -1640,7 +1647,7 @@
           }
         },
         "operationId": "get-v1-posts",
-        "description": "- 액션보드 목록을 페이징합니다.\n- memberId Query Param이 없으면 자신의 액션보드 목록 요청으로 간주합니다. (비공개포스트도 포함하고 visionId Query Param의 비전이 자기 소유가 아닐시 에러)\n- memberId Query Param이 있으면 다른 유저의 액션보드 목록 요청으로 간주합니다\n- visionId Query Param이 없으면 해당 유저의 전체 액션보드를 페이징합니다.",
+        "description": "- 액션보드 목록을 페이징합니다.\n- visionId Query Param이 있으면 비전에 해당하는 전체 액션보드를 페이징합니다.\n- memberId Query Param이 있으면 해당 유저의 액션보드 목록 요청으로 간주합니다\n- visionId, memberId 둘다 null 이면 로그인한 유저의 전체 액션보드를 페이징합니다.\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
@@ -5603,13 +5610,17 @@
         "description": "",
         "examples": [
           {
-            "id": 142,
-            "firstName": "Alice",
-            "lastName": "Smith",
-            "email": "alice.smith@gmail.com",
-            "dateOfBirth": "1997-10-31",
-            "emailVerified": true,
-            "signUpDate": "2019-08-24"
+            "memberId": 1,
+            "email": "tester01@email.com",
+            "nickname": "유저01",
+            "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+            "greeting": "10년차 프리랜서 디자이너,\n비건지향 간헐적 운동, 장래희망은 문구점 사장\ninstagram.com/nmin_official",
+            "followerCount": 0,
+            "followingCount": 1,
+            "bookmarkCount": 1,
+            "visionCount": 0,
+            "postCount": 0,
+            "follow": false
           }
         ],
         "properties": {
@@ -5634,7 +5645,7 @@
             "type": "string",
             "description": "멤버 소개"
           },
-          "isFollow": {
+          "\bfollow": {
             "description": "팔로우 여부",
             "type": "boolean"
           },
