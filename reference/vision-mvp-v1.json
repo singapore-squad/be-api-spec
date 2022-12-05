@@ -1647,7 +1647,7 @@
           }
         },
         "operationId": "get-v1-posts",
-        "description": "- 액션보드 목록을 페이징합니다.\n- visionId Query Param이 있으면 비전에 해당하는 전체 액션보드를 페이징합니다.\n- memberId Query Param이 있으면 해당 유저의 액션보드 목록 요청으로 간주합니다\n- visionId, memberId 둘다 null 이면 로그인한 유저의 전체 액션보드를 페이징합니다.\n",
+        "description": "- 액션보드 목록을 페이징합니다.\n- visionId Query Param이 있으면 비전에 해당하는 전체 액션보드를 페이징합니다.\n- memberId Query Param이 있으면 해당 유저의 액션보드 목록 요청으로 간주합니다\n- visionId, memberId 둘다 있으면, visionId를 우선합니다.\n- visionId, memberId 둘다 null 이면 로그인된 유저의 전체 액션보드를 페이징합니다.\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
@@ -2371,7 +2371,7 @@
           }
         },
         "operationId": "get-v1-posts",
-        "description": "- 비로그인 유저용 액션보드 목록을 페이징입니다.\n- visionId 혹은 memberId가 반드시 있어야 합니다. 아니면 에러 발생합니다.\n",
+        "description": "- 비로그인 유저용 액션보드 목록을 페이징입니다.\n- visionId 혹은 memberId가 반드시 있어야 합니다. 아니면 에러 발생합니다.\n- visionId Query Param이 있으면 비전에 해당하는 전체 액션보드를 페이징합니다.\n- memberId Query Param이 있으면 해당 유저의 액션보드 목록 요청으로 간주합니다\n- visionId, memberId 둘다 있으면, visionId를 우선합니다.",
         "parameters": [
           {
             "schema": {
