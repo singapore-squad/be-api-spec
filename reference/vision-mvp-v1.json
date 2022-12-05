@@ -6109,6 +6109,329 @@
         "description": ""
       }
     },
+    "/admin/v1/visions": {
+      "get": {
+        "summary": "어드민 추천 드림보드 목록 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AdminVisionListDto"
+                      }
+                    },
+                    "pageNum": {
+                      "$ref": "#/components/schemas/PageNum"
+                    },
+                    "pageSize": {
+                      "$ref": "#/components/schemas/PageSize"
+                    },
+                    "totalCount": {
+                      "$ref": "#/components/schemas/TotalCount"
+                    }
+                  }
+                },
+                "examples": {
+                  "목록 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": [
+                        {
+                          "visionId": 78,
+                          "title": "타이틀 1 2 3 4 5 6 ",
+                          "contents": "1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm02n23030255c6fc591313279983b",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-02T04:23:03Z",
+                          "lastUpdateAt": "2022-12-02T04:23:03Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 77,
+                          "title": "Test",
+                          "contents": "프ㅠㅜㅠㅜㅡㅠㅜㅠㅡㅜㅠㅠㅜㅡㅠㅜㅠㅡㅠㅜㅠㅜㅡㅠㅡㅜㅠㅜㅡㅠㅜㅡㅠㅜㅡㅠㅡㅜㅠ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01r53495861361bb301be30e3ce3",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-01T08:53:50Z",
+                          "lastUpdateAt": "2022-12-02T04:21:10Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 76,
+                          "title": "ㅐㅐㅐ",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01m59577657ee57272d3cb4a7e42",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-01T03:59:58Z",
+                          "lastUpdateAt": "2022-12-01T03:59:58Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 75,
+                          "title": "Test",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01k2635088a82baa1db1770f47f8",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-01T01:26:35Z",
+                          "lastUpdateAt": "2022-12-01T01:26:35Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 74,
+                          "title": "Adad",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30v44204218a9f320d8d19d09e06",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T12:43:37Z",
+                          "lastUpdateAt": "2022-11-30T12:44:20Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 66,
+                          "title": "Asdada",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30r4655529e1e91235340c94f541",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T08:46:56Z",
+                          "lastUpdateAt": "2022-11-30T08:46:56Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 61,
+                          "title": "인생 도자기 만들기",
+                          "contents": "테스트ㅡㅡㅡㅡㅡ3ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30n0801721b24e9b20c7c516df28",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T04:08:02Z",
+                          "lastUpdateAt": "2022-11-30T04:08:02Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 60,
+                          "title": "안비건 ",
+                          "contents": "비건과 반대인 삶 ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30m5324188114734e2988c70d329",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T03:52:27Z",
+                          "lastUpdateAt": "2022-11-30T03:53:24Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 59,
+                          "title": "순대국밥 뿌수기",
+                          "contents": "1일 1순대 ❤️",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30m4122055fc9511f720737a4c7a",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T03:41:22Z",
+                          "lastUpdateAt": "2022-11-30T03:41:22Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 53,
+                          "title": "캐시",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30k572186047cfb2b1112022de38",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T01:57:22Z",
+                          "lastUpdateAt": "2022-11-30T01:57:22Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        }
+                      ],
+                      "pageSize": 10,
+                      "pageNum": 1,
+                      "totalCount": 30
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-admin-v1-visions",
+        "description": "- 관리자페이지에서 드림보드 목록을 조회합니다.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "$ref": "#/components/parameters/pageNum"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/admin/v1/visions/recommend": {
+      "parameters": [],
+      "post": {
+        "summary": "어드민 추천 드림보드 등록",
+        "operationId": "post-admin-v1-visions-recommend",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "등록 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "visionId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "추천 드림보드 등록": {
+                  "value": {
+                    "visionId": 1
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/admin/v1/visions/recommend/{visionId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "visionId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "어드민 추천 드림보드 삭제",
+        "operationId": "delete-admin-v1-recommend-visions-visoinId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "삭제 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ],
+        "description": ""
+      }
+    },
     "/admin/v1/reports": {
       "get": {
         "summary": "신고 리스트 어드민 조회",
@@ -6900,6 +7223,77 @@
           "createAt",
           "lastUpdateAt",
           "private"
+        ]
+      },
+      "AdminVisionListDto": {
+        "title": "AdminVisionListDto",
+        "type": "object",
+        "examples": [
+          {
+            "visionId": 1,
+            "title": "문구점 사장님 되기",
+            "contents": "기록광을 위한 문구점",
+            "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision1/vision.png",
+            "memberId": 1,
+            "nickname": "엉뚱한수호자",
+            "createAt": "2022-11-03T06:51:40Z",
+            "lastUpdateAt": "2022-11-03T06:51:40Z",
+            "isPrivate": false,
+            "isRecommend": false
+          }
+        ],
+        "description": "어드민 비전 리스트 Dto",
+        "x-stoplight": {
+          "id": "ba225835597ea"
+        },
+        "properties": {
+          "visionId": {
+            "$ref": "#/components/schemas/VisionId"
+          },
+          "title": {
+            "type": "string",
+            "description": "비전 제목"
+          },
+          "contents": {
+            "type": "string",
+            "description": "비전 상세 설명"
+          },
+          "imgUrl": {
+            "type": "string",
+            "description": "이미지 URL"
+          },
+          "memberId": {
+            "type": "string",
+            "description": "작성자 ID"
+          },
+          "nickName": {
+            "type": "string",
+            "description": "작성자 닉네임"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "lastUpdateAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "isPrivate": {
+            "type": "boolean",
+            "description": "공개여부"
+          },
+          "isRecommend": {
+            "type": "boolean",
+            "description": "추천여부"
+          }
+        },
+        "required": [
+          "visionId",
+          "imgUrl",
+          "memberId",
+          "nickName",
+          "createAt",
+          "lastUpdateAt",
+          "isPrivate",
+          "isRecommend"
         ]
       },
       "PostDto": {
