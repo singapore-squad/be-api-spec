@@ -956,15 +956,6 @@
                       "items": {
                         "$ref": "#/components/schemas/VisionListDto"
                       }
-                    },
-                    "pageNum": {
-                      "$ref": "#/components/schemas/PageNum"
-                    },
-                    "pageSize": {
-                      "$ref": "#/components/schemas/PageSize"
-                    },
-                    "totalCount": {
-                      "$ref": "#/components/schemas/TotalCount"
                     }
                   }
                 },
@@ -1194,10 +1185,7 @@
                           ],
                           "private": false
                         }
-                      ],
-                      "pageNum": 1,
-                      "totalCount": 15,
-                      "pageSize": 10
+                      ]
                     }
                   }
                 }
@@ -1210,15 +1198,6 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/Authorization"
-          },
-          {
-            "$ref": "#/components/parameters/pageNum"
-          },
-          {
-            "$ref": "#/components/parameters/pageSize"
-          },
-          {
-            "$ref": "#/components/parameters/orderBy"
           }
         ]
       },
@@ -1944,15 +1923,6 @@
                       "items": {
                         "$ref": "#/components/schemas/VisionListDto"
                       }
-                    },
-                    "pageNum": {
-                      "$ref": "#/components/schemas/PageNum"
-                    },
-                    "pageSize": {
-                      "$ref": "#/components/schemas/PageSize"
-                    },
-                    "totalCount": {
-                      "$ref": "#/components/schemas/TotalCount"
                     }
                   }
                 },
@@ -2182,10 +2152,7 @@
                           ],
                           "private": false
                         }
-                      ],
-                      "pageNum": 1,
-                      "totalCount": 15,
-                      "pageSize": 10
+                      ]
                     }
                   }
                 }
@@ -2195,17 +2162,7 @@
         },
         "operationId": "get-v1-pub-visions-recommend",
         "description": "- 비로그인인 경우, 추천 드림보드 목록을 조회합니다.",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/pageNum"
-          },
-          {
-            "$ref": "#/components/parameters/pageSize"
-          },
-          {
-            "$ref": "#/components/parameters/orderBy"
-          }
-        ]
+        "parameters": []
       },
       "parameters": []
     },
