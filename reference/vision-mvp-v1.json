@@ -573,6 +573,145 @@
         ]
       }
     },
+    "/v1/members/{memberId}/terms": {
+      "get": {
+        "summary": "회원 약관동의 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/MemberTerms"
+                    }
+                  }
+                },
+                "examples": {
+                  "조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "isAgreeService": true,
+                        "isAgreePrivacy": true,
+                        "isAgreeMarketingUse": false,
+                        "isAgreeReceive": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-members-memberId-terms",
+        "description": "회원 본인의 약관동의 내역 조회",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "memberId",
+          "in": "path",
+          "required": true,
+          "description": "멤버 아이디"
+        }
+      ],
+      "put": {
+        "summary": "회원 약관동의 수정",
+        "operationId": "put-v1-members-memberId-terms",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  }
+                },
+                "examples": {
+                  "수정 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "회원 본인의 약관동의 내역 수정",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "isAgreeService": true,
+                    "isAgreePrivacy": true,
+                    "isAgreeMarketingUse": false,
+                    "isAgreeReceive": false
+                  }
+                },
+                "properties": {
+                  "isAgreeService": {
+                    "type": "boolean",
+                    "description": "약관동의 여부"
+                  },
+                  "isAgreePrivacy": {
+                    "type": "boolean",
+                    "description": "개인정보 수집 및 이용 동의 여부"
+                  },
+                  "isAgreeMarketingUse": {
+                    "type": "boolean",
+                    "description": "마케팅 활용 동의 여부"
+                  },
+                  "isAgreeReceive": {
+                    "type": "boolean",
+                    "description": "마케팅 정보 수신 동의 여부"
+                  }
+                },
+                "required": [
+                  "isAgreeService",
+                  "isAgreePrivacy"
+                ]
+              }
+            }
+          },
+          "description": ""
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      }
+    },
     "/v1/members/nickname/{nickname}": {
       "parameters": [
         {
@@ -7792,6 +7931,46 @@
             "$ref": "#/components/schemas/Time"
           }
         }
+      },
+      "MemberTerms": {
+        "title": "MemberTerms",
+        "x-stoplight": {
+          "id": "l884z1dgvxjsf"
+        },
+        "type": "object",
+        "properties": {
+          "isAgreeService": {
+            "type": "boolean",
+            "description": "약관동의 여부"
+          },
+          "isAgreePrivacy": {
+            "type": "boolean",
+            "description": "개인정보 수집 및 이용 동의 여부"
+          },
+          "isAgreeMarketingUse": {
+            "type": "boolean",
+            "description": "마케팅 활용 동의 여부"
+          },
+          "isAgreeReceive": {
+            "type": "boolean",
+            "description": "마케팅 정보 수신 동의 여부"
+          }
+        },
+        "required": [
+          "isAgreeService",
+          "isAgreePrivacy",
+          "isAgreeMarketingUse",
+          "isAgreeReceive"
+        ],
+        "examples": [
+          {
+            "isAgreeService": true,
+            "isAgreePrivacy": true,
+            "isAgreeMarketingUse": false,
+            "isAgreeReceive": false
+          }
+        ],
+        "description": "약관동의 내역"
       }
     },
     "securitySchemes": {},
