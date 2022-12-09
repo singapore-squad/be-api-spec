@@ -18,11 +18,11 @@
       "description": "MockServer"
     },
     {
-      "url": "https://life-eta-git-develop-life-sqd-eta.vercel.app",
+      "url": "https://life-api-dev-ddfgcoc74q-du.a.run.app",
       "description": "개발서버"
     },
       {
-      "url": "https://life-eta-life.vercel.app",
+      "url": "https://life-api-prd-ddfgcoc74q-du.a.run.app",
       "description": "운영서버"
     },
     {
