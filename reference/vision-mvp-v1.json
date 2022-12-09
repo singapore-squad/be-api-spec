@@ -649,6 +649,9 @@
                     },
                     "message": {
                       "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/MemberTerms"
                     }
                   }
                 },
@@ -656,7 +659,14 @@
                   "수정 성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공"
+                      "message": "성공",
+                      "data": {
+                        "memberId": 1,
+                        "isAgreeService": true,
+                        "isAgreePrivacy": true,
+                        "isAgreeMarketingUse": false,
+                        "isAgreeReceive": false
+                      }
                     }
                   }
                 }
@@ -7938,6 +7948,16 @@
           "id": "l884z1dgvxjsf"
         },
         "type": "object",
+        "examples": [
+          {
+            "isAgreeService": true,
+            "isAgreePrivacy": true,
+            "isAgreeMarketingUse": false,
+            "isAgreeReceive": false,
+            "memberId": 1
+          }
+        ],
+        "description": "약관동의 내역",
         "properties": {
           "isAgreeService": {
             "type": "boolean",
@@ -7954,23 +7974,19 @@
           "isAgreeReceive": {
             "type": "boolean",
             "description": "마케팅 정보 수신 동의 여부"
+          },
+          "memberId": {
+            "type": "number",
+            "description": "회원ID"
           }
         },
         "required": [
           "isAgreeService",
           "isAgreePrivacy",
           "isAgreeMarketingUse",
-          "isAgreeReceive"
-        ],
-        "examples": [
-          {
-            "isAgreeService": true,
-            "isAgreePrivacy": true,
-            "isAgreeMarketingUse": false,
-            "isAgreeReceive": false
-          }
-        ],
-        "description": "약관동의 내역"
+          "isAgreeReceive",
+          "memberId"
+        ]
       }
     },
     "securitySchemes": {},
