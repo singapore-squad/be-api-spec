@@ -18,8 +18,12 @@
       "description": "MockServer"
     },
     {
-      "url": "https://life-api-dev-ddfgcoc74q-du.a.run.app",
-      "description": "Dev"
+      "url": "https://life-eta-git-develop-life-sqd-eta.vercel.app",
+      "description": "개발서버"
+    },
+      {
+      "url": "https://life-eta-life.vercel.app",
+      "description": "운영서버"
     },
     {
       "url": "https://ab71-58-150-46-115.jp.ngrok.io",
