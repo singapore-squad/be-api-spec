@@ -19,7 +19,11 @@
     },
     {
       "url": "https://life-api-dev-ddfgcoc74q-du.a.run.app",
-      "description": "Dev"
+      "description": "개발서버"
+    },
+      {
+      "url": "https://life-api-prd-ddfgcoc74q-du.a.run.app",
+      "description": "운영서버"
     },
     {
       "url": "https://ab71-58-150-46-115.jp.ngrok.io",
