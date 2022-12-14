@@ -52,7 +52,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/AdminVisionListDto"
+                        "$ref": "#/components/schemas/MemberAdminDto"
                       }
                     },
                     "pageNum": {
@@ -67,135 +67,135 @@
                   }
                 },
                 "examples": {
-                  "목록 조회 성공": {
+                  "목록조회성공": {
                     "value": {
                       "code": 0,
-                      "message": "성공",
+                      "message": "[DEV] 성공",
                       "data": [
                         {
-                          "visionId": 78,
-                          "title": "타이틀 1 2 3 4 5 6 ",
-                          "contents": "1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 ",
-                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm02n23030255c6fc591313279983b",
-                          "memberId": 1,
-                          "nickname": "여름겨울",
-                          "createAt": "2022-12-02T04:23:03Z",
-                          "lastUpdateAt": "2022-12-02T04:23:03Z",
-                          "isPrivate": false,
-                          "isRecommend": false
+                          "memberId": 9016,
+                          "email": "xygkrr9yry@privaterelay.appleid.com",
+                          "nickname": "우월한용의자364",
+                          "imgUrl": "",
+                          "createAt": "2022-12-06T01:48:08Z",
+                          "lastUpdateAt": "2022-12-06T01:49:43Z",
+                          "provider": "APPLE",
+                          "role": "USER",
+                          "visionCount": 0,
+                          "postCount": 0
                         },
                         {
-                          "visionId": 77,
-                          "title": "Test",
-                          "contents": "프ㅠㅜㅠㅜㅡㅠㅜㅠㅡㅜㅠㅠㅜㅡㅠㅜㅠㅡㅠㅜㅠㅜㅡㅠㅡㅜㅠㅜㅡㅠㅜㅡㅠㅜㅡㅠㅡㅜㅠ",
-                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01r53495861361bb301be30e3ce3",
-                          "memberId": 1,
-                          "nickname": "여름겨울",
-                          "createAt": "2022-12-01T08:53:50Z",
-                          "lastUpdateAt": "2022-12-02T04:21:10Z",
-                          "isPrivate": false,
-                          "isRecommend": false
+                          "memberId": 9015,
+                          "email": "life@runbyme.team",
+                          "nickname": "새로운방관자50",
+                          "imgUrl": "",
+                          "createAt": "2022-12-06T01:40:54Z",
+                          "lastUpdateAt": "2022-12-07T07:19:13Z",
+                          "provider": "KAKAO",
+                          "role": "USER",
+                          "visionCount": 0,
+                          "postCount": 0
                         },
                         {
-                          "visionId": 76,
-                          "title": "ㅐㅐㅐ",
-                          "contents": "",
-                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01m59577657ee57272d3cb4a7e42",
                           "memberId": 1,
-                          "nickname": "여름겨울",
-                          "createAt": "2022-12-01T03:59:58Z",
-                          "lastUpdateAt": "2022-12-01T03:59:58Z",
-                          "isPrivate": false,
-                          "isRecommend": false
+                          "email": "tester01@email.com",
+                          "nickname": "유저 01",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-12-05T00:03:12Z",
+                          "lastUpdateAt": "2022-12-14T08:33:30Z",
+                          "provider": "EMAIL",
+                          "role": "USER",
+                          "visionCount": 6,
+                          "postCount": 40
                         },
                         {
-                          "visionId": 75,
-                          "title": "Test",
-                          "contents": "",
-                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01k2635088a82baa1db1770f47f8",
-                          "memberId": 1,
-                          "nickname": "여름겨울",
-                          "createAt": "2022-12-01T01:26:35Z",
-                          "lastUpdateAt": "2022-12-01T01:26:35Z",
-                          "isPrivate": false,
-                          "isRecommend": false
+                          "memberId": 2,
+                          "email": "tester02@email.com",
+                          "nickname": "유저02",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-12-05T00:03:12Z",
+                          "lastUpdateAt": "2022-12-13T08:03:21Z",
+                          "provider": "EMAIL",
+                          "role": "USER",
+                          "visionCount": 0,
+                          "postCount": 0
                         },
                         {
-                          "visionId": 74,
-                          "title": "Adad",
-                          "contents": "",
-                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30v44204218a9f320d8d19d09e06",
-                          "memberId": 1,
-                          "nickname": "여름겨울",
-                          "createAt": "2022-11-30T12:43:37Z",
-                          "lastUpdateAt": "2022-11-30T12:44:20Z",
-                          "isPrivate": false,
-                          "isRecommend": false
+                          "memberId": 3,
+                          "email": "tester03@email.com",
+                          "nickname": "유저03",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-12-05T00:03:12Z",
+                          "lastUpdateAt": "2022-12-13T08:00:08Z",
+                          "provider": "EMAIL",
+                          "role": "USER",
+                          "visionCount": 0,
+                          "postCount": 0
                         },
                         {
-                          "visionId": 66,
-                          "title": "Asdada",
-                          "contents": "",
-                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30r4655529e1e91235340c94f541",
-                          "memberId": 1,
-                          "nickname": "여름겨울",
-                          "createAt": "2022-11-30T08:46:56Z",
-                          "lastUpdateAt": "2022-11-30T08:46:56Z",
-                          "isPrivate": false,
-                          "isRecommend": false
+                          "memberId": 4,
+                          "email": "tester04@email.com",
+                          "nickname": "유저04",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-12-05T00:03:12Z",
+                          "lastUpdateAt": "2022-12-14T08:01:53Z",
+                          "provider": "EMAIL",
+                          "role": "USER",
+                          "visionCount": 2,
+                          "postCount": 1
                         },
                         {
-                          "visionId": 61,
-                          "title": "인생 도자기 만들기",
-                          "contents": "테스트ㅡㅡㅡㅡㅡ3ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ",
-                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30n0801721b24e9b20c7c516df28",
-                          "memberId": 1,
-                          "nickname": "여름겨울",
-                          "createAt": "2022-11-30T04:08:02Z",
-                          "lastUpdateAt": "2022-11-30T04:08:02Z",
-                          "isPrivate": false,
-                          "isRecommend": false
+                          "memberId": 5,
+                          "email": "tester05@email.com",
+                          "nickname": "유저05",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-12-05T00:03:12Z",
+                          "lastUpdateAt": "2022-12-05T00:03:12Z",
+                          "provider": "EMAIL",
+                          "role": "USER",
+                          "visionCount": 0,
+                          "postCount": 0
                         },
                         {
-                          "visionId": 60,
-                          "title": "안비건 ",
-                          "contents": "비건과 반대인 삶 ",
-                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30m5324188114734e2988c70d329",
-                          "memberId": 1,
-                          "nickname": "여름겨울",
-                          "createAt": "2022-11-30T03:52:27Z",
-                          "lastUpdateAt": "2022-11-30T03:53:24Z",
-                          "isPrivate": false,
-                          "isRecommend": false
+                          "memberId": 6,
+                          "email": "tester06@email.com",
+                          "nickname": "유저06",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-12-05T00:03:12Z",
+                          "lastUpdateAt": "2022-12-05T00:03:12Z",
+                          "provider": "EMAIL",
+                          "role": "USER",
+                          "visionCount": 0,
+                          "postCount": 0
                         },
                         {
-                          "visionId": 59,
-                          "title": "순대국밥 뿌수기",
-                          "contents": "1일 1순대 ❤️",
-                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30m4122055fc9511f720737a4c7a",
-                          "memberId": 1,
-                          "nickname": "여름겨울",
-                          "createAt": "2022-11-30T03:41:22Z",
-                          "lastUpdateAt": "2022-11-30T03:41:22Z",
-                          "isPrivate": false,
-                          "isRecommend": false
+                          "memberId": 7,
+                          "email": "tester07@email.com",
+                          "nickname": "유저07",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-12-05T00:03:12Z",
+                          "lastUpdateAt": "2022-12-05T00:03:12Z",
+                          "provider": "EMAIL",
+                          "role": "USER",
+                          "visionCount": 0,
+                          "postCount": 0
                         },
                         {
-                          "visionId": 53,
-                          "title": "캐시",
-                          "contents": "",
-                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30k572186047cfb2b1112022de38",
-                          "memberId": 1,
-                          "nickname": "여름겨울",
-                          "createAt": "2022-11-30T01:57:22Z",
-                          "lastUpdateAt": "2022-11-30T01:57:22Z",
-                          "isPrivate": false,
-                          "isRecommend": false
+                          "memberId": 8,
+                          "email": "tester08@email.com",
+                          "nickname": "유저08",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                          "createAt": "2022-12-05T00:03:12Z",
+                          "lastUpdateAt": "2022-12-09T01:33:09Z",
+                          "provider": "EMAIL",
+                          "role": "USER",
+                          "visionCount": 0,
+                          "postCount": 0
                         }
                       ],
-                      "pageSize": 10,
                       "pageNum": 1,
-                      "totalCount": 30
+                      "totalCount": 23,
+                      "pageSize": 10
                     }
                   }
                 }
@@ -270,6 +270,59 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ]
+      },
+      "get": {
+        "summary": "어드민 특정 회원 조회",
+        "operationId": "get-admin-v1-members-memberId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/MemberAdminDto"
+                    }
+                  }
+                },
+                "examples": {
+                  "조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "memberId": 8,
+                        "email": "tester08@email.com",
+                        "nickname": "유저08",
+                        "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                        "createAt": "2022-12-05T00:03:12Z",
+                        "lastUpdateAt": "2022-12-09T01:33:09Z",
+                        "provider": "EMAIL",
+                        "role": "USER",
+                        "visionCount": 0,
+                        "postCount": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "- 관리자페이지에서 특정 회원을 조회합니다.",
+        "parameters": [
+          {
+            "$ref": "./\bauth-mvp-v1.json#/components/parameters/Authorization"
           }
         ]
       }
@@ -1037,6 +1090,14 @@
             "in": "query",
             "name": "postId",
             "description": "에피소드 id"
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "visionId",
+            "description": "드림보드 id"
           }
         ]
       },
