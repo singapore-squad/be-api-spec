@@ -4,9 +4,9 @@
     "id": "mycz4r3yyjmmh"
   },
   "info": {
-    "title": "vision-mvp-v1",
+    "title": "auth-mvp-v1",
     "version": "1.0",
-    "summary": "MVP svc api v1",
+    "summary": "MVP auth api v1",
     "description": ""
   },
   "servers": [
