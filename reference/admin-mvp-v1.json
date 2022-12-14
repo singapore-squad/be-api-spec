@@ -1,0 +1,2954 @@
+{
+  "openapi": "3.1.0",
+  "x-stoplight": {
+    "id": "npdij3j9hpgle"
+  },
+  "info": {
+    "title": "admin-mvp-v1",
+    "version": "1.0",
+    "summary": "MVP admin api v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "local"
+    },
+    {
+      "url": "https://stoplight.io/mocks/singapore-squad/be-api-spec/100729079",
+      "description": "MockServer"
+    },
+    {
+      "url": "https://life-api-dev-ddfgcoc74q-du.a.run.app",
+      "description": "개발서버"
+    },
+    {
+      "url": "https://life-api-prd-ddfgcoc74q-du.a.run.app",
+      "description": "운영서버"
+    },
+    {
+      "url": "https://ab71-58-150-46-115.jp.ngrok.io",
+      "description": "ngLock"
+    }
+  ],
+  "paths": {
+    "/v1/auth/signin": {
+      "post": {
+        "summary": "로그인",
+        "operationId": "post-v1-auth-signin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "email",
+                        "accessToken",
+                        "accessTokenExpiresAt",
+                        "refreshToken",
+                        "refreshTokenExpiresAt"
+                      ],
+                      "properties": {
+                        "email": {
+                          "type": "string"
+                        },
+                        "accessToken": {
+                          "type": "string"
+                        },
+                        "accessTokenExpiresAt": {
+                          "type": "string"
+                        },
+                        "refreshToken": {
+                          "type": "string"
+                        },
+                        "refreshTokenExpiresAt": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "로그인 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "email": "tester01@email.com",
+                        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBlbWFpbC5jb20iLCJpYXQiOjE2NjY5NDQzNTcsImV4cCI6MTY2Njk4NzU1NywicHJvdmlkZXIiOiJFTUFJTCJ9.jo6XctNpjcmNVoum3U1QRMHAyusjHndVNmdlODZYT-zUZRGsIx4s_exu82hiY194ZeKExxOqaHqc8ZWhlseGDw",
+                        "accessTokenExpiresAt": "2022-10-28T20:05:57.531Z",
+                        "refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBlbWFpbC5jb20iLCJpYXQiOjE2NjY5NDQzNTcsImV4cCI6MTY2ODI0MDM1NywicHJvdmlkZXIiOiJFTUFJTCJ9.wmzfg2aqpeBsBUpPoupbQtW2Swm-_rp4RYn3nTRL2B19jLO0mCJTyIr3GIRbGZQQ_jsZie8xggUyYNaTDm2FmA",
+                        "refreshTokenExpiresAt": "2022-11-12T08:05:57.552Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "로그인 후 토큰을 발급합니다.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "provider가 EMAIL인 경우 사용"
+                  },
+                  "passwd": {
+                    "type": "string",
+                    "description": "provider가 EMAIL인 경우 사용"
+                  },
+                  "providerName": {
+                    "type": "string",
+                    "description": "KAKAO, APPLE, EMAIL"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "(provider가 KAKAO 인 경우) KAKAO로부터 전달받은 code값"
+                  },
+                  "idToken": {
+                    "type": "string",
+                    "description": "(provider가 APPLE 인 경우) APPLE로부터 전달받은 id_token값"
+                  }
+                },
+                "required": [
+                  "providerName"
+                ]
+              },
+              "examples": {
+                "이메일 로그인 요청": {
+                  "value": {
+                    "email": "tester01@email.com",
+                    "passwd": "test1234",
+                    "providerName": "EMAIL"
+                  }
+                },
+                "카카오 로그인 요청": {
+                  "value": {
+                    "code": "ODFrV2ZnSWVZWU1NSkFwUEwwdGhuLUxNdEdCZzFGZ19fdlYzaG5Bb1lmNXU4SFdOQTVNeTFlNnRXWEVyQnpPdVdJVjFtUW9yRE5JQUFBR0VHSkswd1E=",
+                    "providerName": "KAKAO"
+                  }
+                },
+                "애플 로그인 요청": {
+                  "value": {
+                    "providerName": "APPLE",
+                    "idToken": "eyJraWQiOiJZdXlYb1kiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwiYXVkIjoiY29tLnNpbmdhcG9yZS5ldGEud2ViIiwiZXhwIjoxNjY3NDU2MDQ3LCJpYXQiOjE2NjczNjk2NDcsInN1YiI6IjAwMTg3OS5mMTU3YjM1ZjYxODM0N2M5OTJiMDcwYThlMzEyMzY5OS4wNTA3IiwiY19oYXNoIjoiMzFEbDZPRnQzMWtpQWJvc244cVM0dyIsImVtYWlsIjoiaml5YTE0NDVAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOiJ0cnVlIiwiYXV0aF90aW1lIjoxNjY3MzY5NjQ3LCJub25jZV9zdXBwb3J0ZWQiOnRydWV9.E715lkRXy2aNuok6bCiFsEFc_hKaARY4tMmUhZaHauielUW4rC5NI1zKEfbHeqw0wCPCDXukgdKE5jY0PtJAYxHvSjHtIXLJfk0KhajBCSks6CbuWkmi42B69ztu5zTPRfvahxr8RSzuY46DOcIzRwUKPfP-h6-KAWCg0Tp3Le5KnhxJ2D7ETZ_uKCwYKMuOIBfiWtsdhW2dwMhyEGi-vnUtOwe_Vz-Eg4WD8EbPg-kypcaxc1Xh0QoUTuDI2evbbmM8gSPycW2z0SRvDzwRXMQ45f_XC1IFlDYls4yeyTFekULcY33OqV45j5sImDxnlelQefTyMc-3Zr4QVA5G3A"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/signout": {
+      "get": {
+        "summary": "로그아웃",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "로그아웃 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-v1-auth-signout",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ]
+      }
+    },
+    "/v1/auth/tokens": {
+      "post": {
+        "summary": "토큰 갱신",
+        "operationId": "post-v1-auth-tokens",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "accessToken",
+                        "accessTokenExpiresAt"
+                      ],
+                      "properties": {
+                        "accessToken": {
+                          "type": "string",
+                          "description": "새로 발급된 토큰값"
+                        },
+                        "accessTokenExpiresAt": {
+                          "type": "string",
+                          "description": "새로 발급된 토큰의 만료시간"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "토큰 갱신 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIwMUBrYWthby5jb20iLCJpYXQiOjE2NjY4NjA0MTIsImV4cCI6MTY2NjkwMzYxMiwicHJvdmlkZXIiOiJFTUFJTCJ9.Li9FI9MxdQPrpQ8eLXltresONls9wg4eEKwQqdLZ1YJrblalVjG18gTGIRwoEf6OGCwDkK1hJO4enOkaQKasxw",
+                        "accessTokenExpiresAt": "2022-10-27T20:46:52.265+00:00"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "토큰 갱신",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "refreshToken": {
+                    "type": "string",
+                    "description": "만료시간이 지나지 않은 refreshToken 값"
+                  }
+                },
+                "required": [
+                  "refreshToken"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/v1/members": {
+      "get": {
+        "summary": "어드민 회원 목록",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AdminVisionListDto"
+                      }
+                    },
+                    "pageNum": {
+                      "$ref": "#/components/schemas/PageNum"
+                    },
+                    "pageSize": {
+                      "$ref": "#/components/schemas/PageSize"
+                    },
+                    "totalCount": {
+                      "$ref": "#/components/schemas/TotalCount"
+                    }
+                  }
+                },
+                "examples": {
+                  "목록 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": [
+                        {
+                          "visionId": 78,
+                          "title": "타이틀 1 2 3 4 5 6 ",
+                          "contents": "1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm02n23030255c6fc591313279983b",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-02T04:23:03Z",
+                          "lastUpdateAt": "2022-12-02T04:23:03Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 77,
+                          "title": "Test",
+                          "contents": "프ㅠㅜㅠㅜㅡㅠㅜㅠㅡㅜㅠㅠㅜㅡㅠㅜㅠㅡㅠㅜㅠㅜㅡㅠㅡㅜㅠㅜㅡㅠㅜㅡㅠㅜㅡㅠㅡㅜㅠ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01r53495861361bb301be30e3ce3",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-01T08:53:50Z",
+                          "lastUpdateAt": "2022-12-02T04:21:10Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 76,
+                          "title": "ㅐㅐㅐ",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01m59577657ee57272d3cb4a7e42",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-01T03:59:58Z",
+                          "lastUpdateAt": "2022-12-01T03:59:58Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 75,
+                          "title": "Test",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01k2635088a82baa1db1770f47f8",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-01T01:26:35Z",
+                          "lastUpdateAt": "2022-12-01T01:26:35Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 74,
+                          "title": "Adad",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30v44204218a9f320d8d19d09e06",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T12:43:37Z",
+                          "lastUpdateAt": "2022-11-30T12:44:20Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 66,
+                          "title": "Asdada",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30r4655529e1e91235340c94f541",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T08:46:56Z",
+                          "lastUpdateAt": "2022-11-30T08:46:56Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 61,
+                          "title": "인생 도자기 만들기",
+                          "contents": "테스트ㅡㅡㅡㅡㅡ3ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30n0801721b24e9b20c7c516df28",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T04:08:02Z",
+                          "lastUpdateAt": "2022-11-30T04:08:02Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 60,
+                          "title": "안비건 ",
+                          "contents": "비건과 반대인 삶 ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30m5324188114734e2988c70d329",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T03:52:27Z",
+                          "lastUpdateAt": "2022-11-30T03:53:24Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 59,
+                          "title": "순대국밥 뿌수기",
+                          "contents": "1일 1순대 ❤️",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30m4122055fc9511f720737a4c7a",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T03:41:22Z",
+                          "lastUpdateAt": "2022-11-30T03:41:22Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 53,
+                          "title": "캐시",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30k572186047cfb2b1112022de38",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T01:57:22Z",
+                          "lastUpdateAt": "2022-11-30T01:57:22Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        }
+                      ],
+                      "pageSize": 10,
+                      "pageNum": 1,
+                      "totalCount": 30
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-admin-v1-members",
+        "description": "- 관리자페이지에서 회원 목록을 조회합니다.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "$ref": "#/components/parameters/pageNum"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "nickname",
+            "description": "닉네임 검색 시, 닉네임 값"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "provider",
+            "description": "로그인 서비스 제공자 (KAKAO/APPLE/EMAIL)"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "role",
+            "description": "권한 (ADMIN/MASTER_ADMIN/USER)"
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/admin/v1/members/{memberId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "number"
+          },
+          "name": "memberId",
+          "in": "path",
+          "required": true,
+          "description": "회원 id"
+        }
+      ],
+      "delete": {
+        "summary": "어드민 특정 회원 탈퇴처리",
+        "operationId": "delete-admin-v1-members-memberId",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "- 관리자페이지에서 특정 회원을 탈퇴 처리합니다.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ]
+      }
+    },
+    "/admin/v1/members/me": {
+      "parameters": [],
+      "get": {
+        "summary": "어드민 내 정보 조회",
+        "operationId": "get-admin-v1-members-memberId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/MemberAdminDto"
+                    }
+                  }
+                },
+                "examples": {
+                  "조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": {
+                        "memberId": 1,
+                        "email": "tester01@email.com",
+                        "nickname": "유저01",
+                        "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+                        "createAt": "2022-12-01T00:00:00Z",
+                        "lastLoginAt": "2022-12-01T09:00:00Z",
+                        "provider": "KAKAO",
+                        "visionCount": 0,
+                        "postCount": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "- 관리자페이지에서 특정 회원 정보를 조회합니다.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ]
+      }
+    },
+    "/admin/v1/recommend/search-words": {
+      "get": {
+        "summary": "추천 검색어 리스트 어드민 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "description": "추천 검색어 리스트",
+                      "items": {
+                        "$ref": "#/components/schemas/RecomSearchWordAdminDto"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "추천 검색어 리스트 전체 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": [
+                        {
+                          "wordId": 1,
+                          "word": "N잡러",
+                          "expose": true,
+                          "seqNumber": 1,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 2,
+                          "word": "운동",
+                          "expose": true,
+                          "seqNumber": 2,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 3,
+                          "word": "갓생",
+                          "expose": true,
+                          "seqNumber": 3,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 4,
+                          "word": "아르바이트",
+                          "expose": true,
+                          "seqNumber": 4,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 5,
+                          "word": "창업",
+                          "expose": true,
+                          "seqNumber": 5,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 6,
+                          "word": "취미",
+                          "expose": true,
+                          "seqNumber": 6,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 7,
+                          "word": "일상력",
+                          "expose": true,
+                          "seqNumber": 7,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 8,
+                          "word": "루틴",
+                          "expose": false,
+                          "seqNumber": 8,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        },
+                        {
+                          "wordId": 9,
+                          "word": "헬스",
+                          "expose": true,
+                          "seqNumber": 9,
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": 9001,
+                          "lastUpdateByNickname": "어드민01",
+                          "createAt": "2022-11-11T01:55:17Z",
+                          "lastUpdateAt": "2022-11-11T01:55:17Z"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-admin-v1-recommend-search-word-wordId",
+        "description": "추천 검색어 전체 조회",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ]
+      },
+      "parameters": [],
+      "post": {
+        "summary": "추천 검색어 등록",
+        "operationId": "post-admin-v1-recommend-search-word",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "word": {
+                    "type": "string",
+                    "description": "검색어"
+                  },
+                  "expose": {
+                    "type": "boolean",
+                    "description": "노출여부"
+                  },
+                  "seqNum": {
+                    "type": "integer",
+                    "description": "노출순서"
+                  }
+                }
+              },
+              "examples": {
+                "추천검색어 등록": {
+                  "value": {
+                    "word": "취미",
+                    "expose": true,
+                    "seqNum": 10
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/v1/recommend/search-words/{wordId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "wordId",
+          "in": "path",
+          "required": true,
+          "description": "추천검색어 id"
+        }
+      ],
+      "delete": {
+        "summary": "추천 검색어 삭제",
+        "operationId": "delete-admin-v1-recommend-search-word-wordId",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "추천 검색어 수정",
+        "operationId": "delete-admin-v1-recommend-search-word-wordId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/RecomSearchWord"
+                    }
+                  }
+                },
+                "examples": {
+                  "추천검색어 수정 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "wordId": 1,
+                        "word": "N잡러",
+                        "memberId": 1,
+                        "expose": true,
+                        "seqNumber": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "word": {
+                    "type": "string",
+                    "description": "검색어"
+                  },
+                  "expose": {
+                    "type": "boolean",
+                    "description": "노출여부"
+                  },
+                  "seqNum": {
+                    "type": "integer",
+                    "description": "노출순서"
+                  }
+                }
+              },
+              "examples": {
+                "추천검색어 수정": {
+                  "value": {
+                    "word": "취미 수정",
+                    "expose": true,
+                    "seqNum": 10
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": ""
+      }
+    },
+    "/admin/v1/visions": {
+      "get": {
+        "summary": "어드민 드림보드 목록 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AdminVisionListDto"
+                      }
+                    },
+                    "pageNum": {
+                      "$ref": "#/components/schemas/PageNum"
+                    },
+                    "pageSize": {
+                      "$ref": "#/components/schemas/PageSize"
+                    },
+                    "totalCount": {
+                      "$ref": "#/components/schemas/TotalCount"
+                    }
+                  }
+                },
+                "examples": {
+                  "목록 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": [
+                        {
+                          "visionId": 78,
+                          "title": "타이틀 1 2 3 4 5 6 ",
+                          "contents": "1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm02n23030255c6fc591313279983b",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-02T04:23:03Z",
+                          "lastUpdateAt": "2022-12-02T04:23:03Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 77,
+                          "title": "Test",
+                          "contents": "프ㅠㅜㅠㅜㅡㅠㅜㅠㅡㅜㅠㅠㅜㅡㅠㅜㅠㅡㅠㅜㅠㅜㅡㅠㅡㅜㅠㅜㅡㅠㅜㅡㅠㅜㅡㅠㅡㅜㅠ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01r53495861361bb301be30e3ce3",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-01T08:53:50Z",
+                          "lastUpdateAt": "2022-12-02T04:21:10Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 76,
+                          "title": "ㅐㅐㅐ",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01m59577657ee57272d3cb4a7e42",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-01T03:59:58Z",
+                          "lastUpdateAt": "2022-12-01T03:59:58Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 75,
+                          "title": "Test",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01k2635088a82baa1db1770f47f8",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-01T01:26:35Z",
+                          "lastUpdateAt": "2022-12-01T01:26:35Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 74,
+                          "title": "Adad",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30v44204218a9f320d8d19d09e06",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T12:43:37Z",
+                          "lastUpdateAt": "2022-11-30T12:44:20Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 66,
+                          "title": "Asdada",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30r4655529e1e91235340c94f541",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T08:46:56Z",
+                          "lastUpdateAt": "2022-11-30T08:46:56Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 61,
+                          "title": "인생 도자기 만들기",
+                          "contents": "테스트ㅡㅡㅡㅡㅡ3ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30n0801721b24e9b20c7c516df28",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T04:08:02Z",
+                          "lastUpdateAt": "2022-11-30T04:08:02Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 60,
+                          "title": "안비건 ",
+                          "contents": "비건과 반대인 삶 ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30m5324188114734e2988c70d329",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T03:52:27Z",
+                          "lastUpdateAt": "2022-11-30T03:53:24Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 59,
+                          "title": "순대국밥 뿌수기",
+                          "contents": "1일 1순대 ❤️",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30m4122055fc9511f720737a4c7a",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T03:41:22Z",
+                          "lastUpdateAt": "2022-11-30T03:41:22Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 53,
+                          "title": "캐시",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30k572186047cfb2b1112022de38",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T01:57:22Z",
+                          "lastUpdateAt": "2022-11-30T01:57:22Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        }
+                      ],
+                      "pageSize": 10,
+                      "pageNum": 1,
+                      "totalCount": 30
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-admin-v1-visions",
+        "description": "- 관리자페이지에서 드림보드 목록을 조회합니다.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "$ref": "#/components/parameters/pageNum"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/admin/v1/posts": {
+      "get": {
+        "summary": "어드민 에피소드 목록 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/PostDto"
+                    },
+                    "pageNum": {
+                      "$ref": "#/components/schemas/PageNum"
+                    },
+                    "pageSize": {
+                      "$ref": "#/components/schemas/PageSize"
+                    },
+                    "totalCount": {
+                      "$ref": "#/components/schemas/TotalCount"
+                    }
+                  }
+                },
+                "examples": {
+                  "목록 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공",
+                      "data": [
+                        {
+                          "visionId": 78,
+                          "title": "타이틀 1 2 3 4 5 6 ",
+                          "contents": "1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm02n23030255c6fc591313279983b",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-02T04:23:03Z",
+                          "lastUpdateAt": "2022-12-02T04:23:03Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 77,
+                          "title": "Test",
+                          "contents": "프ㅠㅜㅠㅜㅡㅠㅜㅠㅡㅜㅠㅠㅜㅡㅠㅜㅠㅡㅠㅜㅠㅜㅡㅠㅡㅜㅠㅜㅡㅠㅜㅡㅠㅜㅡㅠㅡㅜㅠ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01r53495861361bb301be30e3ce3",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-01T08:53:50Z",
+                          "lastUpdateAt": "2022-12-02T04:21:10Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 76,
+                          "title": "ㅐㅐㅐ",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01m59577657ee57272d3cb4a7e42",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-01T03:59:58Z",
+                          "lastUpdateAt": "2022-12-01T03:59:58Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 75,
+                          "title": "Test",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accm01k2635088a82baa1db1770f47f8",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-12-01T01:26:35Z",
+                          "lastUpdateAt": "2022-12-01T01:26:35Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 74,
+                          "title": "Adad",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30v44204218a9f320d8d19d09e06",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T12:43:37Z",
+                          "lastUpdateAt": "2022-11-30T12:44:20Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 66,
+                          "title": "Asdada",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30r4655529e1e91235340c94f541",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T08:46:56Z",
+                          "lastUpdateAt": "2022-11-30T08:46:56Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 61,
+                          "title": "인생 도자기 만들기",
+                          "contents": "테스트ㅡㅡㅡㅡㅡ3ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30n0801721b24e9b20c7c516df28",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T04:08:02Z",
+                          "lastUpdateAt": "2022-11-30T04:08:02Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 60,
+                          "title": "안비건 ",
+                          "contents": "비건과 반대인 삶 ",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30m5324188114734e2988c70d329",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T03:52:27Z",
+                          "lastUpdateAt": "2022-11-30T03:53:24Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 59,
+                          "title": "순대국밥 뿌수기",
+                          "contents": "1일 1순대 ❤️",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30m4122055fc9511f720737a4c7a",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T03:41:22Z",
+                          "lastUpdateAt": "2022-11-30T03:41:22Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        },
+                        {
+                          "visionId": 53,
+                          "title": "캐시",
+                          "contents": "",
+                          "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/1/accl30k572186047cfb2b1112022de38",
+                          "memberId": 1,
+                          "nickname": "여름겨울",
+                          "createAt": "2022-11-30T01:57:22Z",
+                          "lastUpdateAt": "2022-11-30T01:57:22Z",
+                          "isPrivate": false,
+                          "isRecommend": false
+                        }
+                      ],
+                      "pageSize": 10,
+                      "pageNum": 1,
+                      "totalCount": 30
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-admin-v1-posts",
+        "description": "- 관리자페이지에서 에피소드 목록을 조회합니다.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "$ref": "#/components/parameters/pageNum"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "q",
+            "description": "검색어 (제목,컨텐츠 검색)"
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "postId",
+            "description": "에피소드 id"
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/admin/v1/visions/recommend": {
+      "parameters": [],
+      "post": {
+        "summary": "어드민 추천 드림보드 등록",
+        "operationId": "post-admin-v1-visions-recommend",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "등록 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "visionId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "추천 드림보드 등록": {
+                  "value": {
+                    "visionId": 1
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/admin/v1/visions/recommend/{visionId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "visionId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "어드민 추천 드림보드 삭제",
+        "operationId": "delete-admin-v1-recommend-visions-visoinId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "삭제 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "성공"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ],
+        "description": ""
+      }
+    },
+    "/admin/v1/reports": {
+      "get": {
+        "summary": "신고 리스트 어드민 조회",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "type": "array",
+                      "description": "신고리스트",
+                      "items": {
+                        "$ref": "#/components/schemas/ReportAdminDto"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "신고 리스트 페이지 조회 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": [
+                        {
+                          "reportId": 57,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 281,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
+                        },
+                        {
+                          "reportId": 56,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 282,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
+                        },
+                        {
+                          "reportId": 55,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 283,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
+                        },
+                        {
+                          "reportId": 54,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 284,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
+                        },
+                        {
+                          "reportId": 53,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 285,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
+                        },
+                        {
+                          "reportId": 52,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 286,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
+                        },
+                        {
+                          "reportId": 51,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 287,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
+                        },
+                        {
+                          "reportId": 50,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 288,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
+                        },
+                        {
+                          "reportId": 49,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 289,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
+                        },
+                        {
+                          "reportId": 48,
+                          "reportType": "ETC",
+                          "reportTargetType": "POST",
+                          "reportStatus": "WAIT",
+                          "reportTargetId": 290,
+                          "contents": null,
+                          "memo": null,
+                          "resolveBy": 9001,
+                          "resolveByNickname": "어드민01",
+                          "createBy": 9001,
+                          "createByNickname": "어드민01",
+                          "lastUpdateBy": null,
+                          "lastUpdateByNickname": null,
+                          "resolveAt": null,
+                          "createAt": "2022-11-15T05:13:07Z",
+                          "lastUpdateAt": "2022-11-15T05:13:07Z"
+                        }
+                      ],
+                      "pageNum": 1,
+                      "totalCount": 50,
+                      "pageSize": 10
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-admin-v1-reports",
+        "description": "신고리스트 어드민 조회",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          },
+          {
+            "$ref": "#/components/parameters/pageNum"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          }
+        ]
+      }
+    },
+    "/admin/v1/reports/{reportId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "reportId",
+          "in": "path",
+          "required": true,
+          "description": "신고 id"
+        }
+      ],
+      "patch": {
+        "summary": "신고 어드민 수정",
+        "operationId": "patch-admin-v1-reports-reportId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/components/schemas/ResponseCode"
+                    },
+                    "message": {
+                      "$ref": "#/components/schemas/ResponseMessage"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/ReportAdminDto"
+                    }
+                  }
+                },
+                "examples": {
+                  "신고 수정 성공": {
+                    "value": {
+                      "code": 0,
+                      "message": "[DEV] 성공",
+                      "data": {
+                        "reportId": 1,
+                        "reportType": "ETC",
+                        "reportTargetType": "POST",
+                        "reportStatus": "ONGOING",
+                        "reportTargetId": 330,
+                        "contents": null,
+                        "memo": "test",
+                        "resolveBy": 9001,
+                        "resolveByNickname": "어드민01",
+                        "createBy": 9001,
+                        "createByNickname": "어드민01",
+                        "lastUpdateBy": null,
+                        "lastUpdateByNickname": null,
+                        "resolveAt": null,
+                        "createAt": "2022-11-15T05:17:46Z",
+                        "lastUpdateAt": "2022-11-15T05:18:31Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AdminAuthorization"
+          }
+        ],
+        "description": "신고 수정",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "memo": {
+                    "type": "string",
+                    "description": "메모"
+                  },
+                  "reportStatus": {
+                    "type": "string",
+                    "description": "신고상태"
+                  }
+                }
+              },
+              "examples": {
+                "신고 수정 요청": {
+                  "value": {
+                    "memo": "test",
+                    "reportStatus": "ONGOING"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Member": {
+        "title": "Member",
+        "type": "object",
+        "examples": [
+          {
+            "memberId": 1,
+            "email": "tester01@email.com",
+            "nickname": "유저01",
+            "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+            "greeting": "10년차 프리랜서 디자이너,\n비건지향 간헐적 운동, 장래희망은 문구점 사장\ninstagram.com/nmin_official",
+            "followerCount": 0,
+            "followingCount": 1,
+            "bookmarkCount": 1,
+            "visionCount": 0,
+            "postCount": 0,
+            "follow": false
+          }
+        ],
+        "properties": {
+          "memberId": {
+            "type": "integer",
+            "description": "회원 id"
+          },
+          "email": {
+            "type": "string",
+            "description": "이메일",
+            "format": "email"
+          },
+          "nickname": {
+            "type": "string",
+            "description": "닉네임"
+          },
+          "imgUrl": {
+            "type": "string",
+            "description": "프로필 이미지 url"
+          },
+          "greeting": {
+            "type": "string",
+            "description": "멤버 소개"
+          },
+          "\bfollow": {
+            "description": "팔로우 여부",
+            "type": "boolean"
+          },
+          "followerCount": {
+            "type": "number",
+            "description": "팔로워수"
+          },
+          "followingCount": {
+            "type": "number",
+            "description": "팔로잉수"
+          },
+          "bookmarkCount": {
+            "type": "number",
+            "description": "북마크수"
+          },
+          "visionCount": {
+            "type": "number",
+            "description": "드림보드수"
+          },
+          "postCount": {
+            "type": "number",
+            "description": "에피소드수"
+          }
+        },
+        "required": [
+          "memberId",
+          "email",
+          "nickname",
+          "imgUrl"
+        ]
+      },
+      "MemberAdminDto": {
+        "title": "MemberAdminDto",
+        "type": "object",
+        "examples": [
+          {
+            "memberId": 1,
+            "email": "tester01@email.com",
+            "nickname": "유저01",
+            "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/avatar/avatar1.png",
+            "createAt": "2022-12-01T00:00:00Z",
+            "lastLoginAt": "2022-12-01T09:00:00Z",
+            "provider": "KAKAO",
+            "visionCount": 0,
+            "postCount": 0
+          }
+        ],
+        "x-stoplight": {
+          "id": "c36a91c379eb5"
+        },
+        "description": "admin 페이지에서 회원 조회 시, respon",
+        "properties": {
+          "memberId": {
+            "type": "integer",
+            "description": "회원 id"
+          },
+          "email": {
+            "type": "string",
+            "description": "이메일",
+            "format": "email"
+          },
+          "nickname": {
+            "type": "string",
+            "description": "닉네임"
+          },
+          "imgUrl": {
+            "type": "string",
+            "description": "프로필 이미지 url"
+          },
+          "createAt\b": {
+            "$ref": "#/components/schemas/Time",
+            "description": "가입일"
+          },
+          "\blastLoginAt": {
+            "$ref": "#/components/schemas/Time",
+            "description": "최종 로그인 시간"
+          },
+          "provider": {
+            "type": "string",
+            "description": "로그인 서비스 제공자 (APPLE/KAKAO/EMAIL)"
+          },
+          "visionCount": {
+            "type": "number",
+            "description": "드림보드수"
+          },
+          "postCount": {
+            "type": "number",
+            "description": "에피소드수"
+          }
+        },
+        "required": [
+          "memberId",
+          "email",
+          "nickname",
+          "imgUrl"
+        ]
+      },
+      "ResponseCode": {
+        "title": "ResponseCode",
+        "x-stoplight": {
+          "id": "594lp3cglk3lh"
+        },
+        "type": "integer",
+        "description": "응답 코드\n\n0 (성공),\n9999 (알수없는 에러)"
+      },
+      "ResponseMessage": {
+        "title": "ResponseMessage",
+        "x-stoplight": {
+          "id": "vmsrg3uyrskuc"
+        },
+        "type": "string",
+        "description": "응답 코드에 대한 설명 (회원에게 노출용 아님)\n\ncode(0) = 성공, \ncode(9999) = 알 수 없는 에러,\n..."
+      },
+      "ThemeDto": {
+        "title": "ThemeDto",
+        "x-stoplight": {
+          "id": "gp3odcej1yr4k"
+        },
+        "type": "object",
+        "description": "테마 리스트 아이템",
+        "properties": {
+          "tagId": {
+            "type": "integer"
+          },
+          "tagName": {
+            "type": "string"
+          }
+        }
+      },
+      "AddWtagReq": {
+        "title": "AddWTagReq",
+        "x-stoplight": {
+          "id": "gp3odcej1yr4k"
+        },
+        "type": "object",
+        "description": "W태그 생성 요청",
+        "properties": {
+          "wtagType": {
+            "type": "integer"
+          },
+          "wtagName": {
+            "type": "string"
+          },
+          "isPrivate": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "wtagType",
+          "wtagName",
+          "isPrivate"
+        ]
+      },
+      "WtagDto": {
+        "title": "WtagDto",
+        "x-stoplight": {
+          "id": "gp3odcej1yr4k"
+        },
+        "type": "object",
+        "description": "W태그 Dto",
+        "properties": {
+          "wtagId": {
+            "type": "integer"
+          },
+          "wtagType": {
+            "type": "integer"
+          },
+          "wtagName": {
+            "type": "string"
+          },
+          "isPrivate": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Media": {
+        "title": "Media",
+        "x-stoplight": {
+          "id": "gp3odcej1yr4k"
+        },
+        "type": "object",
+        "description": "미디어 리스트",
+        "properties": {
+          "mediaId": {
+            "type": "integer"
+          },
+          "seqNum": {
+            "type": "number",
+            "description": "순서"
+          },
+          "contentType": {
+            "type": "string",
+            "description": "컨텐츠 타입"
+          },
+          "contentUrl": {
+            "type": "string",
+            "description": "컨텐츠 URL"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "기기내 식별자"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time"
+          }
+        },
+        "required": [
+          "contentType",
+          "contentUrl"
+        ]
+      },
+      "AddMediaReq": {
+        "title": "AddMediaReq",
+        "x-stoplight": {
+          "id": "gp3odcej1yr4k"
+        },
+        "type": "object",
+        "description": "미디어 생성 요청",
+        "properties": {
+          "seqNum": {
+            "type": "number",
+            "description": "순서"
+          },
+          "contentType": {
+            "type": "string",
+            "description": "컨텐츠 유형"
+          },
+          "contentUrl": {
+            "type": "string",
+            "description": "컨텐츠 URL"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "기기내 식별자"
+          }
+        },
+        "required": [
+          "contentType",
+          "contentUrl"
+        ]
+      },
+      "VisionDto": {
+        "title": "VisionDto",
+        "x-stoplight": {
+          "id": "rpvuv71tertxt"
+        },
+        "type": "object",
+        "examples": [
+          {
+            "visionId": 22,
+            "title": "test",
+            "contents": "test",
+            "imgUrl": "https://images.unsplash.com/photo-1436076863939-06870fe779c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNzMxNDJ8MHwxfHNlYXJjaHw1fHxiZWVyfGVufDB8fHx8MTY2ODcyODkyNg&ixlib=rb-4.0.3&q=80&w=1080",
+            "memberId": 9010,
+            "nickname": "용감한수호자870",
+            "memberImgUrl": "",
+            "viewCount": 0,
+            "userViewCount": 0,
+            "bookmarkCount": 1,
+            "likeCount": 1,
+            "postCount": 1,
+            "commentCount": 0,
+            "createAt": "2022-11-17T23:49:02Z",
+            "lastUpdateAt": "2022-11-17T23:49:02Z",
+            "themes": [
+              {
+                "themeId": 2,
+                "themeName": "리추얼",
+                "themeDescription": "일상에 활력을 불어넣는 루틴 만들기",
+                "themeQuestion": "나다운 일상을 위해 의식적으로 반복하는 일은 무엇인가요?",
+                "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/ritual.png"
+              }
+            ],
+            "private": false,
+            "bookmark": false,
+            "like": false
+          }
+        ],
+        "description": "비전 상세 Dto",
+        "properties": {
+          "visionId": {
+            "$ref": "#/components/schemas/VisionId"
+          },
+          "title": {
+            "type": "string",
+            "description": "비전 제목"
+          },
+          "contents": {
+            "type": "string",
+            "description": "비전 상세 설명"
+          },
+          "imgUrl": {
+            "type": "string",
+            "description": "이미지 URL"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "lastUpdateAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "viewCount": {
+            "type": "integer",
+            "description": "조회수"
+          },
+          "userViewCount": {
+            "type": "integer",
+            "description": "유저조회수"
+          },
+          "bookmark": {
+            "type": "boolean",
+            "description": "북마크여부"
+          },
+          "likeCount": {
+            "type": "integer",
+            "description": "좋아요수"
+          },
+          "postCount": {
+            "type": "integer",
+            "description": "액션보드수"
+          },
+          "commentCount": {
+            "type": "integer",
+            "description": "댓글수"
+          },
+          "themes": {
+            "description": "등록된 테마 리스트",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ThemeDto"
+            }
+          },
+          "memberId": {
+            "type": "string",
+            "description": "작성자ID"
+          },
+          "nickname": {
+            "type": "string",
+            "description": "작성자닉네임"
+          },
+          "memberImgUrl": {
+            "type": "string",
+            "description": "작성자 프로필 이미지url"
+          },
+          "greeting": {
+            "type": "string",
+            "description": "작성자 소개"
+          },
+          "private": {
+            "type": "boolean",
+            "description": "공개여부"
+          },
+          "like": {
+            "type": "boolean",
+            "description": "좋아요여부"
+          }
+        },
+        "required": [
+          "visionId",
+          "imgUrl",
+          "createAt",
+          "lastUpdateAt",
+          "viewCount",
+          "userViewCount",
+          "bookmark",
+          "likeCount",
+          "postCount",
+          "commentCount",
+          "themes",
+          "memberId",
+          "nickname",
+          "memberImgUrl",
+          "greeting",
+          "private",
+          "like"
+        ]
+      },
+      "VisionListDto": {
+        "title": "VisionListDto",
+        "x-stoplight": {
+          "id": "rpvuv71tertxt"
+        },
+        "type": "object",
+        "examples": [
+          {
+            "visionId": 1,
+            "title": "문구점 사장님 되기",
+            "contents": "기록광을 위한 문구점",
+            "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision1/vision.png",
+            "memberId": 1,
+            "createAt": "2022-11-03T06:51:40Z",
+            "lastUpdateAt": "2022-11-03T06:51:40Z",
+            "themes": [
+              {
+                "themeId": 6,
+                "themeName": "버킷리스트",
+                "themeDescription": "언젠가 꼭 시도해보고 싶은 삶의 로망 실현하기",
+                "themeQuestion": "지금 당신의 삶이 1년 밖에 남지 않았다면 무엇을 하고 싶나요?",
+                "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/icon/bucketlist.png"
+              }
+            ],
+            "private": false
+          }
+        ],
+        "description": "비전 리스트 Dto",
+        "properties": {
+          "visionId": {
+            "$ref": "#/components/schemas/VisionId"
+          },
+          "title": {
+            "type": "string",
+            "description": "비전 제목"
+          },
+          "contents": {
+            "type": "string",
+            "description": "비전 상세 설명"
+          },
+          "themes": {
+            "description": "등록된 테마 리스트",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ThemeDto"
+            }
+          },
+          "imgUrl": {
+            "type": "string",
+            "description": "이미지 URL"
+          },
+          "memberId": {
+            "type": "string",
+            "description": "작성자 ID"
+          },
+          "nickName": {
+            "type": "string",
+            "description": "작성자 닉네임"
+          },
+          "memberImgUrl": {
+            "type": "string",
+            "description": "작성자 프로필 이미지 URL"
+          },
+          "greeting": {
+            "type": "string",
+            "description": "작성자 소개"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "lastUpdateAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "private": {
+            "type": "boolean",
+            "description": "공개여부"
+          }
+        },
+        "required": [
+          "visionId",
+          "imgUrl",
+          "memberId",
+          "nickName",
+          "memberImgUrl",
+          "greeting",
+          "createAt",
+          "lastUpdateAt",
+          "private"
+        ]
+      },
+      "AdminVisionListDto": {
+        "title": "AdminVisionListDto",
+        "type": "object",
+        "examples": [
+          {
+            "visionId": 1,
+            "title": "문구점 사장님 되기",
+            "contents": "기록광을 위한 문구점",
+            "imgUrl": "https://storage.googleapis.com/singapore-life-bucket-dev/media/example/vision1/vision.png",
+            "memberId": 1,
+            "nickname": "엉뚱한수호자",
+            "createAt": "2022-11-03T06:51:40Z",
+            "lastUpdateAt": "2022-11-03T06:51:40Z",
+            "isPrivate": false,
+            "isRecommend": false
+          }
+        ],
+        "description": "어드민 비전 리스트 Dto",
+        "x-stoplight": {
+          "id": "ba225835597ea"
+        },
+        "properties": {
+          "visionId": {
+            "$ref": "#/components/schemas/VisionId"
+          },
+          "title": {
+            "type": "string",
+            "description": "비전 제목"
+          },
+          "contents": {
+            "type": "string",
+            "description": "비전 상세 설명"
+          },
+          "imgUrl": {
+            "type": "string",
+            "description": "이미지 URL"
+          },
+          "memberId": {
+            "type": "string",
+            "description": "작성자 ID"
+          },
+          "nickName": {
+            "type": "string",
+            "description": "작성자 닉네임"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "lastUpdateAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "isPrivate": {
+            "type": "boolean",
+            "description": "공개여부"
+          },
+          "isRecommend": {
+            "type": "boolean",
+            "description": "추천여부"
+          }
+        },
+        "required": [
+          "visionId",
+          "imgUrl",
+          "memberId",
+          "nickName",
+          "createAt",
+          "lastUpdateAt",
+          "isPrivate",
+          "isRecommend"
+        ]
+      },
+      "PostDto": {
+        "title": "PostDto",
+        "x-stoplight": {
+          "id": "rpvuv71tertxt"
+        },
+        "type": "object",
+        "examples": [
+          {
+            "postId": 1,
+            "title": "7일 무지출 챌린지 1일차!",
+            "contents": "내가 생각해도 맛있어보이는 점심도시락",
+            "visionId": 1,
+            "visionTitle": "7일 무지출 챌린지",
+            "memberId": 1,
+            "private": false,
+            "like": false,
+            "createAt": "2022-10-24T02:32:18Z",
+            "lastUpdateAt": "2022-10-30T09:22:28Z",
+            "wtags": [
+              {
+                "wtagType": 2,
+                "wtagName": "점심시간"
+              },
+              {
+                "wtagType": 3,
+                "wtagName": "14층 라운지"
+              }
+            ],
+            "media": [
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+              },
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+              },
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+              }
+            ]
+          }
+        ],
+        "description": "액션보드 상세 Dto",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "description": "액션보드 id"
+          },
+          "title": {
+            "type": "string",
+            "description": "액션보드 제목"
+          },
+          "contents": {
+            "type": "string",
+            "description": "액션보드 상세 설명"
+          },
+          "visionId": {
+            "type": "integer",
+            "description": "드림보드 id"
+          },
+          "visionTitle": {
+            "type": "string",
+            "description": "드림보드 제목"
+          },
+          "memberId": {
+            "type": "integer",
+            "description": "액션보드 등록자 id"
+          },
+          "nickName": {
+            "type": "string",
+            "description": "액션보드 등록자 닉네임"
+          },
+          "memberImgUrl": {
+            "type": "string",
+            "description": "액션보드 등록자 이미지 URL"
+          },
+          "greeting": {
+            "type": "string",
+            "description": "액션보드 등록자 소개"
+          },
+          "private": {
+            "type": "boolean",
+            "description": "공개여부"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "lastUpdateAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "viewCount": {
+            "type": "integer",
+            "description": "조회수"
+          },
+          "userViewCount": {
+            "type": "integer",
+            "description": "유저조회수"
+          },
+          "likeCount": {
+            "type": "integer",
+            "description": "좋아요수"
+          },
+          "commentCount": {
+            "type": "integer",
+            "description": "댓글수"
+          },
+          "wtags": {
+            "description": "등록된 태그 리스트",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WtagDto"
+            }
+          },
+          "media": {
+            "type": "array",
+            "description": "등록된 미디어 리스트",
+            "items": {
+              "$ref": "#/components/schemas/Media"
+            }
+          },
+          "like": {
+            "type": "boolean",
+            "description": "좋아요여부"
+          }
+        },
+        "required": [
+          "postId",
+          "title",
+          "contents",
+          "visionId",
+          "visionTitle",
+          "memberId",
+          "nickName",
+          "memberImgUrl",
+          "greeting",
+          "private",
+          "createAt",
+          "lastUpdateAt",
+          "viewCount",
+          "userViewCount",
+          "likeCount",
+          "commentCount",
+          "wtags",
+          "media",
+          "like"
+        ]
+      },
+      "PostListDto": {
+        "title": "PostListDto",
+        "x-stoplight": {
+          "id": "rpvuv71tertxt"
+        },
+        "type": "object",
+        "examples": [
+          {
+            "postId": 1,
+            "title": "7일 무지출 챌린지 1일차!",
+            "contents": "내가 생각해도 맛있어보이는 점심도시락",
+            "visionId": 1,
+            "visionTitle": "7일 무지출 챌린지",
+            "memberId": 1,
+            "isPrivate": false,
+            "createAt": "2022-10-24T02:32:18Z",
+            "lastUpdateAt": "2022-10-30T09:22:28Z",
+            "wtags": [
+              {
+                "wtagType": 2,
+                "wtagName": "점심시간"
+              },
+              {
+                "wtagType": 3,
+                "wtagName": "14층 라운지"
+              }
+            ],
+            "media": [
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento1.jpg"
+              },
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento2.jpg"
+              },
+              {
+                "contentType": 0,
+                "contentUrl": "https://storage.googleapis.com/singapore-life-bucket/media/example/bento3.jpg"
+              }
+            ]
+          }
+        ],
+        "description": "액션보드 리스트 Dto",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "description": "액션보드 id"
+          },
+          "title": {
+            "type": "string",
+            "description": "액션보드 제목"
+          },
+          "contents": {
+            "type": "string",
+            "description": "액션보드 상세 설명"
+          },
+          "visionId": {
+            "type": "integer",
+            "description": "드림보드 id"
+          },
+          "visionTitle": {
+            "type": "string",
+            "description": "드림보드 제목"
+          },
+          "memberId": {
+            "type": "integer",
+            "description": "액션보드 등록자 id"
+          },
+          "nickName": {
+            "type": "string",
+            "description": "액션보드 등록자 닉네임"
+          },
+          "memberImgUrl": {
+            "type": "string",
+            "description": "액션보드 등록자 프로필 URL"
+          },
+          "isPrivate": {
+            "type": "boolean",
+            "description": "공개여부"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "lastUpdateAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "thumbContentType": {
+            "type": "string",
+            "description": "썸네일 미디어 타입"
+          },
+          "thumbContentUrl": {
+            "type": "string",
+            "description": "썸네일 미디어 URL"
+          },
+          "wtags": {
+            "description": "등록된 태그 리스트",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WtagDto"
+            }
+          }
+        },
+        "required": [
+          "postId",
+          "memberId",
+          "createAt",
+          "lastUpdateAt"
+        ]
+      },
+      "VisionId": {
+        "title": "VisionId",
+        "x-stoplight": {
+          "id": "ymo0953q1pdgm"
+        },
+        "type": "integer",
+        "description": "비전의 id값",
+        "examples": [
+          77
+        ]
+      },
+      "Time": {
+        "title": "Time",
+        "x-stoplight": {
+          "id": "9ovpilriqw3o2"
+        },
+        "type": "string",
+        "description": "시간값 (ISO 8601, UTC) ",
+        "examples": [
+          "2016-10-27T17:13:40Z"
+        ]
+      },
+      "File": {
+        "type": "string",
+        "title": "\bFile",
+        "x-stoplight": {
+          "id": "9ovpilriqw3o2"
+        },
+        "description": "파일 바이너리",
+        "examples": [],
+        "format": "binary"
+      },
+      "Date": {
+        "title": "Date",
+        "x-stoplight": {
+          "id": "ojprffqrezdvs"
+        },
+        "type": "string",
+        "description": "날짜 (YYYY-mm-dd)",
+        "examples": [
+          "2022-12-31"
+        ]
+      },
+      "PageNum": {
+        "title": "PageNum",
+        "x-stoplight": {
+          "id": "i64gykxhy9z1d"
+        },
+        "type": "integer",
+        "description": "현재 페이지 번호"
+      },
+      "PageSize": {
+        "title": "PageSize",
+        "x-stoplight": {
+          "id": "6566uvbjwudbn"
+        },
+        "type": "integer",
+        "description": "페이지 사이즈"
+      },
+      "TotalCount": {
+        "title": "TotalCount",
+        "x-stoplight": {
+          "id": "kesrme3nlime1"
+        },
+        "type": "integer",
+        "description": "전체 데이터 건수"
+      },
+      "RecomSearchWordDto": {
+        "title": "RecomSearchWordDto",
+        "x-stoplight": {
+          "id": "993htlj7tn2k8"
+        },
+        "type": "object",
+        "description": "추천검색어 (유저)",
+        "properties": {
+          "word": {
+            "type": "string",
+            "description": "검색어"
+          },
+          "seqNumber": {
+            "type": "integer",
+            "description": "노출순서"
+          }
+        }
+      },
+      "RecomSearchWordAdminDto": {
+        "title": "RecomSearchWordAdminDto",
+        "x-stoplight": {
+          "id": "993htlj7tn2k8"
+        },
+        "type": "object",
+        "description": "추천검색어 (어드민)",
+        "properties": {
+          "wordId": {
+            "type": "integer",
+            "description": "추천검색어 id"
+          },
+          "word": {
+            "type": "string",
+            "description": "검색어"
+          },
+          "expose": {
+            "type": "boolean",
+            "description": "노출여부"
+          },
+          "seqNumber": {
+            "type": "integer",
+            "description": "노출순서"
+          },
+          "createBy": {
+            "type": "integer",
+            "description": "등록자 id"
+          },
+          "createByNickname": {
+            "type": "string",
+            "description": "등록자 닉네임"
+          },
+          "lastUpdateBy": {
+            "type": "integer",
+            "description": "수정자 id"
+          },
+          "lastUpdateByNickname": {
+            "type": "string",
+            "description": "수정자 닉네임"
+          },
+          "createAt": {
+            "$ref": "#/components/schemas/Time"
+          },
+          "lastUpdateAt": {
+            "$ref": "#/components/schemas/Time"
+          }
+        }
+      },
+      "ReportAdminDto": {
+        "title": "RecomSearchWordAdminDto",
+        "x-stoplight": {
+          "id": "993htlj7tn2k8"
+        },
+        "type": "object",
+        "description": "추천검색어 (어드민)",
+        "examples": [
+          null
+        ],
+        "properties": {
+          "reportId": {
+            "type": "integer",
+            "description": "신고 id"
+          },
+          "reportType": {
+            "type": "string",
+            "description": "신고유형 0(ETC),1(IMPROPER), 2(COPYRIGHT)"
+          },
+          "reportTargetType": {
+            "description": "신고대상유형 0(MEMBER),1(VISION),2(POST),3(COMMENT)",
+            "type": "string"
+          },
+          "reportTargetId": {
+            "type": "integer",
+            "description": "신고대상 id"
+          },
+          "reportStatus": {
+            "type": "string",
+            "description": "신고처리상태 0(WAIT),1(ONGOING),2(DONE),3(DELETE)"
+          },
+          "contents": {
+            "type": "string",
+            "description": "신고내용"
+          },
+          "memo": {
+            "type": "string",
+            "description": "\b처리자 메모"
+          },
+          "resolveBy": {
+            "description": "처리자 id",
+            "type": "integer"
+          },
+          "resolveByNickname": {
+            "type": "string",
+            "description": "처리자 닉네임"
+          },
+          "createBy": {
+            "type": "integer",
+            "description": "신고자 id"
+          },
+          "createByNickname": {
+            "type": "string",
+            "description": "신고자 닉네임"
+          },
+          "lastUpdateBy": {
+            "type": "integer",
+            "description": "수정자 id"
+          },
+          "lastUpdateByNickname": {
+            "type": "string",
+            "description": "수정자 닉네임"
+          },
+          "resolveAt": {
+            "type": "string",
+            "description": "처리일시"
+          },
+          "createAt": {
+            "type": "string",
+            "description": "신고일시"
+          },
+          "lastUpdateAt": {
+            "type": "string",
+            "description": "수정일시"
+          }
+        }
+      },
+      "FollowMemberDto": {
+        "title": "FollowMemberDto",
+        "x-stoplight": {
+          "id": "k05mevoqsds2f"
+        },
+        "type": "object",
+        "description": "팔로우 멤버",
+        "properties": {
+          "memberId": {
+            "type": "number"
+          },
+          "email": {
+            "type": "string"
+          },
+          "nickname": {
+            "type": "string"
+          },
+          "imgUrl": {
+            "type": "string"
+          },
+          "greeting": {
+            "type": "string"
+          },
+          "followAt": {
+            "$ref": "#/components/schemas/Time"
+          }
+        }
+      },
+      "MemberTerms": {
+        "title": "MemberTerms",
+        "x-stoplight": {
+          "id": "l884z1dgvxjsf"
+        },
+        "type": "object",
+        "examples": [
+          {
+            "isAgreeService": true,
+            "isAgreePrivacy": true,
+            "isAgreeMarketingUse": false,
+            "isAgreeReceive": false,
+            "memberId": 1
+          }
+        ],
+        "description": "약관동의 내역",
+        "properties": {
+          "isAgreeService": {
+            "type": "boolean",
+            "description": "약관동의 여부"
+          },
+          "isAgreePrivacy": {
+            "type": "boolean",
+            "description": "개인정보 수집 및 이용 동의 여부"
+          },
+          "isAgreeMarketingUse": {
+            "type": "boolean",
+            "description": "마케팅 활용 동의 여부"
+          },
+          "isAgreeReceive": {
+            "type": "boolean",
+            "description": "마케팅 정보 수신 동의 여부"
+          },
+          "memberId": {
+            "type": "number",
+            "description": "회원ID"
+          }
+        },
+        "required": [
+          "isAgreeService",
+          "isAgreePrivacy",
+          "isAgreeMarketingUse",
+          "isAgreeReceive",
+          "memberId"
+        ]
+      }
+    },
+    "securitySchemes": {},
+    "parameters": {
+      "AdminAuthorization": {
+        "name": "Authorization",
+        "in": "header",
+        "schema": {
+          "type": "string",
+          "example": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjAxQGVtYWlsLmNvbSIsImlhdCI6MTY2ODE1MDIyNSwiZXhwIjoxNjgxMTEwMjI1LCJwcm92aWRlciI6IkVNQUlMIn0.NUKsj8CYIEHAE2QXF_Y8FegCe1sUTPyNcKIIhwaQMztnIteUATqVxFJAh_1QAkuOXBAOCIm9jH5FZpxY3wn_2A"
+        },
+        "description": "Bearer accessToken (admin 용)",
+        "required": true
+      },
+      "visionId": {
+        "name": "visionId",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        },
+        "description": "비전의 id값"
+      },
+      "pageNum": {
+        "name": "pageNum",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        },
+        "description": "페이지 번호 (default값은 1)"
+      },
+      "pageSize": {
+        "name": "pageSize",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        },
+        "description": "페이지 사이즈 (default 값은 10)"
+      },
+      "orderBy": {
+        "name": "orderBy",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "지금은 쓰이지 않음 "
+      }
+    }
+  }
+}
