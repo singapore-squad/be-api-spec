@@ -390,6 +390,23 @@
                   "newPasswd": {
                     "type": "string",
                     "description": "새로운 비밀번호 (비밀번호 변경 시 사용)"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "회원 탈퇴 상태 복구 시 사용 (ACTIVE)"
+                  }
+                }
+              },
+              "examples": {
+                "회원상태 복구": {
+                  "value": {
+                    "status": "ACTIVE"
+                  }
+                },
+                "비밀번호 변경": {
+                  "value": {
+                    "curPasswd": "test1234",
+                    "newPasswd": "test1234!!"
                   }
                 }
               }
